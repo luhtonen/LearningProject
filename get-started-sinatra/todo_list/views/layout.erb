@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Todo List</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+        <style>
+          body {
+              padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+          }
+          #todo-list li {
+              border-bottom: 1px solid #333333;
+              padding: 15px 0;
+          }
+        </style>        
+        <!-- JQuery -->
+        <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="http:///netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="/js/todo_list.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="/">Todo list</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <h1><%= @title %>
+            <%= yield %>
+        </div>
+    </body>
+</html>

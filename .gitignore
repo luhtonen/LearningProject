@@ -1,3 +1,7 @@
 .idea/*
 .idea/*.*
 /SevenFrameworks/ch01/nbproject/private
+/SevenFrameworks/ch01/sinatra/crud/nbproject/private/
+/SevenFrameworks/ch01/sinatra/erb/nbproject/private/
+/SevenFrameworks/ch01/sinatra/mustache/nbproject/private/
+/SevenFrameworks/ch02/nbproject/private/
