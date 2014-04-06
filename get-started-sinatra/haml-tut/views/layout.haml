@@ -8,7 +8,12 @@
       #header
         %h1 My Sinatra Website
         %h2 A Simple Site made with Sinatra and HAML
-      
+      #nav
+        %ol
+          %a(href="/")
+            %li Home
+          %a(href="/about")
+            %li About
       #content
         =yield
       
