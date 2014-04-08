@@ -81,9 +81,9 @@ end
 
 get "/example/:example" do
   @examples = [
-    {:example => "base", :label => "Base"}
-    {:example => "validation", :label => "Validation"}
-    {:example => "tagfilter", :label => "Tag Filter"}
+    {:example => "base", :label => "Base"},
+    {:example => "validation", :label => "Validation"},
+    {:example => "tagfilter", :label => "Tag Filter"},
     {:example => "routing", :label => "Routing"}
   ]
   @example = params[:example]
