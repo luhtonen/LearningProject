@@ -1,0 +1,7 @@
+.modal-header
+  %h1 New Task
+= simple_form_for task, class: 'clearefix' do |f|
+  .modal-body
+    = f.input :title
+    = f.input :note
+    = f.input :completed
