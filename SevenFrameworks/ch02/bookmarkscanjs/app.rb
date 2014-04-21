@@ -6,7 +6,7 @@ require_relative "tag"
 require "dm-serializer"
 require "sinatra/mustache"
 
-DataMapper::setup(:default, "sqlite3://#{Data.pws}/bookmarks.db")
+DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/bookmarks.db")
 DataMapper.finalize.auto_upgrade!
 
 before %r{/bookmarks/(\d+)} do |id|
