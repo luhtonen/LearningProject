@@ -31,7 +31,8 @@ put %r{bookmarks/\d+} do
     input = params.only "url", "title"
     if @bookmark.update input
       add_tags(@bookmark)
-      200 # OK
+#      200 # OK
+      [201, @bookmark.to_json(with_tagList)] # with empty response canjs signals error
     else
       400 # Bad Request
     end

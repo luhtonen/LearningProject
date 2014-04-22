@@ -5,7 +5,15 @@ var Bookmark = can.Model.extend({
     destroy: "DELETE /bookmarks/{id}"
 }, {
 });
-
+var ValidatingBookmark = Bookmark.extend({
+    init: function() {
+        var urlPattern = new RegExp("(http|https):\\/\\/(\\w+:{0,1}\\w*@)?(\\S+)(:[0-9]+)?(\\/|\\/([\\w#!:.?+=&%@!\\-\\/]))?");
+        // Add validations
+        this.validatePresenceOf(["url", "title"]);
+        this.validateFormatOf("url", urlPattern);
+    }
+}, {
+});
 var BookmarkListControl = can.Control.extend({
     view: "/app/base/bookmark_list",
 
@@ -38,7 +46,7 @@ var BookmarkListControl = can.Control.extend({
 });
 
 var BookmarkFormControl = can.Control.extend({
-    BookmarkModel: Bookmark,
+    BookmarkModel: ValidatingBookmark,
     view: "/app/base/bookmark_form",
 
     init: function(element, options) {
@@ -52,6 +60,14 @@ var BookmarkFormControl = can.Control.extend({
         this.element.html(view, bookmark);
 
         bookmark.bind("destroyed", this.clearForm.bind(this));
+        var self = this;
+        bookmark.bind("change", function() {
+            var errorMessage = bookmark.errors() ?
+                can.map(bookmark.errors(), function(message, attrName) {
+                    return attrName + " " + message + ". ";
+                }).join("") : "";
+            self.element.find(".text-error").html(errorMessage);
+        });
     },
     clearForm: function() {
         this.editBookmark(new this.BookmarkModel());
@@ -66,7 +82,9 @@ var BookmarkFormControl = can.Control.extend({
         this.saveBookmark(bookmark);
     },
     saveBookmark: function(bookmark) {
-        bookmark.save(this.clearForm.bind(this), this.signalError);
+        if (!bookmark.errors()) {
+            bookmark.save(this.clearForm.bind(this), this.signalError);
+        }
     },
     signalError: function() {
         alert("The input is not valid");
