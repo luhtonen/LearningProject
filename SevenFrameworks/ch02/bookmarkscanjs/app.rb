@@ -120,7 +120,7 @@ helpers do
       if !existing
         existing = Tag.create tag
       end
-      Taggng.create :tag => existing, :bookmark => bookmark
+      Tagging.create :tag => existing, :bookmark => bookmark
     end
   end
 end

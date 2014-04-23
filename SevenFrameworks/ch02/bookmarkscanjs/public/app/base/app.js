@@ -14,6 +14,29 @@ var ValidatingBookmark = Bookmark.extend({
     }
 }, {
 });
+var TaggedBookmark = ValidatingBookmark.extend({
+    init: function() {
+        // Initialize tagsAsString from tagList
+        var tagList = this.attr("tagList");
+        this.attr("tagsAsString", tagList.join(", "));
+
+        // Listen for changes on tagsAsString and set tagList
+        this.bind("tagsAsString", this.onTagsAsStringChange);
+    },
+    onTagsAsStringChange: function(evt, tagsAsString) {
+        // Split string by comma and trim whitespace
+        var trimmed = can.map(tagsAsString.split(","), can.trim);
+
+        // Ignore empty tags, for example if user enters a,,,b
+        var byNotEmpty = function(tag) {
+            return tag.length > 0;
+        };
+        var notEmpty = can.filter(trimmed, byNotEmpty);
+        var tagList = this.attr("tagList");
+        // Update the tag list to match the ones entered by the user
+        tagList.attr(notEmpty.sort(), true);
+    }
+});
 var BookmarkListControl = can.Control.extend({
     view: "/app/base/bookmark_list",
 
