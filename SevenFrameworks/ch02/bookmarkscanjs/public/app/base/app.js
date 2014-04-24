@@ -17,11 +17,13 @@ var ValidatingBookmark = Bookmark.extend({
 var TaggedBookmark = ValidatingBookmark.extend({
     init: function() {
         // Initialize tagsAsString from tagList
-        var tagList = this.attr("tagList");
-        this.attr("tagsAsString", tagList.join(", "));
+        if (this.attr("id") != undefined) {
+            var tagList = this.attr("tagList");
+            this.attr("tagsAsString", tagList.join(", "));
 
-        // Listen for changes on tagsAsString and set tagList
-        this.bind("tagsAsString", this.onTagsAsStringChange);
+            // Listen for changes on tagsAsString and set tagList
+            this.bind("tagsAsString", this.onTagsAsStringChange);
+        }
     },
     onTagsAsStringChange: function(evt, tagsAsString) {
         // Split string by comma and trim whitespace
@@ -37,6 +39,16 @@ var TaggedBookmark = ValidatingBookmark.extend({
         tagList.attr(notEmpty.sort(), true);
     }
 });
+var filterObject = new can.Map({
+    filterTag: "" // the filter tag is initially blank
+});
+var filterFunction = function(bookmark) {
+    var tagList = bookmark.attr("tagList");
+    var filterTag = filterObject.attr("filterTag");
+    var noFilter = (!filterTag) || (filterTag.length == 0);
+    var tagListContainsFilterTag = tagList && tagList.indexOf(filterTag) > -1;
+    return noFilter || tagListContainsFilterTag;
+};
 var BookmarkListControl = can.Control.extend({
     view: "/app/base/bookmark_list",
 
@@ -65,11 +77,27 @@ var BookmarkListControl = can.Control.extend({
     // handle the click on the edit button, trigger an editBookmark event
     ".edit click": function(el, evt) {
         can.trigger(this.eventHub, "editBookmark", this.getBookmark(el));
+    },
+    // Listen for clicks on tag links, set filterTag on filterObject
+    "a.tag click": function(el, evt) {
+        var tag = String(el.data("tag"));
+        this.options.filterObject.attr("filterTag", tag);
     }
 });
-
+var TagFilterControl = can.Control.extend({
+    defaults: {
+        view: "/app/base/tag_filter"
+    }
+}, {
+    init: function(element, options) {
+        this.element.html(options.view, options.filterObject);
+    },
+    "a.clear click": function(el, evt) {
+        this.options.filterObject.attr("filterTag", "");
+    }
+});
 var BookmarkFormControl = can.Control.extend({
-    BookmarkModel: ValidatingBookmark,
+    BookmarkModel: TaggedBookmark,
     view: "/app/base/bookmark_form",
 
     init: function(element, options) {
@@ -121,16 +149,23 @@ var BookmarkFormControl = can.Control.extend({
 var App_base = can.Construct.extend({
     init: function() {
         // Retrieve the bookmarks from the server
-        Bookmark.findAll({}, function(bookmarks) {
+        TaggedBookmark.findAll({}, function(bookmarks) {
             // Create the event hub observe
             var eventHub = new can.Map({});
             // Create the options object with the event hub  and the bookmarks
-            var options = {eventHub: eventHub, bookmarks: bookmarks};
+            var options = {eventHub: eventHub, bookmarks: bookmarks, filterObject: filterObject};
+
+            // Create filtered bookmark list
+            var filtered = bookmarks.filter(filterFunction);
+
+            // Create an options object with the filtered bookmark list
+            var filteredOptions = can.extend({}, options, {bookmarks:filtered});
 
             // Create the control, attaching it to the element on the page
             // that has id="bookmark_list_container"
-            new BookmarkListControl("#bookmark_list_container", options);
+            new BookmarkListControl("#bookmark_list_container", filteredOptions);
 
+            new TagFilterControl("#filter_container", options);
             // Create the bookmark form control (which we build in the
             // next section.)
             new BookmarkFormControl("#bookmark_form_container", options);
