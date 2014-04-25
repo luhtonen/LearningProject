@@ -39,6 +39,38 @@ var TaggedBookmark = ValidatingBookmark.extend({
         tagList.attr(notEmpty.sort(), true);
     }
 });
+TaggedBookmark.List = ValidatingBookmark.List.extend({
+    // Returns a list of tags, each with label and bookmarkCount
+    tags: function() {
+        // Keep track of how many bookmarks per tag
+        var bookmarkCounts = {};
+
+        // Loop through each bookmark in the list
+        this.each(function(bookmark) {
+            var tagList = bookmark.attr("tagList");
+
+            if (tagList) {
+                // loop through each tag associated to the bookmark
+                tagList.each(function(tag) {
+                    var existing = bookmarkCounts[tag];
+                    // Either increase the existing count, or initialize to 1
+                    bookmarkCounts[tag] = existing ? existing + 1 : 1;
+                });
+            }
+        });
+
+        // The keys in bookmarkCounts are the tag labels
+        var labels = Object.keys(bookmarkCounts);
+
+        // Sort the tag labels
+        labels.sort();
+
+        // Return a list of tags with label and bookmark count
+        return can.map(labels, function(label) {
+            return {label: label, bookmarkCount:bookmarkCounts[label]};
+        });
+    }
+});
 var filterObject = new can.Map({
     filterTag: "" // the filter tag is initially blank
 });
@@ -94,6 +126,21 @@ var TagFilterControl = can.Control.extend({
     },
     "a.clear click": function(el, evt) {
         this.options.filterObject.attr("filterTag", "");
+    }
+});
+var TagListControl = can.Control.extend({
+    defaults: {
+        view: "/app/base/tag_list.mustache"
+    }
+}, {
+    init: function(element, options) {
+        this.eventHub = options.eventHub;
+        var model = {bookmarks:options.bookmarks};
+        element.html(options.view, model);
+    },
+    "a.tag click": function(el, evt) {
+        var tag = el.data("tag");
+        this.options.filterObject.attr("filterTag", tag.label);
     }
 });
 var BookmarkFormControl = can.Control.extend({
@@ -165,10 +212,11 @@ var App_base = can.Construct.extend({
             // that has id="bookmark_list_container"
             new BookmarkListControl("#bookmark_list_container", filteredOptions);
 
-            new TagFilterControl("#filter_container", options);
             // Create the bookmark form control (which we build in the
             // next section.)
             new BookmarkFormControl("#bookmark_form_container", options);
+            new TagListControl("#tag_list_container", options);
+            new TagFilterControl("#filter_container", options);
         });
     }
 });
