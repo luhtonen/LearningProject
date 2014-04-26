@@ -130,7 +130,7 @@ var TagFilterControl = can.Control.extend({
 });
 var TagListControl = can.Control.extend({
     defaults: {
-        view: "/app/base/tag_list.mustache"
+        view: "/app/base/tag_list"
     }
 }, {
     init: function(element, options) {
