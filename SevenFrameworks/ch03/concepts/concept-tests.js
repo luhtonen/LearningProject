@@ -5,7 +5,9 @@ app.service("serviceA", function() {
 app.service("serviceB", function() {
     this.name = "B";
 });
-app.service("serviceC", function(serviceA, serviceB) {
-    serviceA.name; // returns "A"
-    serviceB.name; // returns "B"
-});
+var svcC = function(svcA, svcB) {
+    svcA.name; // returns "A"
+    svcB.name; // returns "B"
+};
+svcC.$inject = ["serviceA", "serviceB"];
+app.service("serviceC", svcC);
