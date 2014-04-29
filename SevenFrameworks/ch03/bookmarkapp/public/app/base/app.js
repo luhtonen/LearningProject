@@ -1,0 +1,1 @@
+angular.module("App_base", ["ngResource"]);
