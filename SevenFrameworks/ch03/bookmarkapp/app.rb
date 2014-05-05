@@ -5,13 +5,14 @@ require_relative "tagging"
 require_relative "tag"
 require "dm-serializer"
 require "sinatra/mustache"
+require "json"
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/bookmarks.db")
 DataMapper.finalize.auto_upgrade!
 
 before %r{/bookmarks/(\d+)} do |id|
   @bookmark = Bookmark.get(id)
-  
+
   if !@bookmark
     halt 404, "bookmark #{id} not found"
   end
@@ -19,20 +20,19 @@ end
 
 with_tagList = {:methods => [:tagList]}
 
-get %r{bookmars/\d+} do
+get %r{bookmarks/\d+} do
   if @bookmark
     content_type :json
     @bookmark.to_json with_tagList
   end
 end
 
-put %r{bookmarks/\d+} do
+post %r{bookmarks/\d+} do
   if @bookmark
-    input = params.only "url", "title"
-    if @bookmark.update input
-      add_tags(@bookmark)
-#      200 # OK
-      [201, @bookmark.to_json(with_tagList)] # with empty response canjs signals error
+    input = JSON.parse(request.body.read)
+    if @bookmark.update(input.only "url", "title")
+      add_tags(@bookmark, input)
+      200 # OK
     else
       400 # Bad Request
     end
@@ -64,11 +64,11 @@ get "/bookmarks" do
 end
 
 post "/bookmarks" do
-  input = params.only "url", "title"
-  bookmark = Bookmark.new input
+  input = JSON.parse(request.body.read)
+  bookmark = Bookmark.new(input.only "url", "title")
   if bookmark.save
-    add_tags(bookmark)
-    
+    add_tags(bookmark, input)
+
     # Created
     [201, bookmark.to_json(with_tagList)]
   else
@@ -88,33 +88,35 @@ get "/example/:example" do
     {:example => "routing", :label => "Routing"}
   ]
   @example = params[:example]
-  
+
   @examples.each do |example|
     if example[:example] == @example
       example[:active] = true
     end
   end
-  
+
+  @example_template = IO.read("views/#{@example}.html")
+
   mustache :index
 end
 
 helpers do
-  def add_tags(bookmark)
-    labels = (params["tagsAsString"] || "").split(",").map(&:strip)
-    
+  def add_tags(bookmark, input)
+    tagList = (input["tagList"] || []).map(&:strip)
+
     # Remove taggings that previously existed but were not sent
-    # Remove existing taggins form tags to be added
+    # Remove existing taggings from tagList to be added
     existing_labels = []
     bookmark.taggings.each do |tagging|
-      if labels.include? tagging.tag.label
+      if tagList.include? tagging.tag.label
         existing_labels.push tagging.tag.label
       else
         tagging.destroy
       end
     end
-    
+
     # Add tags that were sent, if they are new
-    (labels - existing_labels).each do |label|
+    (tagList - existing_labels).each do |label|
       tag = {:label => label}
       existing = Tag.first tag
       if !existing

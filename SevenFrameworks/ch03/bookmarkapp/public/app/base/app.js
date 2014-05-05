@@ -5,12 +5,13 @@ app.factory("Bookmark", function($resource) {
 app.factory("bookmarks", function(Bookmark) {
     return Bookmark.query();
 });
-app.factory("saveBookmark", function(bookmarks) {
+app.factory("saveBookmark", function(bookmarks, state) {
     return function(bookmark) {
         if (!bookmark.id) {
             bookmarks.push(bookmark);
         }
         bookmark.$save();
+        state.clearForm();
     };
 });
 app.factory("deleteBookmark", function(bookmarks) {
@@ -20,3 +21,28 @@ app.factory("deleteBookmark", function(bookmarks) {
         bookmarks.splice(index, 1);
     };
 });
+app.service("state", function(Bookmark) {
+    this.formBookmark = {bookmark:new Bookmark()};
+    this.clearForm = function() {
+        this.formBookmark.bookmark = new Bookmark();
+    };
+});
+app.factory("editBookmark", function(state) {
+    return function(bookmark) {
+        state.formBookmark.bookmark = bookmark;
+    }
+});
+app.controller("BookmarkListController",
+    function($scope, bookmarks, deleteBookmark, editBookmark) {
+        $scope.bookmarks = bookmarks;
+        $scope.deleteBookmark = deleteBookmark;
+        $scope.editBookmark = editBookmark;
+    }
+);
+app.controller("BookmarkFormController",
+    function($scope, state, bookmarks, saveBookmark) {
+        $scope.formBookmark = state.formBookmark;
+        $scope.saveBookmark = saveBookmark;
+        $scope.clearForm = state.clearForm;
+    }
+);
