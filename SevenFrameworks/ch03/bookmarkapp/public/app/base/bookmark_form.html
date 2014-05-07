@@ -11,6 +11,11 @@ Bookmark:
         <input type="text" ng-model="formBookmark.bookmark.title" name="title">
     </label>
 
+    <label>
+        Tags: (separated by comma)
+        <input type="text" ng-model="formBookmark.bookmark.tagList" ng-list name="tagList">
+    </label>
+
     <input type="submit" class="btn btn-primary" value="Save">
     <input type="button" class="btn" ng-click="clearForm()" value="Clear">
 </form>
