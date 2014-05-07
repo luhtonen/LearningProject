@@ -1,6 +1,15 @@
-<div ng-controller="BookmarkFormController"
-     ng-include src="'/app/base/bookmark_form.html'">
+<div class="span7">
+    <div ng-controller="BookmarkFormController"
+         ng-include src="'/app/base/bookmark_form.html'">
+    </div>
+    <div ng-controller="TagFilterController"
+            ng-include src="'/app/base/tag_filter.html'">
+    </div>
+    <div ng-controller="BookmarkListController"
+         ng-include src="'/app/base/bookmark_list.html'">
+    </div>
 </div>
-<div ng-controller="BookmarkListController"
-     ng-include src="'/app/base/bookmark_list.html'">
+<div class="span5">
+    <div ng-controller="TagListController"
+         ng-include src="'/app/base/tag_list.html'"></div>
 </div>
