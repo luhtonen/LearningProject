@@ -1,4 +1,14 @@
-var app = angular.module("App_base", ["ngResource"]);
+var app = angular.module("App_base", ["ngResource", "ngRoute"],
+    function($routeProvider) {
+        var params = {
+            controller: "BookmarkListController",
+            templateUrl: "/app/base/bookmark_list.html"
+        };
+        $routeProvider.
+            when("/", params).
+            when("/filter/:tag", params);
+    }
+);
 app.factory("Bookmark", function($resource) {
     return $resource("/bookmarks/:id", {id:"@id"});
 });
@@ -67,35 +77,27 @@ app.filter("filterByTag", function() {
     };
 });
 app.controller("BookmarkListController",
-    function($scope, state, bookmarks, deleteBookmark, editBookmark) {
+    function($scope, $routeParams, state, bookmarks, deleteBookmark, editBookmark) {
         $scope.bookmarks = bookmarks;
         $scope.bookmarkFilter = state.bookmarkFilter;
-        $scope.filterBy = function(tag) {
-            state.bookmarkFilter.filterTag = tag;
-        };
+        state.bookmarkFilter.filterTag = $routeParams.tag;
         $scope.deleteBookmark = deleteBookmark;
         $scope.editBookmark = editBookmark;
     }
 );
 app.controller("TagListController",
-    function($scope, state, bookmarks, buildTagList) {
+    function($scope, $routeParams, state, bookmarks, buildTagList) {
         $scope.bookmarks = bookmarks;
+        state.bookmarkFilter.filterTag = $routeParams.tag;
         $scope.$watch("bookmarks", function(updatedBookmarks) {
             $scope.tags = buildTagList(updatedBookmarks);
         }, true); // true compares objects for equality rather than by reference
-
-        $scope.filterBy = function(tag) {
-            state.bookmarkFilter.filterTag = tag.label;
-        };
     }
 );
 app.controller("TagFilterController",
-    function($scope, state) {
+    function($scope, $routeParams, state) {
         $scope.bookmarkFilter = state.bookmarkFilter;
-
-        $scope.clearFilter = function() {
-            state.bookmarkFilter.filterTag = "";
-        };
+        state.bookmarkFilter.filterTag = $routeParams.tag;
     }
 );
 app.controller("BookmarkFormController",
