@@ -3,9 +3,11 @@
   (:use korma.db korma.core)
   (:require [clojure.string :as string]))
 
+; Database
 (defdb zap
   (sqlite3 {:db "zap.db"}))
 
+; Entities
 (defentity project
   (entity-fields :id :name))
 
@@ -23,3 +25,5 @@
 (defentity comment
   (entity-fields :id :issue_id :content)
   (belongs-to issue))
+
+; Functions
