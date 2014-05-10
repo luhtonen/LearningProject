@@ -6,7 +6,7 @@
                  [ring/ring-devel "1.2.2"]
                  [compojure "1.1.7"]
 
-                 [korma "0.3.1"]
+                 [korma "0.3.0-RC5"]
                  [org.xerial/sqlite-jdbc "3.7.2"]
 
                  [hiccup "1.0.5"]]
