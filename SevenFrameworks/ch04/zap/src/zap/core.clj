@@ -1,11 +1,25 @@
 (ns zap.core
   (:use compojure.core)
-  (:require [compojure.handler :as handler]
+  (:require [compojure.route :as route]
+            [compojure.handler :as handler]
             [ring.middleware.resource :refer [wrap-resource]]
             [ring.middleware.params :refer [wrap-params]]
             [ring.middleware.keyword-params :refer [wrap-keyword-params]]
+            [clojure.data.json :as json]
             [zap.views :as views]
             [zap.models :as models]))
+
+(defroutes api-routes
+   (GET "/api/projects" []
+        (json/write-str (models/all-projects)))
+   (GET "/api/project/:id" [id]
+        (if-let [proj (models/project-by-id id)]
+                (json/write-str proj)
+                {:status 404 :body ""}))
+   (GET "/api/project/:pid/issues" [pid]
+        (json/write-str (models/issues-by-project pid)))
+   (GET "/api/project/:pid/issue/:iid" [pid iid]
+        (json/write-str (models/issue-by-id iid))))
 
 (defroutes app-routes
    (GET "/" []

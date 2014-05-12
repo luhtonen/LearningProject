@@ -3,7 +3,8 @@
            [hiccup.form :refer [form-to text-field submit-button text-area]]
            [ring.util.response :as response]
            [zap.models :as models]
-           ))
+           [zap.validations :as valids]
+           [clojure.data.json :as json]))
 
 (defn index []
   (response/redirect "/projects"))
@@ -49,6 +50,8 @@
 (defn make-project [params]
   (models/create-project params)
   (response/redirect-after-post "/projects"))
+
+(defn issues [] "")
 
 (defn issues-by-project [id]
   (let [proj (models/project-by-id id)]
@@ -116,7 +119,7 @@
 
       (form-to
         {:id "comment-form"}
-        [:post (str "/issue" id "/comments")]
+        [:post (str "/issue/" id "/comments")]
         (text-area {:class "span12"
                     :placeholder "Comment"
                     :rows 3} :comment))
@@ -133,21 +136,21 @@
                    :value "open"
                    :type "submit"} "Reopen Issue"])
        "\n"
-       (when (not= "open" (:status_name iss))
+       (when (= "open" (:status_name iss))
          [:button {:class "btn"
                    :form "close-form"
                    :name "close"
                    :value "fixed"
                    :type "submit"} "Close as Fixed"])
        "\n"
-       (when (not= "open" (:status_name iss))
+       (when (= "open" (:status_name iss))
          [:button {:class "btn"
                    :form "close-form"
                    :name "close"
                    :value "wontfix"
                    :type "submit"} "Close as Won't Fix"])
        "\n"
-       (when (not= "open" (:status_name iss))
+       (when (= "open" (:status_name iss))
          [:button {:class "btn"
                    :form "close-form"
                    :name "close"
@@ -173,3 +176,23 @@
   (when-let [status (models/status-by-name (:close params))]
     (models/close-issue id (:id status)))
   (response/redirect-after-post (str "/issue/" id)))
+
+(defn create-project [params]
+  (let [errors (valids/valid-project? params)]
+    (if errors
+      {:status 400
+       :body (json/write-str {:errors errors})}
+      (do
+        (models/create-project params)
+        {:status 200 :body ""}))))
+
+(defn edit-project [id params]
+  (let [errors (valids/valid-project? params)]
+    (if errors
+      {:status 400
+       :body (json/write-str {:errors errors})}
+      (if-let [proj (models/project-by-id id)]
+        (do
+          (models/update-project id params)
+          {:status 200 :body ""})
+        {:status 404 :body ""}))))
