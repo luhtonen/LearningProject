@@ -186,6 +186,11 @@
         (models/create-project params)
         {:status 200 :body ""}))))
 
+(defn delete-project [id]
+  (models/delete-project id)
+  {:status 200
+   :body ""})
+
 (defn edit-project [id params]
   (let [errors (valids/valid-project? params)]
     (if errors
