@@ -11,3 +11,6 @@ rails-projects/todo-new/.idea/*.*
 SevenFrameworks/ch05/hello/.idea/*
 SevenFrameworks/ch05/hello/.idea/*.*
 SevenFrameworks/ch05/hello/*.iml
+
+SevenFrameworks/ch05/hello/deps
+SevenFrameworks/ch05/hello/ebin
