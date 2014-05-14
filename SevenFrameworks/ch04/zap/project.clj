@@ -12,7 +12,9 @@
                  [org.xerial/sqlite-jdbc "3.7.2"]
 
                  [hiccup "1.0.5"]
-                 [valip "0.2.0"]]
+                 [enlive "1.1.5"]
+                 [valip "0.2.0"]
+                 [kerodon "0.3.0"]]
 
 :plugins [[lein-ring "0.8.10"]]
 

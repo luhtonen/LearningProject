@@ -1,39 +1,45 @@
 (ns zap.views
-  (:require [hiccup.page :refer [html5 include-js include-css]]
-           [hiccup.form :refer [form-to text-field submit-button text-area]]
-           [ring.util.response :as response]
-           [zap.models :as models]
-           [zap.validations :as valids]
-           [clojure.data.json :as json]))
+  (:require [clojure.data.json :as json]
+            [net.cgrand.enlive-html :refer [deftemplate defsnippet content wrap html but
+                                            do-> first-child set-attr clone-for]]
+            [hiccup.page :refer [html5 include-js include-css]]
+            [hiccup.form :refer [form-to text-field submit-button text-area]]
+            [ring.util.response :as response]
+            [zap.models :as models]
+            [zap.validations :as valids]))
 
 (defn index []
   (response/redirect "/projects"))
 
-(defn base-page [title & body]
-  (html5
-    [:head
-     (include-css "/css/bootstrap.min.css")
-     (include-css "/css/zap.css")
-     [:title title]]
-    [:body
-     [:div {:class "navbar navbar-inverse"}
-      [:div {:class :navbar-inner}
-       [:a {:class :brand :href "/"} "Zap!"]
-       [:form {:class "navbar-form pull-right"}
-        [:input {:type :text :class :search-query :placeholder :Search}]]]]
+(deftemplate base-page "templates/projects.html"
+  [title & body]
+  [:title] (content title)
+  [:.container] (content body))
 
-     [:div.container (seq body)]]))
+(defsnippet admin-bar
+  "templates/projects.html" [:.container :.admin-bar]
+  [links]
+
+  [:a (but first-child)] nil
+  [:a] (clone-for [[url title] links]
+         (do->
+           (set-attr :href url)
+           (content title))))
+
+(defsnippet project-item
+  "templates/projects.html" [:.container :ol [:li first-child]]
+  [proj]
+  [:a] (do->
+         (set-attr :href (str "/project/" (:id proj) "/issues"))
+         (content (:name proj))))
 
 (defn projects []
   (base-page
     "Projects - Zap"
-    [:div.row.admin-bar
-     [:a {:href "/projects/new"}
-      "Add Project"]]
-    [:h1 "Project List"]
-    [:ol
-     (for [p (models/all-projects)]
-       [:li [:a {:href (str "/project/" (:id p) "/issues")} (:name p)]])]))
+
+    (admin-bar {"/projects/new" "Add Project"})
+    (html [:h1 "Project List"])
+    (map project-item (models/all-projects))))
 
 (defn new-project []
   (base-page

@@ -12,6 +12,8 @@
 (defroutes api-routes
    (GET "/projects" []
         (json/write-str (models/all-projects)))
+   (GET "/issues" []
+        (json/write-str (models/all-issues)))
    (GET "/project/:id" [id]
         (if-let [proj (models/project-by-id id)]
                 (json/write-str proj)
