@@ -7,11 +7,14 @@
 /SevenFrameworks/ch02/nbproject/private/
 rails-projects/todo-new/.idea/*
 rails-projects/todo-new/.idea/*.*
-
 SevenFrameworks/ch05/hello/.idea/*
 SevenFrameworks/ch05/hello/.idea/*.*
 SevenFrameworks/ch05/hello/*.iml
-
 SevenFrameworks/ch05/hello/deps
 SevenFrameworks/ch05/hello/ebin
 SevenFrameworks/ch05/hello/rebar
+SevenFrameworks/ch05/dispatcher/.idea/*
+SevenFrameworks/ch05/dispatcher/.idea/*.*
+SevenFrameworks/ch05/dispatcher/*.iml
+SevenFrameworks/ch05/dispatcher/deps
+SevenFrameworks/ch05/dispatcher/ebin
