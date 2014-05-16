@@ -18,3 +18,8 @@ SevenFrameworks/ch05/dispatcher/.idea/*.*
 SevenFrameworks/ch05/dispatcher/*.iml
 SevenFrameworks/ch05/dispatcher/deps
 SevenFrameworks/ch05/dispatcher/ebin
+SevenFrameworks/ch05/petite/.idea/*
+SevenFrameworks/ch05/petite/.idea/*.*
+SevenFrameworks/ch05/petite/*.iml
+SevenFrameworks/ch05/petite/deps
+SevenFrameworks/ch05/petite/ebin
