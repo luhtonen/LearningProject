@@ -1,10 +1,9 @@
-%% @author author <author@example.com>
-%% @copyright YYYY author.
+%% @author Eduard Luhtonen
+%% @copyright (C) 2014, Eduard Luhtonen.
 
 %% @doc Supervisor for the petite application.
 
 -module(petite_sup).
--author('author <author@example.com>').
 
 -behaviour(supervisor).
 
@@ -57,7 +56,10 @@ init([]) ->
     Web = {webmachine_mochiweb,
            {webmachine_mochiweb, start, [WebConfig]},
            permanent, 5000, worker, [mochiweb_socket_server]},
-    Processes = [Web],
+    UrlServer = {petite_url_srv,
+                 {petite_url_srv, start_link, []},
+                 permanent, 5000, worker, []},
+    Processes = [Web, UrlServer],
     {ok, { {one_for_one, 10, 10}, Processes} }.
 
 %%
