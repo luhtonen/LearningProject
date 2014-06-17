@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/js/angular.js"></script>
+    <script>
+        function MyCtrl($scope) {
+            $scope.value = 1;
+
+            $scope.increamentValue = function(increament) {
+                $scope.value += increament;
+            };
+        }
+    </script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+</head>
+<body ng-app>
+    <div class="container" ng-controller="MyCtrl">
+        <div class="row">
+            <p ng-init="increamentValue(1)">{{value}}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../lib/js/angular.js"></script>
+    <script>
+        var MyCtrl = function($scope) {
+            $scope.value = "some value";
+        };
+    </script>
+    <link rel="stylesheet" href="../lib/css/bootstrap.css">
+</head>
+<body ng-app>
+    <div ng-controller="MyCtrl">
+        <p>{{value}}</p>
+    </div>
+</body>
+</html>
