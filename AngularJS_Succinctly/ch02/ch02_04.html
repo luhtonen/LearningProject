@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        function MyCtrl($scope) {
+            $scope.name = "";
+
+            $scope.$watch("name", function(newValue, oldValue) {
+                if ($scope.name.length > 0) {
+                    $scope.greeting = "Greetings " + $scope.name;
+                }
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app>
+    <div class="container" ng-controller="MyCtrl">
+        <div class="row">
+            <input type="text" ng-model="name" placeholder="Enter your name">
+            <p>{{greeting}}</p>
+        </div>
+    </div>
+</body>
+</html>

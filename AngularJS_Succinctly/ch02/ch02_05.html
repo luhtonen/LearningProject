@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="js/ch02_05.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body ng-app="MyApp">
+    <div class="container" ng-controller="MyCtrl">
+        <label>Primitive</label>
+        <input type="text" ng-model="name">
+        <br>
+        <label>Object</label>
+        <input type="text" ng-model="user.name">
+        <br>
+        <div class="nested" ng-controller="MyNestedCtrl">
+            <label>Primitive</label>
+            <input type="text" ng-model="name">
+            <br>
+            <label>Primitive with explicit $parent reference</label>
+            <input type="text" ng-model="$parent.name">
+            <br>
+            <label>Object</label>
+            <input type="text" ng-model="user.name">
+        </div>
+    </div>
+</body>
+</html>
