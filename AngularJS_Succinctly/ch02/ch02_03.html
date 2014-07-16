@@ -5,20 +5,20 @@
     <title></title>
     <script src="../lib/js/angular.js"></script>
     <script>
-        function MyCtrl($scope) {
+        function MyCtrl2($scope) {
             $scope.value = 1;
 
-            $scope.incrementValue = function(increament) {
-                $scope.value += increament;
+            $scope.getIncrementedValue = function() {
+                return $scope.value + 1;
             };
         }
     </script>
     <link rel="stylesheet" href="../lib/css/bootstrap.css">
 </head>
 <body ng-app>
-    <div class="container" ng-controller="MyCtrl">
+    <div class="container" ng-controller="MyCtrl2">
         <div class="row">
-            <p ng-init="incrementValue(1)">{{value}}</p>
+            <p>{{getIncrementedValue()}}</p>
         </div>
     </div>
 </body>
