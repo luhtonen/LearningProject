@@ -11,3 +11,13 @@ app.directive('myWidget', function() {
         scope: {}
     };
 });
+
+app.directive("myWidget2", function() {
+    return {
+        restrict: "E",
+        template: "<p>{{text}}</p>",
+        scope: {
+            text: "@text"
+        }
+    }
+});
