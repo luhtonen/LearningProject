@@ -7,6 +7,7 @@ app.directive('myWidget', function() {
     return {
         restrict: "A",
         template: "<p>{{text}}</p>",
-        link: linkFunction
+        link: linkFunction,
+        scope: {}
     };
 });
