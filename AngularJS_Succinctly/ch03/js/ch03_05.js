@@ -1,5 +1,10 @@
 var app = angular.module('MyApp', []);
 
+app.controller('MyCtrl', ['$scope', function($scope) {
+    $scope.text = 'Hello World from text';
+    $scope.anotherText = 'Hello World from another text';
+}]);
+
 app.directive('myWidget', function() {
     var linkFunction = function(scope, element, attributes) {
         scope.text = attributes["myWidget"];
@@ -18,6 +23,16 @@ app.directive("myWidget2", function() {
         template: "<p>{{text}}</p>",
         scope: {
             text: "@text"
+        }
+    }
+});
+
+app.directive('myWidget3', function() {
+    return {
+        restrict: 'E',
+        template: "<p>{{text}}</p>",
+        scope: {
+            text: '='
         }
     }
 });

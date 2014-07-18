@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="../styles/app.css">
 </head>
 <body ng-app="MyApp">
-    <div class="container">
+    <div class="container" ng-controller="MyCtrl">
         <div my-widget="Hello World"></div>
         <my-widget2 text="Another Hello World"></my-widget2>
+        <my-widget3 text="text"></my-widget3>
+        <my-widget3 text="anotherText"></my-widget3>
         <my-widget-expr fn="count = count + 1"></my-widget-expr>
     </div>
 </body>
