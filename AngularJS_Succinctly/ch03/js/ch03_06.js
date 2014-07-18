@@ -1,12 +1,11 @@
 var app = angular.module('MyApp', []);
 
-app.directive('repeatNtimes', function() {
+app.directive('repeatNTimes', function() {
     return {
         restrict: "E",
-        compile: function(tElement, attrs) {
+        compile: function (tElement, tAttrs) {
             var content = tElement.children();
-            console.log("content = " + content);
-            for (var i=1; i<attrs.repeat; i++) {
+            for (var i = 1; i < tAttrs.repeat; i++) {
                 tElement.append(content.clone());
             }
         }
