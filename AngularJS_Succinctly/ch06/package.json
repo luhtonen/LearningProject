@@ -1,0 +1,13 @@
+{
+    "name": "ch06_02",
+    "description": "AngularJS Succinctly book chapter 6 recipe 2",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "express": "4.7.x",
+        "jade": "1.5.x",
+        "body-parser": "1.5.x",
+        "method-override": "2.1.x",
+        "error-handler": "1.0.x"
+    }
+}
