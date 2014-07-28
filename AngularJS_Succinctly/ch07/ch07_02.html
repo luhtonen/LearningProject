@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="js/ch07_02.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body ng-app="MyApp">
+<div class="container" ng-controller="User">
+    <form ng-submit="submit()" role="form" name="form">
+        <div class="form-group">
+            <label>Firstname</label>
+            <input type="text" name="firstname" class="form-control" ng-model="user.firstname" required/>
+        </div>
+        <div class="form-group">
+            <label>Lastname</label>
+            <input type="text" class="form-control" ng-model="user.lastname" required/>
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" class="form-control" ng-model="user.age"/>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+    <br/>
+    <div class="jumbotron">
+        Firstname input valid: {{form.firstname.$valid}}
+        <br>
+        Firstname validation error: {{form.firstname.$error}} <br>
+        Form valid: {{form.$valid}}
+        <br>
+        Form validation error: {{form.$error}}
+    </div>
+</div>
+</body>
+</html>
