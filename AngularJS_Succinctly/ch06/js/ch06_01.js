@@ -1,6 +1,6 @@
 var app = angular.module('MyApp', ['ngRoute']).
     config(function($routeProvider, $locationProvider) {
-        $locationProvider.hashPrefix('!')
+        $locationProvider.hashPrefix('!');
         $routeProvider.
             when("/persons", { templateUrl: "partials/person_list01.html"}).
             when("/persons/:id", {
