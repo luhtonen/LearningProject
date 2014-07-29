@@ -1,20 +1,25 @@
 var app = angular.module('MyApp', []);
-app.filter('offset', function() {
-    return function(input, start) {
-        start = parseInt(start, 10);
-        return input.slice(start);
-    };
-});
-app.controller('PaginationCtrl', ['$scope', function($scope) {
-    $scope.itemsPerPage = 5;
-    $scope.currentPage = 0;
-    $scope.items = [];
 
+app.factory('Item', function() {
+    var items = [];
     for (var i = 0; i < 50; i++) {
-        $scope.items.push({
+        items.push({
             id: i, name: "name " + i, description: "description " + i
         });
     }
+    return {
+        get: function(offset, limit) {
+            return items.slice(offset, offset+limit);
+        },
+        total: function() {
+            return items.length;
+        }
+    };
+});
+
+app.controller('PaginationCtrl', ['$scope', 'Item', function($scope, Item) {
+    $scope.itemsPerPage = 5;
+    $scope.currentPage = 0;
 
     $scope.range = function() {
         var rangeSize = $scope.itemsPerPage;
@@ -37,7 +42,7 @@ app.controller('PaginationCtrl', ['$scope', function($scope) {
         return $scope.currentPage === 0 ? 'disabled' : '';
     };
     $scope.pageCount = function() {
-        return Math.ceil($scope.items.length/$scope.itemsPerPage)-1;
+        return Math.ceil($scope.total/$scope.itemsPerPage)-1;
     };
     $scope.nextPage = function() {
         if ($scope.currentPage < $scope.pageCount()) {
@@ -50,4 +55,8 @@ app.controller('PaginationCtrl', ['$scope', function($scope) {
     $scope.setPage = function(n) {
         $scope.currentPage = n;
     };
+    $scope.$watch('currentPage', function(newValue, oldValue) {
+        $scope.pagedItems = Item.get(newValue * $scope.itemsPerPage, $scope.itemsPerPage);
+        $scope.total = Item.total();
+    });
 }]);
