@@ -12,9 +12,24 @@
     <div class="container" ng-controller="MyCtrl">
         <form class="form-inline">
             <input ng-model="query" type="text" placeholder="Filter by" autofocus/>
-        </form><br/>
+        </form>
+        <br/>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="friend in friends | filter: filterFunction |orderBy: 'name'">
+                <span class="badge">{{friend.age}}</span>
+                {{friend.name}}
+            </li>
+        </ul>
+        <br/>
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="friend in friends | filter: {name: query, age: '7'} |orderBy: 'name'">
+                <span class="badge">{{friend.age}}</span>
+                {{friend.name}}
+            </li>
+        </ul>
+        <br/>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="friend in friends | filter: query |orderBy: 'name'">
                 <span class="badge">{{friend.age}}</span>
                 {{friend.name}}
             </li>

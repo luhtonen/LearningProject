@@ -8,4 +8,7 @@ app.controller('MyCtrl', ['$scope', function($scope) {
         { name: 'Maija', age: 47 },
         { name: 'Robert', age: 43 }
     ];
+    $scope.filterFunction = function(element) {
+        return element.name.match(/^An/) ? true : false;
+    };
 }]);
