@@ -14,7 +14,8 @@
             <input ng-model="query" type="text" placeholder="Filter by" autofocus/>
         </form><br/>
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="friend in friends | filter:query |orderBy: 'name'">
+            <li class="list-group-item" ng-repeat="friend in friends | filter: {name: query, age: '7'} |orderBy: 'name'">
+                <span class="badge">{{friend.age}}</span>
                 {{friend.name}}
             </li>
         </ul>
