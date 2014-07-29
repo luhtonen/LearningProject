@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="js/ch07_04.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body ng-app="MyApp">
+<div class="container" ng-controller="User">
+    <form ng-submit="submit()" role="form" name="form" novalidate>
+        <div class="form-group" ng-class="error('firstname')">
+            <label class="control-label" for="firstname">Firstname</label>
+            <input type="text" id="firstname" name="firstname" class="form-control"
+                   ng-model="user.firstname" placeholder="Firstname" required/>
+            <span class="help-block" ng-show="form.firstname.$invalid && form.firstname.$dirty">
+                First name is required
+            </span>
+        </div>
+        <div class="form-group" ng-class="error('lastname')">
+            <label class="control-label" for="lastname">Lastname</label>
+            <input type="text" id="lastname" name="lastname" class="form-control"
+                   ng-model="user.lastname" placeholder="Lastname" required/>
+            <span class="help-block" ng-show="form.lastname.$invalid && form.lastname.$dirty">
+                Last name is required
+            </span>
+        </div>
+        <div class="form-group" ng-class="error('age')">
+            <label class="control-label" for="age">Age</label>
+            <input type="number" id="age" name="age" class="form-control" ng-model="user.age" placeholder="Age"/>
+            <span class="help-block" ng-show="form.age.$invalid && form.age.$dirty">
+                Age must be a number
+            </span>
+        </div>
+        <div class="form-group">
+            <button ng-disabled="form.$invalid" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
