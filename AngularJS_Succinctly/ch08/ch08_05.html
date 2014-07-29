@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="js/ch08_05.js"></script>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/app.css">
+</head>
+<body ng-app="MyApp">
+    <div class="container" ng-controller="MyCtrl">
+        <ul class="nav nav-tabs">
+            <li><a href="#/">Home</a></li>
+            <li><a href="#/page">Next Page</a></li>
+        </ul>
+
+        <div class="alert" ng-show="flash.getMessage()">
+            <b>Alert!</b>
+            <p>{{flash.getMessage()}}</p>
+        </div>
+
+        <ng-view/>
+
+        <script type="text/ng-template" id="home.html">
+            <h3>Home</h3>
+
+            <form ng-submit="submit(message)" class="form-horizontal">
+                <input type="text" ng-model="message" autofocus>
+                <button class="btn btn-default">Submit</button>
+            </form>
+        </script>
+
+        <script type="text/ng-template" id="page.html">
+            <h3>Next Page</h3>
+        </script>
+    </div>
+</body>
+</html>
