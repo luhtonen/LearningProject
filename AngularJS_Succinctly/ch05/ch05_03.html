@@ -11,14 +11,14 @@
 </head>
 <body ng-app="MyApp">
     <div class="container" ng-controller="MyCtrl">
-        <div class="form-group">
+        <!-- div class="form-group">
             <input type="text" ng-model="searchTerm" placeholder="Search term" class="form-control"/>
-        </div>
+        </div -->
         <div class="form-group">
-            <button ng-click="search()" class="btn btn-primary">Search</button>
+            <button ng-click="search()" class="btn btn-primary">Search Drivers</button>
         </div>
         <ul class="list-group">
-            <li class="list-group-item" ng-repeat="tweet in searchResult.results">{{tweet.text}}</li>
+            <li class="list-group-item" ng-repeat="tweet in searchResult">{{tweet.givenName}} {{tweet.familyName}}</li>
         </ul>
     </div>
 </body>
