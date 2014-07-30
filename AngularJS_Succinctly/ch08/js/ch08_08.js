@@ -2,7 +2,7 @@ var app = angular.module('MyApp', ['ngResource']);
 
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.interceptors.push('myHttpInterceptor');
-    var spinnerFunction = function(data, headersGetter) {
+    var spinnerFunction = function(data) {
         $("#spinner").show();
         return data;
     };
@@ -22,7 +22,7 @@ app.factory('myHttpInterceptor', ['$q', function($q) {
     };
 }]);
 
-app.controller('MyCtrl', ['$scope', '$resource', '$rootScope', function($scope, $resource, $rootScope) {
+app.controller('MyCtrl', ['$scope', '$resource', function($scope, $resource) {
 
     $scope.ergastAPI = $resource('http://ergast.com/api/f1/2013/driverStandings.json',
         {
