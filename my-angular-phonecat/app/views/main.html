@@ -1,25 +1,17 @@
-<ul class="list-group">
-    <li class="list-group-item" ng-repeat="phone in phones">
-        {{phone.name}}
-        <p>{{phone.snippet}}</p>
-    </li>
-</ul>
-<p>Total number of phones: {{phones.length}}</p>
-<p>Hello, {{name}}!</p>
-<table class="table">
-    <thead>
-        <tr><th>row number</th></tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"><td>{{i}}</td></tr>
-    </tbody>
-</table>
-<p></p>
-<table class="table">
-    <thead>
-    <tr><th>row number</th></tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"><td>{{i+1}}</td></tr>
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!-- Sidebar content -->
+            Search: <input ng-model="query">
+        </div>
+        <div class="col-md-10">
+            <!-- Body content -->
+            <ul class="phones">
+                <li ng-repeat="phone in phones | filter: query">
+                    {{phone.name}}
+                    <p>{{phone.snippet}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
