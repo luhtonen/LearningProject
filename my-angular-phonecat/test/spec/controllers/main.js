@@ -20,7 +20,7 @@ describe('Controller: MainCtrl', function () {
     expect(scope.phones.length).toBe(3);
   });
 
-  it('should have name equal to "World"', function() {
-      expect(scope.name).toBe('World');
+  it('should set the default value of orderProp model', function() {
+      expect(scope.orderProp).toBe('age');
   });
 });
