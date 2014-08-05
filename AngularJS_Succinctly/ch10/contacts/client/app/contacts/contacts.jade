@@ -1,0 +1,30 @@
+div(ng-include='"components/navbar/navbar.html"')
+
+.container
+    .row
+        .col-md-12
+            h1.page-header List of contacts
+            button.btn.btn-primary(ng-click="new()") New Contact
+            table.table
+                thead
+                    tr
+                        th Firstname
+                        th Lastname
+                        th Age
+                        th Actions
+                tbody
+                    tr(ng-repeat="contact in contacts")
+                        td {{contact.firstname}}
+                        td {{contact.lastname}}
+                        td {{contact.age}}
+                        td
+                            a(href="/contacts/{{contact._id}}") View
+                            | a(href="/contacts/{{contact._id}}/edit") Edit
+            | This is the contacts view.
+
+footer.footer
+    .container
+        p
+            a(href='https://twitter.com/tyhenkel') @tyhenkel
+            = ' | '
+            a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues
