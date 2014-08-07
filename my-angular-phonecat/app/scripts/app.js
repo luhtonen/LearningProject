@@ -23,6 +23,10 @@ angular
         templateUrl: 'views/main.html',
         controller: 'PhoneListCtrl'
       })
+        .when('/phones/:phoneId', {
+            templateUrl: 'partials/phone_detail.html',
+            controller: 'PhoneDetailCtrl'
+        })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
