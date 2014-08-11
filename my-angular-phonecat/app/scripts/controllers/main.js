@@ -14,6 +14,8 @@ angular.module('myAngularPhonecatApp')
     });
     $scope.orderProp = 'age';
 }])
-    .controller('PhoneDetailCtrl', ['$scope', '$routeParams', function($scope, $routeParams) {
-        $scope.phoneId = $routeParams.phoneId;
+    .controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
+        $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+            $scope.phone = data;
+        });
     }]);
