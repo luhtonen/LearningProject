@@ -16,7 +16,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'phonecatFilters'
+    'phonecatFilters',
+    'phonecatServices'
   ])
   .config(function ($routeProvider) {
     $routeProvider
