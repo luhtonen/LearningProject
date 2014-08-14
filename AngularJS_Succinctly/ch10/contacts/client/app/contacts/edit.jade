@@ -1,0 +1,31 @@
+div(ng-include='"components/navbar/navbar.html"')
+
+.container
+    .row
+        .col-md-12
+            h1.page-header Contact details
+            form.form-horizontal(name="form", role="form", ng-submit="submit()" novalidation)
+                .form-group(ng-class="errorClass('firstname')")
+                    label.col-sm-2.control-label(for="firstname") First Name
+                    .col-sm-5
+                        input(ng-model="contact.firstname", type="text", name="firstname", placeholder="First Name", require, autofocus)
+                .form-group(ng-class="errorClass('lastname')")
+                    label.col-sm-2.control-label(for="lastname") Last Name
+                    .col-sm-5
+                        input(ng-model="contact.lastname", type="text", name="lastname", placeholder="Last Name", require)
+                .form-group(ng-class="errorClass('age')")
+                    label.col-sm-2.control-label(for="age") Age
+                    .col-sm-5
+                        input(ng-model="contact.age", type="text", name="age", placeholder="Age", require)
+                .form-group
+                    .col-sm-2
+                    .col-sm-5
+                        a.btn(ng-click="cancel()") Cancel
+                        button.btn.btn-primary(type="submit") Save
+
+footer.footer
+    .container
+        p
+            a(href='https://twitter.com/tyhenkel') @tyhenkel
+            = ' | '
+            a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues

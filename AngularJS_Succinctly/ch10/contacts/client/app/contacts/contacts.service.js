@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('contactsApp')
-  .factory('Contact', function ($resource) {
+  .factory('Contact', ['$resource', function ($resource) {
         return $resource("/api/contacts/:id", { id: "@_id" },
             {
                 'create':   { method: 'POST' },
@@ -10,4 +10,4 @@ angular.module('contactsApp')
                 'update':   { method: 'PUT' },
                 'destroy':  { method: 'DELETE' }
             });
-  });
+  }]);

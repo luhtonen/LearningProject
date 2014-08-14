@@ -4,7 +4,7 @@ div(ng-include='"components/navbar/navbar.html"')
     .row
         .col-md-12
             h1.page-header List of contacts
-            button.btn.btn-primary(ng-click="new()") New Contact
+            a(href="/contacts/new" class="btn btn-primary") New Contact
             table.table
                 thead
                     tr
@@ -18,9 +18,11 @@ div(ng-include='"components/navbar/navbar.html"')
                         td {{contact.lastname}}
                         td {{contact.age}}
                         td
-                            a(href="/contacts/{{contact._id}}") View
-                            | a(href="/contacts/{{contact._id}}/edit") Edit
-            | This is the contacts view.
+                            a(href="/contacts/{{contact._id}}", class="btn btn-info", data-toggle="tooltip", title="Edit contact")
+                                span.glyphicon.glyphicon-pencil
+                            &nbsp;
+                            a(ng-click="delete('cid')", class="btn btn-danger", data-toggle="tooltip", title="Delete contact")
+                                span.glyphicon.glyphicon-remove
 
 footer.footer
     .container
