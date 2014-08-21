@@ -18,10 +18,10 @@ div(ng-include='"components/navbar/navbar.html"')
                         td {{contact.lastname}}
                         td {{contact.age}}
                         td
-                            a(href="/contacts/{{contact._id}}", class="btn btn-info", data-toggle="tooltip", title="Edit contact")
+                            a(href="/contacts/{{contact._id}}", class="btn btn-info", tooltip="Edit contact")
                                 span.glyphicon.glyphicon-pencil
                             &nbsp;
-                            a(ng-click="delete('cid')", class="btn btn-danger", data-toggle="tooltip", title="Delete contact")
+                            a(ng-click="delete(contact)", class="btn btn-danger", tooltip="Delete contact")
                                 span.glyphicon.glyphicon-remove
 
 footer.footer

@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('contactsApp')
-  .controller('ContactsCtrl', function ($scope, Contact) {
+  .controller('ContactsCtrl', ['$scope', 'Contact', function ($scope, Contact) {
     $scope.contacts = Contact.index();
-    $scope.delete = function(id) {
-        alert("deleting contact with " + id + "?");
-    }
-  })
+    $scope.delete = function(contact) {
+      Contact.destroy({id: contact._id});
+      $scope.contacts = Contact.index();
+    };
+  }])
   .controller('ContactsEditCtrl', ['$scope', '$routeParams', '$location', 'Contact',
         function($scope, $routeParams, $location, Contact) {
         if ($routeParams.id) {
