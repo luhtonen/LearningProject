@@ -4,7 +4,7 @@ require 'sinatra'
 # and set up an array of viable moves that a player (and the computer) can perform
 before do
   content_type :txt
-  @defeat = {rock: :scissors, paper: :rock, sciccors: :paper}
+  @defeat = {rock: :scissors, paper: :rock, scissors: :paper}
   @throws = @defeat.keys
 end
 
@@ -17,5 +17,17 @@ get '/throw/:type' do
   # know they need to make a valid throw to play.
   if !@throws.include?(player_throw)
     halt 403, "You must throw one of the following: #{@throws}"
+  end
+
+  # now we can select a random throw for the computer
+  computer_throw = @throws.sample
+
+  # compare the player and computer throws to determine a winner
+  if player_throw == computer_throw
+    "You tie with the computer. Try again!"
+  elsif computer_throw == @defeat[player_throw]
+    "Nicely done; #{player_throw} beats #{computer_throw}!"
+  else
+    "Ouch; #{computer_throw} beats #{player_throw}. Better luck next time!"
   end
 end
