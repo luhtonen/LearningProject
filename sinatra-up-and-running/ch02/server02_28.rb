@@ -16,3 +16,8 @@ end
 get '/fetch' do
   "Session value: #{session[:foo]}\n"
 end
+
+get '/logout' do
+  session.clear
+  redirect '/fetch'
+end
