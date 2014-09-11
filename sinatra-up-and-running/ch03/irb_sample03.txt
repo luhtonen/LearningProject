@@ -9,3 +9,11 @@ Application and Delegation
 ?> >> defined? params
 => nil
 
+
+The Inner Self
+--------------
+?> >> jobs
+=> #0->irb on main (#<Thread:0x007f8df18137e8>: running)
+
+?> >> self.jobs
+=> #0->irb on main (#<Thread:0x007f8df18137e8>: running)
