@@ -1,0 +1,11 @@
+Application and Delegation
+--------------------------
+>> >> require 'sinatra'
+=> true
+
+?> >> get('/') { defined? params }
+=> [/\A\/\z/, [], [], #<Proc:0x007f8df11263b8@/Users/luhtonen/.rvm/gems/ruby-2.1.2/gems/sinatra-1.4.5/lib/sinatra/base.rb:1603>]
+
+?> >> defined? params
+=> nil
+
