@@ -4,7 +4,7 @@ Application and Delegation
 => true
 
 ?> >> get('/') { defined? params }
-=> [/\A\/\z/, [], [], #<Proc:0x007f8df11263b8@/Users/luhtonen/.rvm/gems/ruby-2.1.2/gems/sinatra-1.4.5/lib/sinatra/base.rb:1603>]
+=> [/\A\/\z/, [], [], #<Proc:0x007f8df11263b8@/~/.rvm/gems/ruby-2.1.2/gems/sinatra-1.4.5/lib/sinatra/base.rb:1603>]
 
 ?> >> defined? params
 => nil
@@ -17,3 +17,29 @@ The Inner Self
 
 ?> >> self.jobs
 => #0->irb on main (#<Thread:0x007f8df18137e8>: running)
+
+Using Reflections
+-----------------
+>> >> require 'sinatra'
+=> true
+
+?> >> Sinatra::Application.superclass
+=> Sinatra::Base
+
+?> >> Sinatra::Base.superclass
+=> Object
+
+?> >> method(:get)
+=> #<Method: Object(Sinatra::Delegator)#get>
+
+?> >> Sinatra::Delegator.methods(false)
+=> [:delegate, :target, :target=]
+
+?> >> Sinatra::Delegator.target
+=> Sinatra::Application
+
+?> >> Sinatra::Application.method(:get)
+=> #<Method: Sinatra::Application(Sinatra::Base).get>
+
+?> >> _.source_location
+=> ["~/.rvm/gems/ruby-2.1.2/gems/sinatra-1.4.5/lib/sinatra/base.rb", 1360]
