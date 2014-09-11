@@ -43,3 +43,24 @@ Using Reflections
 
 ?> >> _.source_location
 => ["~/.rvm/gems/ruby-2.1.2/gems/sinatra-1.4.5/lib/sinatra/base.rb", 1360]
+
+Using reflections in IRB, continued
+-----------------------------------
+>> >> require 'sinatra/base'
+=> true
+
+?> >> get('/') { 'hi' }
+NoMethodError: undefined method `get' for main:Object
+	from (irb):3
+	from ~/.rvm/rubies/ruby-2.1.2/bin/irb:11:in `<top (required)>'
+	from -e:1:in `load'
+	from -e:1:in `<main>'
+
+?> >> Sinatra::Application.get('/') { 'hi' }
+=> [/\A\/\z/, [], [], #<Proc:0x007f9d838ff3e0@~/.rvm/gems/ruby-2.1.2/gems/sinatra-1.4.5/lib/sinatra/base.rb:1603>]
+
+?> >> Sinatra::Application.run!
+== Sinatra/1.4.5 has taken the stage on 4567 for development with backup from Thin
+Thin web server (v1.6.2 codename Doc Brown)
+Maximum connections set to 1024
+Listening on localhost:4567, CTRL+C to stop
