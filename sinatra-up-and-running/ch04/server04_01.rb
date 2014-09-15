@@ -4,4 +4,6 @@ class MyApp < Sinatra::Base
   get '/' do
     'Hello from MyApp!'
   end
+
+  run!
 end
