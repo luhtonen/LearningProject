@@ -29,3 +29,31 @@ class MyApp < Sinatra::Base; end
 ?> >> MyApp.bar
 => 42
 
+Subclassing subclasses
+----------------------
+>> >> require 'sinatra/base'
+=> true
+
+?> >> class GeneralApp < Sinatra::Base; end
+=> nil
+
+?> >> class CustomApp < GeneralApp; end
+=> nil
+
+?> >> GeneralApp.set :foo, 42
+=> GeneralApp
+
+?> >> GeneralApp.foo
+=> 42
+
+?> >> CustomApp.foo
+=> 42
+
+?> >> CustomApp.set :foo, 23
+=> CustomApp
+
+?> >> CustomApp.foo
+=> 23
+
+?> >> GeneralApp.foo
+=> 42
