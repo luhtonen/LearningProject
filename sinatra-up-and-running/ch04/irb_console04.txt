@@ -1,0 +1,31 @@
+Playing with set in IRB
+-----------------------
+>> >> require 'sinatra/base'
+=> true
+
+?> >> class MyApp < Sinatra::Base; end
+class MyApp < Sinatra::Base; end
+=> nil
+
+
+?> ?> MyApp.settings
+=> MyApp
+
+?> >> MyApp.set :foo, 42
+=> MyApp
+
+?> >> MyApp.foo
+=> 42
+
+?> >> MyApp.foo?
+=> true
+
+?> >> MyApp.set(:bar) { rand < 0.5 ? false : foo}
+=> MyApp
+
+?> >> MyApp.bar
+=> false
+
+?> >> MyApp.bar
+=> 42
+
