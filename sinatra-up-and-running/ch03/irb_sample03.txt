@@ -64,3 +64,23 @@ NoMethodError: undefined method `get' for main:Object
 Thin web server (v1.6.2 codename Doc Brown)
 Maximum connections set to 1024
 Listening on localhost:4567, CTRL+C to stop
+
+Toying with instance_eval()
+---------------------------
+>> >> array = ['foo', 'bar']
+=> ["foo", "bar"]
+
+?> >> block = proc { first }
+=> #<Proc:0x007f9dd4171618@(irb):3>
+
+?> >> block.call
+NameError: undefined local variable or method `first' for main:Object
+	from (irb):3:in `block in irb_binding'
+	from (irb):5:in `call'
+	from (irb):5
+	from /Users/luhtonen/.rvm/rubies/ruby-2.1.2/bin/irb:11:in `<top (required)>'
+	from -e:1:in `load'
+	from -e:1:in `<main>'
+
+?> >> array.instance_eval(&block)
+=> "foo"
