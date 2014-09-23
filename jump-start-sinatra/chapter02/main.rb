@@ -10,7 +10,7 @@ get '/about' do
 end
 
 get '/contact' do
-  erb :contact
+  erb :contact, :layout => :special
 end
 
 __END__
@@ -46,3 +46,29 @@ __END__
 
 @@contact
 <p>You can contact me by sending an email to luhtonen at gmail.com</p>
+
+@@special
+<% title="Songs by Sinatra" %>
+<!doctype html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <h1><%= title %></h1>
+      <nav>
+        <ul>
+          <li><a href="/" title="Home">Home</a></li>
+          <li><a href="/about" title="About">About</a></li>
+          <li><a href="/contact" title="Contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section>
+      <h2>Special</h2>
+      <%= yield %>
+    </section>
+  </body>
+</html>
