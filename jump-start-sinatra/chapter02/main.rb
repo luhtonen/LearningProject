@@ -6,7 +6,7 @@ get '/' do
 end
 
 __END__
-@@home
+@@layout
 <% title="Songs by Sinatra" %>
 <!doctype html>
 <html lang="en">
@@ -26,7 +26,9 @@ __END__
       </nav>
     </header>
     <section>
-      <p>Welcome to this website all about the songs of the great Frank Sinatra</p>
+      <%= yield %>
     </section>
   </body>
 </html>
+@@home
+<p>Welcome to this website all about the songs of the great Frank Sinatra</p>
