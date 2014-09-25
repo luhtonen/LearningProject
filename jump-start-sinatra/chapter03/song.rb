@@ -33,7 +33,18 @@ get '/songs/:id' do
   slim :show_song
 end
 
+get '/songs/:id/edit' do
+  @song = Song.get(params[:id])
+  slim :edit_song
+end
+
 post '/songs' do
   song = Song.create(params[:song])
+  redirect to("/songs/#{song.id}")
+end
+
+put '/songs/:id' do
+  song = Song.get(params[:id])
+  song.update(params[:song])
   redirect to("/songs/#{song.id}")
 end
