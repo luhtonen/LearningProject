@@ -41,6 +41,11 @@ post '/login' do
   end
 end
 
+get '/logout' do
+  session.clear
+  redirect to('/login')
+end
+
 get '/set/:name' do
   session[:name] = params[:name]
 end
