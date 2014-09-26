@@ -7,3 +7,5 @@ rebar
 bower_components
 node_modules
 .sass-cache
+.bundle
+Gemfile.lock
