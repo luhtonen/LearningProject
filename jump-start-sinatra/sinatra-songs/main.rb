@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/flash'
 require 'slim'
 require 'sass'
+require 'pony'
 require './song'
 
 configure do
@@ -36,6 +37,25 @@ helpers do
   def set_title
     @title ||= 'Songs By Sinatra'
   end
+
+  def send_message
+    Pony.mail(
+          :from => params[:name] + '<' + params[:email] + '>',
+          :to => 'edufinn@gmail.com',
+          :subject => params[:name] + ' has contacted you',
+          :body => params[:message],
+          :via => :smtp,
+          :via_options => {
+            :address              => 'smtp.gmail.com',
+            :port                 => '587',
+            :enable_starttls_auto => true,
+            :user_name            => 'edufinn',
+            :password             => 'secret',
+            :authentication       => :plain,
+            :domain               => 'localhost.localdomain'
+          }
+      )
+  end
 end
 
 get('/styles.css') { scss :styles }
@@ -57,6 +77,12 @@ not_found do
   slim :not_found
 end
 
+post '/contact' do
+  send_message
+  flash[:notice] = "Thank you for your message. We'll be in touch soon."
+  redirect to('/')
+end
+
 get '/login' do
   slim :login
 end
@@ -73,12 +99,4 @@ end
 get '/logout' do
   session.clear
   redirect to('/login')
-end
-
-get '/set/:name' do
-  session[:name] = params[:name]
-end
-
-get '/get/hello' do
-  "Hello #{session[:name]}"
 end
