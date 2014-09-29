@@ -3,6 +3,12 @@ require 'slim'
 require 'sass'
 require './song'
 
+configure do
+  enable :sessions
+  set :username, 'frank'
+  set :password, 'sinatra'
+end
+
 configure :development do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
 end
@@ -11,10 +17,8 @@ configure :production do
   DataMapper.setup(:default, ENV['DATABASE_URL '])
 end
 
-configure do
-  enable :sessions
-  set :username, 'frank'
-  set :password, 'sinatra'
+before do
+  set_title
 end
 
 helpers do
@@ -26,6 +30,10 @@ helpers do
 
   def current?(path='/')
     (request.path==path || request.path==path+'/') ? 'current' : nil
+  end
+
+  def set_title
+    @title ||= 'Songs By Sinatra'
   end
 end
 
