@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/flash'
 require 'slim'
 require 'sass'
 require './song'
