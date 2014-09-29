@@ -13,10 +13,18 @@ end
 
 configure :development do
   DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
+  set :email_address => 'smtp.gmail.com',
+    :email_user_name => 'edufinn',
+    :email_password => 'secret',
+    :email_domain => 'localhost.localdomain'
 end
 
 configure :production do
   DataMapper.setup(:default, ENV['DATABASE_URL'])
+  set :email_address => 'smtp.sendgrid.net',
+      :email_user_name => ENV['SENDGRID_USERNAME'],
+      :email_password => ENV['SENDGRID_PASSWORD'],
+      :email_domain => 'heroku.com'
 end
 
 before do
@@ -46,13 +54,13 @@ helpers do
           :body => params[:message],
           :via => :smtp,
           :via_options => {
-            :address              => 'smtp.gmail.com',
+            :address              => settings.email_address,
             :port                 => '587',
             :enable_starttls_auto => true,
-            :user_name            => 'edufinn',
-            :password             => 'secret',
+            :user_name            => settings.email_user_name,
+            :password             => settings.email_password,
             :authentication       => :plain,
-            :domain               => 'localhost.localdomain'
+            :domain               => settings.email_domain
           }
       )
   end
