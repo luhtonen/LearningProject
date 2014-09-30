@@ -5,6 +5,8 @@ require 'sass'
 require 'pony'
 require './song'
 require './sinatra/auth'
+require 'v8'
+require 'coffee-script'
 
 configure do
   enable :sessions
@@ -66,6 +68,7 @@ helpers do
 end
 
 get('/styles.css') { scss :styles }
+get('/javascript/application.js') { coffee :application }
 
 get '/' do
   slim :home
