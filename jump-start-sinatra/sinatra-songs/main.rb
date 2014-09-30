@@ -4,11 +4,10 @@ require 'slim'
 require 'sass'
 require 'pony'
 require './song'
+require './sinatra/auth'
 
 configure do
   enable :sessions
-  set :username, 'frank'
-  set :password, 'sinatra'
 end
 
 configure :development do
@@ -89,22 +88,4 @@ post '/contact' do
   send_message
   flash[:notice] = "Thank you for your message. We'll be in touch soon."
   redirect to('/')
-end
-
-get '/login' do
-  slim :login
-end
-
-post '/login' do
-  if params[:username] == settings.username && params[:password] == settings.password
-    session[:admin] = true
-    redirect to('/songs')
-  else
-    slim :login
-  end
-end
-
-get '/logout' do
-  session.clear
-  redirect to('/login')
 end
