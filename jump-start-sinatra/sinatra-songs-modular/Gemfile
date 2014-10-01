@@ -1,0 +1,15 @@
+source 'https://rubygems.org'
+
+gem 'sinatra'
+gem 'sinatra-flash'
+gem 'slim'
+gem 'sass'
+gem 'pony'
+gem 'dm-core'
+gem 'dm-migrations'
+gem 'thin'
+gem 'therubyracer'
+gem 'coffee-script'
+gem 'pg', :group => :production
+gem 'dm-postgres-adapter', :group => :production
+gem 'dm-sqlite-adapter', :group => :development
