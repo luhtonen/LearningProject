@@ -1,21 +1,8 @@
-require 'sinatra/base'
-require 'slim'
-require 'sass'
-require 'sinatra/flash'
-require 'pony'
-require_relative 'sinatra/auth'
-require 'v8'
-require 'coffee-script'
+require_relative 'app'
 require_relative 'asset-handler'
 
-class Website < Sinatra::Base
+class Website < ApplicationController
   use AssetHandler
-  register Sinatra::Auth
-  register Sinatra::Flash
-
-  configure do
-    enable :sessions
-  end
 
   configure :development do
     set :email_address => 'smtp.gmail.com',
@@ -29,24 +16,6 @@ class Website < Sinatra::Base
         :email_user_name => ENV['SENDGRID_USERNAME'],
         :email_password => ENV['SENDGRID_PASSWORD'],
         :email_domain => 'heroku.com'
-  end
-
-  before do
-    set_title
-  end
-
-  def css(*stylesheets)
-    stylesheets.map do |stylesheet|
-      "<link href=\"/#{stylesheet}.css\" media=\"screen, projection\" rel=\"stylesheet\" />"
-    end.join
-  end
-
-  def current?(path='/')
-    (request.path==path || request.path==path+'/') ? 'current' : nil
-  end
-
-  def set_title
-    @title ||= 'Songs By Sinatra'
   end
 
   def send_message

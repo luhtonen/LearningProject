@@ -1,10 +1,6 @@
-require 'sinatra/base'
+require_relative 'app'
 require 'dm-core'
 require 'dm-migrations'
-require 'slim'
-require 'sass'
-require 'sinatra/flash'
-require './sinatra/auth'
 
 class Song
   include DataMapper::Resource
@@ -36,16 +32,10 @@ module SongHelpers
   end
 end
 
-class SongController < Sinatra::Base
+class SongController < ApplicationController
   enable :method_override
-  register Sinatra::Auth
-  register Sinatra::Flash
 
   helpers SongHelpers
-
-  configure do
-    enable :sessions
-  end
 
   configure :development do
     DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/development.db")
@@ -53,24 +43,6 @@ class SongController < Sinatra::Base
 
   configure :production do
     DataMapper.setup(:default, ENV['DATABASE_URL'])
-  end
-
-  before do
-    set_title
-  end
-
-  def css(*stylesheets)
-    stylesheets.map do |stylesheet|
-      "<link href=\"/#{stylesheet}.css\" media=\"screen, projection\" rel=\"stylesheet\" />"
-    end.join
-  end
-
-  def current?(path='/')
-    (request.path==path || request.path==path+'/') ? 'current' : nil
-  end
-
-  def set_title
-    @title ||= 'Songs by Sinatra'
   end
 
   get '/' do
