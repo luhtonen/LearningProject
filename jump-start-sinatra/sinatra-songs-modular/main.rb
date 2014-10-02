@@ -3,11 +3,13 @@ require 'slim'
 require 'sass'
 require 'sinatra/flash'
 require 'pony'
-require './sinatra/auth'
+require_relative 'sinatra/auth'
 require 'v8'
 require 'coffee-script'
+require_relative 'asset-handler'
 
 class Website < Sinatra::Base
+  use AssetHandler
   register Sinatra::Auth
   register Sinatra::Flash
 
@@ -65,9 +67,6 @@ class Website < Sinatra::Base
       }
     )
   end
-
-  get('/styles.css') { scss :styles }
-  get('/javascript/application.js') { coffee :application }
 
   get '/' do
     slim :home
