@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html data-ng-app>
   <head lang="en">
     <meta charset="UTF-8">
     <title>Welcome to AngularJS</title>
     <script src="js/angular.js"></script>
+    <script>
+      function Clock($scope) {
+        $scope.currentTime = new Date();
+      }
+    </script>
   </head>
   <body>
     <h1>Hello, World.</h1>
+    <p data-ng-controller="Clock">The current time is {{currentTime | date:'HH:mm:ss'}}</p>
   </body>
 </html>
