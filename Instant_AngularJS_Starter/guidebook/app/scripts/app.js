@@ -30,6 +30,6 @@ angular
   })
   .controller('HeadersCtrl', ['$scope', '$location', function($scope, $location) {
     $scope.isActive = function(route) {
-      return route === $location.path();
+      return route === '/' + $location.path().split('/')[1];
     };
   }]);
