@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name GuidebookApp.controller:AboutCtrl
+ * @name GuidebookApp.controller:ChaptersController
  * @description
- * # AboutCtrl
+ * # ChaptersController
  * Controller of the GuidebookApp
  */
 angular.module('GuidebookApp')
-  .controller('AboutCtrl', function ($scope) {
+  .controller('ChaptersController', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
