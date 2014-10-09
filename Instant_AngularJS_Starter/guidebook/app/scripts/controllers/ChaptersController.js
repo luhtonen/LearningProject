@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name GuidebookApp.controller:ChaptersController
+ * @name GuidebookApp.Guidebook.controller:ChaptersController
  * @description
  * # ChaptersController
- * Controller of the GuidebookApp
+ * Controller of the GuidebookApp.Guidebook
  */
-angular.module('GuidebookApp')
+angular.module('GuidebookApp.Guidebook')
   .controller('ChaptersController', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
