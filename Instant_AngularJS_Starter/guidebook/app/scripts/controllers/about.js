@@ -9,4 +9,5 @@
  */
 angular.module('GuidebookApp')
   .controller('AboutCtrl', ['$scope', function ($scope) {
+    $scope.aboutText = 'TODO: TBD';
   }]);
