@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html data-ng-app>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>AngularJS Color Picker Advanced</title>
+  <script src="bower_components/angular/angular.js"></script>
+</head>
+<body ng-init="r=128; b=128; g=128;">
+  <h1 id="label" ng-click="r=128;g=128;b=128;"
+      style="color: rgb({{r}},{{g}},{{b}});">Drag to change colour, click here to reset.</h1>
+  <input type="range" min="0" max="255" step="1" ng-model="r" ng-change="setColor();">
+  <input type="range" min="0" max="255" step="1" ng-model="g" ng-change="setColor();">
+  <input type="range" min="0" max="255" step="1" ng-model="b" ng-change="setColor();">
+</body>
+</html>
