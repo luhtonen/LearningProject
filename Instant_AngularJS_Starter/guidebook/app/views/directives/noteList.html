@@ -1,0 +1,7 @@
+<ul class="notes">
+  <li ng-repeat="note in chapter.notes | orderBy:'id'">
+    <div>#{{$index}}</div>
+    <div><a ng-click="onDelete(note.id)">delete</a></div>
+    <p>{{note.content}}</p>
+  </li>
+</ul>
