@@ -11,6 +11,7 @@
       |
       <a href="#/guidebook/addNote/{{chapter.id}}">add note</a>
     </p>
-    <gb-note-list ng-show="chapter.id == selectedChapterId"/>
+    <gb-note-list notes="chapter.notes" show="chapter.id == selectedChapterId"
+                  order-by="id" delete-note-handler="onDelete"/>
   </li>
 </ul>
