@@ -12,6 +12,15 @@
       $scope.remaining = function() {
         return MAX_LEN - $scope.message.length;
       };
+      $scope.hasValidLength = function() {
+        return $scope.remaining() > 0;
+      }
+      $scope.send = function () {
+        console.log("form sent");
+      }
+      $scope.clear = function () {
+        $scope.message = '';
+      }
     }
   </script>
 </head>
@@ -24,7 +33,7 @@
       <textarea ng-model="message">{{message}}</textarea>
     </div>
     <div class="row">
-      <button class="btn btn-primary" ng-click="send()">Send</button>
+      <button ng-disabled="!hasValidLength()" class="btn btn-primary" ng-click="send()">Send</button>
       <button class="btn btn-warning" ng-click="clear()">Clear</button>
     </div>
   </div>
