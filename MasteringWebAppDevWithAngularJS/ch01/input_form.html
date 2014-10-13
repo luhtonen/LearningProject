@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Text input form</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="js/angular.js"></script>
+  <script>
+    var TextAreaWithLimitCtrl = function($scope) {
+      $scope.remaining = function() {
+      };
+    }
+  </script>
+</head>
+<body style="margin-top: 10px;" ng-app>
+  <div class="container" ng-controller="TextAreaWithLimitCtrl">
+    <div class="row">
+      <textarea ng-model="message">{{message}}</textarea>
+    </div>
+    <div class="row">
+      <button class="btn btn-primary" ng-click="send()">Send</button>
+      <button class="btn btn-warning" ng-click="clear()">Clear</button>
+    </div>
+  </div>
+</body>
+</html>
