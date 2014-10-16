@@ -1,11 +1,11 @@
 module.exports = function(grunt){
-  grunt.registerTask('default', function() {
+  grunt.registerTask('default', 'Default Grunt task', function() {
     grunt.log.writeln('Hello from Grunt.');
   });
-  grunt.registerTask('greet', function(name) {
+  grunt.registerTask('greet', 'Have grunt greet with the name', function(name) {
     grunt.log.writeln('Hi there, ' + name);
   });
-  grunt.registerTask('addNumbers', function(first, second) {
+  grunt.registerTask('addNumbers', 'Add 2 numbers given as parameters', function(first, second) {
     if (isNaN(Number(first))) {
       grunt.warn('The first argument must be a number.');
     }
