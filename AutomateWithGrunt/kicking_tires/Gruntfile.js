@@ -12,4 +12,5 @@ module.exports = function(grunt){
     var answer = Number(first) + Number(second);
     grunt.log.writeln(first + ' + ' + second + ' is ' + answer);
   });
-}
+  grunt.registerTask('all', ['default', 'greet:Edu', 'addNumbers:2:3']);
+};
