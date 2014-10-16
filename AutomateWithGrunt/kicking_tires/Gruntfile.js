@@ -13,4 +13,14 @@ module.exports = function(grunt){
     grunt.log.writeln(first + ' + ' + second + ' is ' + answer);
   });
   grunt.registerTask('all', ['default', 'greet:Edu', 'addNumbers:2:3']);
+  grunt.registerTask('praise', 'Have Grunt say nice things about you.', function() {
+    var praise = [
+      "You're awesome.",
+      "You're the best developer ever!",
+      "You are extremely attractive.",
+      "Everyone loves you!"
+    ];
+    var pick = praise[(Math.floor(Math.random() * praise.length))];
+    grunt.log.writeln(pick);
+  });
 };
