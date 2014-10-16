@@ -12,7 +12,7 @@ module.exports = function(grunt){
     var answer = Number(first) + Number(second);
     grunt.log.writeln(first + ' + ' + second + ' is ' + answer);
   });
-  grunt.registerTask('all', ['default', 'greet:Edu', 'addNumbers:2:3']);
+  grunt.registerTask('all', ['default', 'greet:Edu', 'addNumbers:2:3', 'praise', 'multiplyNumbers:4:5']);
   grunt.registerTask('praise', 'Have Grunt say nice things about you.', function() {
     var praise = [
       "You're awesome.",
@@ -22,5 +22,15 @@ module.exports = function(grunt){
     ];
     var pick = praise[(Math.floor(Math.random() * praise.length))];
     grunt.log.writeln(pick);
+  });
+  grunt.registerTask('multiplyNumbers', 'Multiply 2 numbers given as parameters', function(a, b) {
+    if(isNaN(Number(a))) {
+      'The first argument must be a number.';
+    }
+    if(isNaN(Number(b))) {
+      'The second argument must be a number.';
+    }
+    var answer = Number(a) * Number(b);
+    grunt.log.writeln(a + ' * ' + b + ' is ' + answer);
   });
 };
