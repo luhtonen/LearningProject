@@ -31,4 +31,5 @@ module.exports = function(grunt){
       grunt.file.copy(file, destination);
     });
   });
+  grunt.registerTask('deploy', 'Deploys files', ['clean', 'createFolder', 'copyFiles']);
 };
