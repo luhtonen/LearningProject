@@ -29,6 +29,7 @@ module.exports = function(grunt){
     grunt.file.delete(grunt.config.get('copyFiles.options.workingDirectory'));
   });
   grunt.registerTask('copyFiles', 'Copy files to working folder', function() {
+    this.requires('clean');
     var files, workingDirectory;
 
     grunt.config.requires('copyFiles.options.manifest');
