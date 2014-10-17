@@ -1,5 +1,6 @@
 module.exports = function(grunt){
   grunt.config.init({
+    pkg: grunt.file.readJSON('package.json'),
     copyFiles: {
       options: {
         workingDirectory: 'working',
@@ -38,6 +39,10 @@ module.exports = function(grunt){
     files.forEach(function(item) {
       recursiveCopy(item, workingDirectory);
     });
+
+    var content = '<%= pkg.name %> version <%= pkg.version %>';
+    content = grunt.template.process(content);
+    grunt.file.write(workingDirectory + '/version.txt', content);
   });
   grunt.registerTask('deploy', 'Deploys files', ['clean', 'createFolder', 'copyFiles']);
 };
