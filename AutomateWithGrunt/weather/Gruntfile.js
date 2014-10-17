@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
   grunt.config.init({
     weather: {
+      Helsinki: 00900,
       home: 8712, // Stäfa
       work: 8050  // Zürich, Oerlikon
     }
