@@ -45,5 +45,12 @@ module.exports = function(grunt){
     content = grunt.template.process(content);
     grunt.file.write(workingDirectory + '/version.txt', content);
   });
-  grunt.registerTask('deploy', 'Deploys files', ['clean', 'createFolder', 'copyFiles']);
+  grunt.registerTask('writeVersion', 'Write project name and version to version.txt file', function() {
+    this.requires('copyFiles');
+    grunt.config.requires('copyFiles.options.workingDirectory');
+    var content = '<%= pkg.name %> version <%= pkg.version %>';
+    content = grunt.template.process(content);
+    grunt.file.write(grunt.config.get('copyFiles.options.workingDirectory') + '/version.txt', content);
+  });
+  grunt.registerTask('deploy', 'Deploys files', ['clean', 'createFolder', 'copyFiles', 'writeVersion']);
 };
