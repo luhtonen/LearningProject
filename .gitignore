@@ -9,3 +9,4 @@ node_modules
 .sass-cache
 .bundle
 .tmp
+AutomateWithGrunt/deploying/working
