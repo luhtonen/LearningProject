@@ -4,11 +4,21 @@ module.exports = function(grunt){
       options: {
         workingDirectory: 'working',
         manifest: [
-          'index.html', 'stylesheets/style.css', 'javascripts/app.js'
+          'index.html', 'stylesheets/', 'javascripts/'
         ]
       }
     }
   });
+  var recursiveCopy = function(source, destination) {
+    if(grunt.file.isDir(source)) {
+      grunt.file.recurse(source, function(file) {
+        recursiveCopy(file, destination);
+      });
+    } else {
+      grunt.log.writeln('Copying ' + source + ' to ' + destination);
+      grunt.file.copy(source, destination + '/' + source);
+    }
+  };
   grunt.registerTask('createFolder', 'Create the working folder', function() {
     grunt.config.requires('copyFiles.options.workingDirectory');
     grunt.file.mkdir(grunt.config.get('copyFiles.options.workingDirectory'));
@@ -25,10 +35,8 @@ module.exports = function(grunt){
 
     files = grunt.config.get('copyFiles.options.manifest');
     workingDirectory = grunt.config.get('copyFiles.options.workingDirectory');
-    files.forEach(function(file) {
-      var destination = workingDirectory + '/' + file;
-      grunt.log.writeln('Copying ' + file + ' to ' + destination);
-      grunt.file.copy(file, destination);
+    files.forEach(function(item) {
+      recursiveCopy(item, workingDirectory);
     });
   });
   grunt.registerTask('deploy', 'Deploys files', ['clean', 'createFolder', 'copyFiles']);
