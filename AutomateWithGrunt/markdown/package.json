@@ -1,0 +1,11 @@
+{
+  "name": "MarkdownEditor",
+  "version": "0.0.1",
+  "description": "A simple markdown editing app",
+  "main": "index.html",
+  "author": "Eduard Luhtonen",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-coffee": "^0.12.0"
+  }
+}
