@@ -11,3 +11,4 @@ node_modules
 .tmp
 AutomateWithGrunt/deploying/working
 AutomateWithGrunt/angular/dist
+AutomateWithGrunt/markdown/assets/

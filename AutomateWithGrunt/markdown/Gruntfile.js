@@ -23,4 +23,13 @@ module.exports = function (grunt) {
       dest: '.tmp/app.js'
     }
   });
+
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.config('uglify', {
+    scripts: {
+      files: {
+        'assets/app.js' : '.tmp/app.js'
+      }
+    }
+  });
 };
