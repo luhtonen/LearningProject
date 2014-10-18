@@ -12,4 +12,15 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.config('concat', {
+    scripts: {
+      src: ['bower_components/angular/angular.js',
+            'bower_components/angular-sanitize/angular-sanitize.js',
+            'bower_components/markdown/dist/markdown.js',
+            '.tmp/compiled.js'],
+      dest: '.tmp/app.js'
+    }
+  });
 };
