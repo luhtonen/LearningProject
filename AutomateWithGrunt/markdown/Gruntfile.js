@@ -53,4 +53,22 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', 'Builds the application',
                     ['coffee', 'concat:scripts', 'sass', 'cssmin', 'uglify']);
+
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.config('watch', {
+    scripts: {
+      files: ['coffeescript/**/*.coffee'],
+      tasks: ['coffee', 'concat:scripts', 'uglify'],
+      options: {
+        spawn: false
+      }
+    },
+    styles: {
+      files: ['sass/**/*.scss'],
+      tasks: ['sass', 'cssmin'],
+      options: {
+        spawn: false
+      }
+    }
+  });
 };
