@@ -69,6 +69,12 @@ module.exports = function (grunt) {
       options: {
         spawn: false
       }
+    },
+    interface: {
+      files: ['index.html']
+    },
+    options: {
+      livereload: true
     }
   });
 };
