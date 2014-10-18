@@ -32,4 +32,13 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.config('sass', {
+    app: {
+      files: {
+        '.tmp/app.css': ['sass/style.scss']
+      }
+    }
+  });
 };
