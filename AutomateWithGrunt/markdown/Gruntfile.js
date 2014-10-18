@@ -41,4 +41,13 @@ module.exports = function (grunt) {
       }
     }
   });
+
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.config('cssmin', {
+    app: {
+      files: {
+        'assets/app.css': ['.tmp/app.css']
+      }
+    }
+  });
 };
