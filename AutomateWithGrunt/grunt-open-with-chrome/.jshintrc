@@ -9,5 +9,16 @@
   "noarg": true,
   "sub": true,
   "boss": true,
-  "eqnull": true
+  "eqnull": true,
+  "browser": true,
+  "esnext": true,
+  "bitwise": true,
+  "camelcase": true,
+  "indent": 2,
+  "quotmark": "single",
+  "regexp": true,
+  "unused": true,
+  "strict": true,
+  "trailing": true,
+  "smarttabs": true
 }
