@@ -16,10 +16,16 @@ exports.template = function(grunt, init, done) {
       message: 'Do you want a Gruntfile?',
       default: 'Y/n',
       warning: 'If you want to be able to do cool stuff you should have one.'
+    },
+    {
+      name: 'borderbox',
+      message: 'Do you want to use the border-box styling in CSS?',
+      default: 'Y/n'
     }
   ], function(err, props) {
     // processing section
     props.gruntfile = /y/i.test(props.gruntfile);
+    props.borderbox = /y/i.test(props.borderbox);
 
     var files = init.filesToCopy(props);
     if (props.gruntfile) {
