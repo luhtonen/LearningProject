@@ -16,4 +16,6 @@ module.exports = function (grunt) {
 
   // Define the default task
   grunt.registerTask('default', 'Default task', ['uglify']);
+
+  grunt.loadTasks('./tasks');
 };
