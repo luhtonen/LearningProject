@@ -15,6 +15,25 @@ module.exports = function (grunt) {
     stringCheck: {
       file: './src/app.js',
       string: 'console.log('
+    },
+    myTask: {
+      options: {
+        bar: 7
+      },
+      foo: 42
+    },
+    myMultiTask: {
+      options: {
+        foo: 42,
+        bar: 7
+      },
+      target1: {
+      },
+      target2: {
+        options: {
+          bar: 8
+        }
+      }
     }
   });
 
@@ -22,4 +41,12 @@ module.exports = function (grunt) {
   grunt.registerTask('default', 'Default task', ['uglify']);
 
   grunt.loadTasks('./tasks');
+
+  grunt.registerTask('myTask', 'My task for experiment with configuring options', function() {
+    console.log(this.options());
+  });
+
+  grunt.registerMultiTask('myMultiTask', 'Task to experiment with multitask options', function() {
+    console.log(this.options());
+  });
 };
