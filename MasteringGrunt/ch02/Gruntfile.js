@@ -11,6 +11,10 @@ module.exports = function (grunt) {
         src: 'src/foo.js',
         dest: 'build/foo.min.js'
       }
+    },
+    stringCheck: {
+      file: './src/app.js',
+      string: 'console.log('
     }
   });
 
