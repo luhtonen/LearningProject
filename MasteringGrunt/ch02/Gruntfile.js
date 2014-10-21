@@ -54,6 +54,26 @@ module.exports = function (grunt) {
           'build/abc.js': 'src/{a,b,c}.js',
           'build/xyz.js': 'src/{x,y,z}.js'
         }
+      },
+      target4: {
+        files: [
+          {src: 'src/a.js', dest: 'build/a.min.js'},
+          {src: 'src/b.js', dest: 'build/b.min.js'},
+          {src: 'src/subdir/c.js', dest: 'build/subdir/c.min.js'},
+          {src: 'src/subdir/d.js', dest: 'build/subdir/d.min.js'}
+        ]
+      },
+      // destination expanded
+      target5: {
+        files: [
+          {
+            expand: true,
+            cwd: 'src/',
+            src: '**/*.js',
+            dest: 'build/',
+            ext: '.min.js'
+          }
+        ]
       }
     }
   });
