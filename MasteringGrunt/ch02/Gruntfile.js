@@ -34,6 +34,27 @@ module.exports = function (grunt) {
           bar: 8
         }
       }
+    },
+    showTargetFiles: {
+      // compact format
+      target1: {
+        src: 'src/{a,b}.js',
+        dest: 'build/ab.js'
+      },
+      // files array format
+      target2: {
+        files: [
+          { src: 'src/{a,b,c}.js', dest: 'build/abc.js' },
+          { src: 'src/{x,y,z}.js', dest: 'build/xyz.js' }
+        ]
+      },
+      // files object format
+      target3: {
+        files: {
+          'build/abc.js': 'src/{a,b,c}.js',
+          'build/xyz.js': 'src/{x,y,z}.js'
+        }
+      }
     }
   });
 
