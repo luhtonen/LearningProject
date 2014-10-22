@@ -9,6 +9,7 @@
   "author": "Eduard Luhtonen <luhtonen@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "request": "^2.45.0"
   }
 }
