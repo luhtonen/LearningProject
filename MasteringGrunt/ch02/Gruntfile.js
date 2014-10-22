@@ -75,11 +75,16 @@ module.exports = function (grunt) {
           }
         ]
       }
-    }
+    },
+    foo: 'c',
+    bar: 'b<%= foo %>d',
+    bazz: 'a<%= bar %>e'
   });
 
   // Define the default task
-  grunt.registerTask('default', 'Default task', ['uglify']);
+  grunt.registerTask('default', 'Default task', function() {
+    grunt.log.writeln(grunt.config.get('bazz'));
+  });
 
   grunt.loadTasks('./tasks');
 
