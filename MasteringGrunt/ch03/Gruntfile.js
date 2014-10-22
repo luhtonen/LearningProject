@@ -6,4 +6,7 @@ module.exports = function (grunt) {
     fs.appendFileSync('deploy.log', message + '\n');
     grunt.log.writeln('Appended "' + message + '"');
   });
+  grunt.registerTask('foo', 'Sample foo task', function() {
+    console.log('My task "%s" has arguments %j', this.name, this.args);
+  });
 };
