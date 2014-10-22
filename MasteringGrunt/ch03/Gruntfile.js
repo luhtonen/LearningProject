@@ -25,6 +25,10 @@ module.exports = function (grunt) {
     test: {
       main: {},
       extra: {}
+    },
+    multifoo: {
+      ping: {},
+      pong: {}
     }
   });
   grunt.registerTask('log-deploy', 'Log deployment information to keep history', function() {
@@ -34,6 +38,15 @@ module.exports = function (grunt) {
   });
   grunt.registerTask('foo', 'Sample foo task', function() {
     console.log('My task "%s" has arguments %j', this.name, this.args);
+  });
+  grunt.registerTask('fooo', 'Task with arguments', function(p1, p2) {
+    console.log('first parameter is: ' + p1);
+    console.log('second parameter is: ' + p2);
+  });
+  grunt.registerMultiTask('multifoo', 'Multitask with arguments', function(p1, p2) {
+    console.log('target is ' + this.target);
+    console.log('first parameter is: ' + p1);
+    console.log('second parameter is: ' + p2);
   });
   grunt.registerMultiTask('build', 'Build project', function() {
     console.log('building target ' + this.target + '...');
