@@ -17,6 +17,14 @@ module.exports = function (grunt) {
           'dest/file4.txt': 'src/file4.txt'
         }
       }
+    },
+    build: {
+      main: {},
+      extra: {}
+    },
+    test: {
+      main: {},
+      extra: {}
     }
   });
   grunt.registerTask('log-deploy', 'Log deployment information to keep history', function() {
@@ -27,11 +35,11 @@ module.exports = function (grunt) {
   grunt.registerTask('foo', 'Sample foo task', function() {
     console.log('My task "%s" has arguments %j', this.name, this.args);
   });
-  grunt.registerTask('build', 'Build project', function() {
-    console.log('building...');
+  grunt.registerMultiTask('build', 'Build project', function() {
+    console.log('building target ' + this.target + '...');
   });
-  grunt.registerTask('test', 'Test project', function() {
-    console.log('testing...');
+  grunt.registerMultiTask('test', 'Test project', function() {
+    console.log('testing target ' + this.target + '...');
   });
   grunt.registerTask('upload', 'Upload project', function() {
     console.log('uploading...');
@@ -57,4 +65,5 @@ module.exports = function (grunt) {
       }
     });
   });
+  grunt.registerTask('default', 'Default task', ['build:main', 'test:main']);
 };
