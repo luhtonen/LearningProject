@@ -78,12 +78,15 @@ module.exports = function (grunt) {
     },
     foo: 'c',
     bar: 'b<%= foo %>d',
-    bazz: 'a<%= bar %>e'
+    baz: 'a<%= bar %>e',
+    foo2: ['a.js','b.js','c.js','d.js'],
+    baz2: '<%= foo2 %>'
   });
 
   // Define the default task
   grunt.registerTask('default', 'Default task', function() {
-    grunt.log.writeln(grunt.config.get('bazz'));
+    grunt.log.writeln(grunt.config.get('baz'));
+    console.log(grunt.config.get('baz2'));
   });
 
   grunt.loadTasks('./tasks');
