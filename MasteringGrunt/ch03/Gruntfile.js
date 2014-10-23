@@ -3,8 +3,9 @@ var fs = require('fs');
 var request = require('request');
 var url = 'https://raw.github.com/jpillora/gswg-examples/master/README.md';
 module.exports = function (grunt) {
-  var bar = !!grunt.option('bar')
-  console.log('bar is: ' + bar);
+  var baz = !!grunt.option('baz');
+  console.log('baz is: ' + baz);
+  console.log('bar is: ' + grunt.option('bar'));
   console.log('debug is: ' + grunt.option('debug'));
   grunt.initConfig({
     copy: {
