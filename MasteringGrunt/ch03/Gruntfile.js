@@ -7,7 +7,14 @@ module.exports = function (grunt) {
   console.log('baz is: ' + baz);
   console.log('bar is: ' + grunt.option('bar'));
   console.log('debug is: ' + grunt.option('debug'));
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.initConfig({
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      target1: 'src/**/*.js'
+    },
     copy: {
       target1: {
         files: {
@@ -83,4 +90,10 @@ module.exports = function (grunt) {
     });
   });
   grunt.registerTask('default', 'Default task', ['build:main', 'test:main']);
+  // a new task to make jshint optional
+  grunt.registerTask('check', 'Check JavaScript file syntax', function() {
+    if (grunt.file.exists('.jshintrc')) {
+      grunt.task.run('jshint');
+    }
+  });
 };
