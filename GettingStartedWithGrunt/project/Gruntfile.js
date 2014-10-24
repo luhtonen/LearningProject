@@ -9,7 +9,12 @@ module.exports = function (grunt) {
   grunt.initConfig({
     coffee: {
       build: {
-        src: 'src/scripts/app.coffee',
+        options: {
+          join: true
+        },
+        src: ['src/scripts/**/*.coffee',
+              '!src/scripts/app.coffee',
+              'src/scripts/app.coffee'],
         dest: 'build/js/app.js'
       }
     },
