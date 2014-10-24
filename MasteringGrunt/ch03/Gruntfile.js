@@ -8,7 +8,23 @@ module.exports = function (grunt) {
   console.log('bar is: ' + grunt.option('bar'));
   console.log('debug is: ' + grunt.option('debug'));
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.initConfig({
+    srcFiles: ['src/a.js', 'src/b.js', 'src/c.js'],
+    concat: {
+      target1: {
+        files: {
+          'build/abc.js': '<%= srcFiles %>'
+        }
+      }
+    },
+    watch: {
+      target1: {
+        files: '<%= srcFiles %>',
+        tasks: ['concat']
+      }
+    },
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -18,14 +34,14 @@ module.exports = function (grunt) {
     copy: {
       target1: {
         files: {
-          'dest/file1.txt': 'src/file1.txt',
-          'dest/file2.txt': 'src/file2.txt'
+          'build/file1.txt': 'src/file1.txt',
+          'build/file2.txt': 'src/file2.txt'
         }
       },
       target2: {
         files: {
-          'dest/file3.txt': 'src/file3.txt',
-          'dest/file4.txt': 'src/file4.txt'
+          'build/file3.txt': 'src/file3.txt',
+          'build/file4.txt': 'src/file4.txt'
         }
       }
     },
@@ -89,7 +105,8 @@ module.exports = function (grunt) {
       }
     });
   });
-  grunt.registerTask('default', 'Default task', ['build:main', 'test:main']);
+//  grunt.registerTask('default', 'Default task', ['build:main', 'test:main']);
+  grunt.registerTask('default', 'Default task', ['concat', 'watch']);
   // a new task to make jshint optional
   grunt.registerTask('check', 'Check JavaScript file syntax', function() {
     if (grunt.file.exists('.jshintrc')) {
