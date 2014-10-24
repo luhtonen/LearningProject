@@ -25,6 +25,9 @@ module.exports = function (grunt) {
       }
     },
     jade: {
+      options: {
+        pretty: true
+      },
       build: {
         src: 'src/views/app.jade',
         dest: 'build/app.html'
