@@ -49,6 +49,12 @@ module.exports = function (grunt) {
         src: '<%= coffee.build.dest %>',
         dest: '<%= coffee.build.dest %>'
       }
+    },
+    cssmin: {
+      compress: {
+        src: '<%= stylus.build.dest %>',
+        dest: '<%= stylus.build.dest %>'
+      }
     }
   });
   // Define the default task
