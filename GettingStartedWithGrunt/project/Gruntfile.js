@@ -11,6 +11,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-htmlmin");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-aws");
   // project configuration
   grunt.initConfig({
     coffee: {
@@ -86,6 +87,18 @@ module.exports = function (grunt) {
         files: 'src/views/**/*.jade',
         tasks: 'views'
       }
+    },
+    aws: grunt.file.readJSON('aws.json'),
+    s3: {
+      options: {
+        accessKeyId: '<%= aws.accessKeyId %>',
+        secretAccessKey: '<%= aws.secretAccessKey %>',
+        bucket: 'jpillora-app-'+env
+      },
+      build: {
+        cwd: 'build/',
+        src: '**'
+      }
     }
   });
   // Environment specific tasks
@@ -99,6 +112,7 @@ module.exports = function (grunt) {
     grunt.registerTask('views', 'Compile view files', ['jade']);
   }
   grunt.registerTask('build', 'Compile all source files', ['scripts', 'styles', 'views']);
+  grunt.registerTask('deploy', 'Build and deploy application to the server', ['build', 's3']);
   // Define the default task
   grunt.registerTask('default', 'Default task, which build application and start watch', ['build', 'watch']);
 };

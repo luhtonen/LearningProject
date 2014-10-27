@@ -9,7 +9,8 @@ node_modules
 .sass-cache
 .bundle
 .tmp
+build
 AutomateWithGrunt/deploying/working
 AutomateWithGrunt/angular/dist
 AutomateWithGrunt/markdown/assets/
-build
+GettingStartedWithGrunt/project/aws.json
