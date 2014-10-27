@@ -12,5 +12,8 @@
     "sample",
     "edu-gswg"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }
