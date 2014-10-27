@@ -1,6 +1,8 @@
 'use strict';
 
 module.exports = function (grunt) {
+  // Initialize environment
+  var env = grunt.option('env') || 'dev';
   // Load tasks provided by each plugin
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-stylus');
@@ -8,6 +10,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-contrib-uglify");
   grunt.loadNpmTasks("grunt-contrib-cssmin");
   grunt.loadNpmTasks("grunt-contrib-htmlmin");
+  grunt.loadNpmTasks("grunt-contrib-watch");
   // project configuration
   grunt.initConfig({
     coffee: {
@@ -69,9 +72,23 @@ module.exports = function (grunt) {
         src: '<%= jade.build.dest %>',
         dest: '<%= jade.build.dest %>'
       }
+    },
+    watch: {
+      scripts: {
+        files: 'src/scripts/**/*.coffee',
+        tasks: 'scripts'
+      },
+      styles: {
+        files: 'scr/styles/**/*.styl',
+        tasks: 'styles'
+      },
+      views: {
+        files: 'src/views/**/*.jade',
+        tasks: 'views'
+      }
     }
   });
-  var env = grunt.option('env') || 'dev';
+  // Environment specific tasks
   if (env === 'prod') {
     grunt.registerTask('scripts', 'Compile and compress scripts files', ['coffee', 'uglify']);
     grunt.registerTask('styles', 'Compile and compress styles files', ['stylus', 'cssmin']);
@@ -81,6 +98,7 @@ module.exports = function (grunt) {
     grunt.registerTask('styles', 'Compile styles files', ['stylus']);
     grunt.registerTask('views', 'Compile view files', ['jade']);
   }
+  grunt.registerTask('build', 'Compile all source files', ['scripts', 'styles', 'views']);
   // Define the default task
-  grunt.registerTask('default', 'Compile all files', ['scripts', 'styles', 'views']);
+  grunt.registerTask('default', 'Default task, which build application and start watch', ['build', 'watch']);
 };
