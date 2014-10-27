@@ -24,7 +24,7 @@ Task targets, files and options may be specified according to the grunt [Configu
 
 ## Release History
 
- * 2013-11-19   v0.1.0   Released and published initial version.
+ * 2014-10-27   v0.1.0   Released and published initial version.
 
 #### MIT License
 
