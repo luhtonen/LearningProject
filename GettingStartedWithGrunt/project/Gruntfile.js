@@ -93,7 +93,10 @@ module.exports = function (grunt) {
       options: {
         accessKeyId: '<%= aws.accessKeyId %>',
         secretAccessKey: '<%= aws.secretAccessKey %>',
-        bucket: 'jpillora-app-'+env
+        bucket: 'edu-project-app-'+env,
+        httpOptions: {
+          proxy: process.env.http_proxy
+        }
       },
       build: {
         cwd: 'build/',
