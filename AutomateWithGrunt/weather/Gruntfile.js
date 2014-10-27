@@ -32,8 +32,11 @@ module.exports = function (grunt) {
       }
     };
 
-//      requestOptions = requestOptionsWithoutProxy;
+    if (process.env.http_proxy) {
       requestOptions = requestOptionsWithProxy;
+    } else {
+      requestOptions = requestOptionsWithoutProxy;
+    }
 
     http = require('http');
 
