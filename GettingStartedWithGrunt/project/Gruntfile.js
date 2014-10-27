@@ -55,6 +55,20 @@ module.exports = function (grunt) {
         src: '<%= stylus.build.dest %>',
         dest: '<%= stylus.build.dest %>'
       }
+    },
+    htmlmin: {
+      options: {
+        removeComments: true,
+        collapseWhitespace: true,
+        collapseBooleanAttributes: true,
+        removeAttributesQuotes: true,
+        removeRedundantAttributes: true,
+        removeOptionalTags: true
+      },
+      compress: {
+        src: '<%= jade.build.dest %>',
+        dest: '<%= jade.build.dest %>'
+      }
     }
   });
   // Define the default task
