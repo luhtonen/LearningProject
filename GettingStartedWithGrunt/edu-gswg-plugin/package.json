@@ -1,0 +1,16 @@
+{
+  "name": "edu-gswg",
+  "version": "0.1.0",
+  "author": "Eduard Luhtonen <luhtonen@gmail.com>",
+  "homepage": "https://github.com/luhtonen/LearningProject/tree/master/GettingStartedWithGrunt/edu-gswg-plugin",
+  "peerDependencies": {
+    "grunt": "^0.4.5"
+  },
+  "keywords": [
+    "gruntplugin",
+    "example",
+    "sample",
+    "edu-gswg"
+  ],
+  "license": "MIT"
+}
