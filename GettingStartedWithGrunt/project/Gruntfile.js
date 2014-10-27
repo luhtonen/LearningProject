@@ -71,6 +71,16 @@ module.exports = function (grunt) {
       }
     }
   });
+  var env = grunt.option('env') || 'dev';
+  if (env === 'prod') {
+    grunt.registerTask('scripts', 'Compile and compress scripts files', ['coffee', 'uglify']);
+    grunt.registerTask('styles', 'Compile and compress styles files', ['stylus', 'cssmin']);
+    grunt.registerTask('views', 'Compile and compress view files', ['jade', 'htmlmin']);
+  } else {
+    grunt.registerTask('scripts', 'Compile scripts files', ['coffee']);
+    grunt.registerTask('styles', 'Compile styles files', ['stylus']);
+    grunt.registerTask('views', 'Compile view files', ['jade']);
+  }
   // Define the default task
-  grunt.registerTask('default', 'Compile files', ['coffee', 'stylus', 'jade']);
+  grunt.registerTask('default', 'Compile all files', ['scripts', 'styles', 'views']);
 };
