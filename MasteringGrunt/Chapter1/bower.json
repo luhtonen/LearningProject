@@ -1,0 +1,19 @@
+{
+  "name": "Chapter1",
+  "version": "0.0.0",
+  "homepage": "https://github.com/luhtonen/LearningProject/MasteringGrunt/Chapter1",
+  "authors": [
+    "Eduard Luhtonen <luhtonen@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}

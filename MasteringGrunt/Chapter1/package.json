@@ -1,0 +1,14 @@
+{
+  "name": "Chapter1",
+  "version": "0.0.0",
+  "homepage": "https://github.com/luhtonen/LearningProject/MasteringGrunt/Chapter1",
+  "author": "Eduard Luhtonen <luhtonen@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0"
+  }
+}
