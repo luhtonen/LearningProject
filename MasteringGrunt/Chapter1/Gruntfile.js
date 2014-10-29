@@ -30,6 +30,42 @@ module.exports = function (grunt) {
           dest: 'dist'
         }]
       }
+    },
+    useminPrepare: {
+      options: {
+        dest: 'dist'
+      },
+      html: 'src/index.html'
+    },
+    usemin: {
+      options: {
+        dirs: ['dist']
+      },
+      html: ['dist/{,*/}*.html']
+    },
+    uglify: {
+      options: {
+        mangle: false
+      }
+    },
+    filerev: {
+      dist: {
+        src: [
+          'dist/scripts/{,*/}*.js'
+        ]
+      }
     }
   });
+
+  var tasks = [
+    'clean',
+    'useminPrepare',
+    'htmlmin',
+    'concat',
+    'uglify',
+    'filerev',
+    'usemin'
+  ];
+
+  grunt.registerTask('build', tasks);
 };
