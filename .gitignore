@@ -10,6 +10,7 @@ node_modules
 .bundle
 .tmp
 build
+dist
 AutomateWithGrunt/deploying/working
 AutomateWithGrunt/angular/dist
 AutomateWithGrunt/markdown/assets/
