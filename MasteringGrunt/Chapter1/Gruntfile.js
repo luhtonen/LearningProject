@@ -39,7 +39,7 @@ module.exports = function (grunt) {
     },
     usemin: {
       options: {
-        dirs: ['dist']
+        assetsDirs: ['dist']
       },
       html: ['dist/{,*/}*.html']
     },
