@@ -3,20 +3,30 @@
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
+  // Configurable paths to the application
+  var appConfig = {
+    app: require('./bower.json').appPath || 'src',
+    dist: 'dist'
+  };
+
   grunt.initConfig({
+    // Project settings
+    hello: appConfig,
+
     clean: {
-      build: {
+      dist: {
         files: [{
           dot: true,
           src: [
-            'dist/*',
-            '!dist/.git*'
+            '.tmp',
+            '<%= hello.dist %>/{,*}/*',
+            '!<%= hello.dist %>/.git*'
           ]
         }]
       }
     },
     htmlmin: {
-      build: {
+      dist: {
         options: {
           collapseBooleanAttributes: true,
           removeAttributeQuotes: true,
@@ -25,23 +35,23 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'src',
+          cwd: '<%= hello.dist %>',
           src: '{,*}*.html',
-          dest: 'dist'
+          dest: '<%= hello.dist %>'
         }]
       }
     },
     useminPrepare: {
       options: {
-        dest: 'dist'
+        dest: '<%= hello.dist %>'
       },
-      html: 'src/index.html'
+      html: '<%= hello.app %>/index.html'
     },
     usemin: {
       options: {
-        assetsDirs: ['dist']
+        assetsDirs: ['<%= hello.dist %>']
       },
-      html: ['dist/{,*/}*.html']
+      html: ['<%= hello.dist %>/{,*/}*.html']
     },
     uglify: {
       options: {
@@ -51,20 +61,34 @@ module.exports = function (grunt) {
     filerev: {
       dist: {
         src: [
-          'dist/scripts/{,*/}*.js'
+          '<%= hello.dist %>/scripts/{,*/}*.js'
         ]
+      }
+    },
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= hello.app %>',
+          dest: '<%= hello.dist %>',
+          src: [
+            '*.html'
+          ]
+        }]
       }
     }
   });
 
   var tasks = [
-    'clean',
+    'clean:dist',
     'useminPrepare',
-    'htmlmin',
     'concat',
+    'copy:dist',
     'uglify',
     'filerev',
-    'usemin'
+    'usemin',
+    'htmlmin'
   ];
 
   grunt.registerTask('build', tasks);
