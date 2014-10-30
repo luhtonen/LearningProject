@@ -38,7 +38,7 @@ module.exports = function (grunt) {
     jade: {
       dist: {
         files: {
-          '<%= chapter2.app %>/index.html': '<%= chapter2.app %>/templates.index.jade',
+          '<%= chapter2.app %>/index.html': '<%= chapter2.app %>/templates/index.jade',
           '<%= chapter2.app %>/golden-dragon.html': '<%= chapter2.app %>/templates/golden-dragon.jade',
           '<%= chapter2.app %>/little-pizzeria.html': '<%= chapter2.app %>/templates/little-pizzeria.jade'
         }
@@ -50,15 +50,67 @@ module.exports = function (grunt) {
           }
         },
         files: {
-          '<%= chapter2.app %>/index.html': '<%= chapter2.app %>/templates.index.jade',
+          '<%= chapter2.app %>/index.html': '<%= chapter2.app %>/templates/index.jade',
           '<%= chapter2.app %>/golden-dragon.html': '<%= chapter2.app %>/templates/golden-dragon.jade',
           '<%= chapter2.app %>/little-pizzeria.html': '<%= chapter2.app %>/templates/little-pizzeria.jade'
+        }
+      }
+    },
+    clean: {
+      build: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= chapter2.dist %>/*',
+            '!<%= chapter2.dist %>/.git*'
+          ]
+        }]
+      }
+    },
+    htmlmin: {
+      dist: {
+        options: {
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          removeEmptyAttributes: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= chapter2.app %>',
+          src: '{,*/}*.html',
+          dest: '<%= chapter2.dist %>'
+        }]
+      }
+    },
+    copy: {
+      dist: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= chapter2.app %>',
+          dest: '<%= chapter2.dist %>',
+          src: [
+            'images/{,*}/*.png'
+          ]
+        }]
+      }
+    },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= chapter2.dist %>/styles/main.css': [ '<%= chapter2.app %>/styles/{,*/}*.css' ]
         }
       }
     }
   });
 
-  var tasks = [];
-
-  grunt.registerTask('build', tasks);
+  grunt.registerTask('build', [
+    'clean',
+    'jade:dist',
+    'compass:dist',
+    'htmlmin:dist',
+    'copy',
+    'cssmin'
+  ]);
 };
