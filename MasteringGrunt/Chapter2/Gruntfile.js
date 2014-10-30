@@ -47,12 +47,12 @@ module.exports = function (grunt) {
         options: {
           data: {
             debug: false
-          },
-          files: {
-            '<%= chapter2.app %>/index.html': '<%= chapter2.app %>/templates.index.jade',
-            '<%= chapter2.app %>/golden-dragon.html': '<%= chapter2.app %>/templates/golden-dragon.jade',
-            '<%= chapter2.app %>/little-pizzeria.html': '<%= chapter2.app %>/templates/little-pizzeria.jade'
           }
+        },
+        files: {
+          '<%= chapter2.app %>/index.html': '<%= chapter2.app %>/templates.index.jade',
+          '<%= chapter2.app %>/golden-dragon.html': '<%= chapter2.app %>/templates/golden-dragon.jade',
+          '<%= chapter2.app %>/little-pizzeria.html': '<%= chapter2.app %>/templates/little-pizzeria.jade'
         }
       }
     }
