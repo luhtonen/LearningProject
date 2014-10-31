@@ -54,10 +54,89 @@ module.exports = function (grunt) {
           ext: '.js'
         }]
       }
+    },
+    clean: {
+      build: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= chapter3.dist %>/*',
+            '!<%= chapter3.dist %>/.git*'
+          ]
+        }]
+      }
+    },
+    useminPrepare: {
+      options: {
+        dest: '<%= chapter3.dist %>'
+      },
+      html: '<%= chapter3.app %>/index.html'
+    },
+    usemin: {
+      options: {
+        assetsDirs: ['<%= chapter3.dist %>']
+      },
+      html: ['<%= chapter3.dist %>/{,*/}*.html']
+    },
+    htmlmin: {
+      dist: {
+        options: {
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          removeEmptyAttributes: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= chapter3.dist %>',
+          src: '{,*/}*.html',
+          dest: '<%= chapter3.dist %>'
+        }]
+      }
+    },
+    uglify: {
+      options: {
+        mangle: false
+      }
+    },
+    copy: {
+      build: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= chapter3.app %>',
+          dest: '<%= chapter3.dist %>',
+          src: [
+            '*.html'
+          ]
+        }]
+      }
+    },
+    filerev: {
+      dist: {
+        src: [
+          '<%= chapter3.dist %>/scripts/{,*/}*.js'
+        ]
+      }
+    },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= chapter3.dist %>/styles/main.css': '<%= chapter3.app %>/styles/{,*/}*.css'
+        }
+      }
     }
   });
 
   grunt.registerTask('build', [
-    // task list goes here
+    'clean:build',
+    'useminPrepare',
+    'concat',
+    'copy',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
   ]);
 };
