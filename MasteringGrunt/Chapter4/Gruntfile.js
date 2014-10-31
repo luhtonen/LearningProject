@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     compass: {
       options: {
         sassDir: '<%= chapter4.app %>/styles/sass',
-        cssDir: '<%= chapter4.app %>/css',
+        cssDir: '<%= chapter4.app %>/styles',
         importPath: '<%= chapter4.app %>/bower_components',
         relativeAssets: false
       },
