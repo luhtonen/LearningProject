@@ -167,11 +167,11 @@ module.exports = function (grunt) {
     'mochaTest'
   ]);
   grunt.registerTask('build', [
-    'test',
     'clean',
     'jade:dist',
     'coffee:dist',
     'compass:dist',
+    'test',
     'useminPrepare',
     'concat',
     'copy',
