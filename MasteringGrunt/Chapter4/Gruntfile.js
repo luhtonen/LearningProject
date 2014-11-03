@@ -79,9 +79,24 @@ module.exports = function (grunt) {
           ext: '.js'
         }]
       }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          base: '<%= chapter4.app %>'
+        }
+      }
+    },
+    mochaTest: {
+      src: ['test/bbs.coffee']
     }
   });
 
+  grunt.registerTask('test', [
+    'connect',
+    'mochaTest'
+  ]);
   grunt.registerTask('build', [
     // task list goes here
   ]);

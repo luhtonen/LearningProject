@@ -23,7 +23,7 @@ $ ->
       board = $("#board")
 
       board.find("h1").remove()
-      board.append("<div class=\"post well\" data-id=\"#{id}\">#{message}" +
+      board.append("<div class=\"post well\" data-id=\"#{id}\"><span>#{message}</span> " +
       "<a class=\"btn btn-primary btn-reply pull-right\" data-id=\"#{id}\">Reply</a></div>")
 
     modalPost.modal "hide"
