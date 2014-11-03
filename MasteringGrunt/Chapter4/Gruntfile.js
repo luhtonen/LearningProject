@@ -90,6 +90,75 @@ module.exports = function (grunt) {
     },
     mochaTest: {
       src: ['test/bbs.coffee']
+    },
+    clean: {
+      build: {
+        files: [{
+          dot: true,
+          src: [
+            '<%= chapter4.dist %>/*',
+            '!<%= chapter4.dist %>/.git*'
+          ]
+        }]
+      }
+    },
+    useminPrepare: {
+      options: {
+        dest: '<%= chapter4.dist %>'
+      },
+      html: '<%= chapter4.app %>/index.html'
+    },
+    usemin: {
+      options: {
+        assetsDirs: ['<%= chapter4.dist %>']
+      },
+      html: ['<%= chapter4.dist %>/{,*/}*.html']
+    },
+    htmlmin: {
+      dist: {
+        options: {
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          removeEmptyAttributes: true
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= chapter4.dist %>',
+          src: '{,*/}*.html',
+          dest: '<%= chapter4.dist %>'
+        }]
+      }
+    },
+    uglify: {
+      options: {
+        mangle: false
+      }
+    },
+    copy: {
+      build: {
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= chapter4.app %>',
+          dest: '<%= chapter4.dist %>',
+          src: [
+            '*.html'
+          ]
+        }]
+      }
+    },
+    filerev: {
+      dist: {
+        src: ['<%= chapter4.dist %>/scripts/{,*/}*.js']
+      }
+    },
+    cssmin: {
+      dist: {
+        files: {
+          '<%= chapter4.dist %>/styles/main.css': '<%= chapter4.app %>/styles/{,*/}*.css'
+        }
+      }
     }
   });
 
@@ -98,6 +167,18 @@ module.exports = function (grunt) {
     'mochaTest'
   ]);
   grunt.registerTask('build', [
-    // task list goes here
+    'test',
+    'clean',
+    'jade:dist',
+    'coffee:dist',
+    'compass:dist',
+    'useminPrepare',
+    'concat',
+    'copy',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
   ]);
 };
