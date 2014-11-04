@@ -1,0 +1,16 @@
+.col-container {
+  background: #000;
+  color: #fff;
+}
+.col-container:after {
+  content: ' ';
+  clear: both;
+  display: block;
+}
+.col {
+  float: left;
+  width: 50%;
+}
+.col.main {
+  background: #999;
+}
