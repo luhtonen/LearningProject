@@ -36,3 +36,9 @@ article {
     width: 20%;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  header, .content {
+    width: 940px;
+  }
+}
