@@ -17,3 +17,22 @@ article, aside {
 article {
   border-bottom: 1px solid #304480;
 }
+
+@media screen and (min-width: 768px) {
+  header, .content {
+    width: 768px;
+    margin: 0 auto;
+    padding: 10px 20px;
+  }
+  article, aside {
+    float: left;
+    margin: 0px;
+  }
+  article {
+    width: 80%;
+    border-bottom: 0px;
+  }
+  aside {
+    width: 20%;
+  }
+}
