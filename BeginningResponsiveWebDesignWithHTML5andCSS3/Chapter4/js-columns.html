@@ -19,20 +19,33 @@
     </div>
   </div>
   <script>
-    var columns = document.getElementsByClassName('col'),
-        height = 0;
+    var equalColumns = function() {
+      var columns = document.getElementsByClassName('col'),
+          height = 0;
 
-    // Loop through columns and find the tallest columns
-    for (var i = 0; i < columns.length; i++) {
-      if (height < columns[i].clientHeight) {
-        height = columns[i].clientHeight;
+      // Reset the height of all columns so that we can recalculate max height
+      for (var i = 0; i < columns.length; i++) {
+        columns[i].style.height = 'auto';
       }
-    }
 
-    // Apply the max height to all columns
-    for (var i = 0; i < columns.length; i++) {
-      columns[i].style.height = height + 'px';
-    }
+      // Loop through columns and find the tallest columns
+      for (var i = 0; i < columns.length; i++) {
+        if (height < columns[i].clientHeight) {
+          height = columns[i].clientHeight;
+        }
+      }
+
+      // Apply the max height to all columns
+      for (var i = 0; i < columns.length; i++) {
+        columns[i].style.height = height + 'px';
+      }
+    };
+
+    // Initially set the column heights
+    equalColumns();
+
+    // Update column heights on browser resize
+    window.addEventListener('resize', equalColumns, true);
   </script>
 </body>
 </html>
