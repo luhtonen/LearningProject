@@ -23,10 +23,14 @@
       var columns = document.getElementsByClassName('col'),
           height = 0;
 
+      var setHeight = function(newHeight) {
+        for (var i = 0; i < columns.length; i++) {
+          columns[i].style.height = newHeight;
+        }
+      };
+
       // Reset the height of all columns so that we can recalculate max height
-      for (var i = 0; i < columns.length; i++) {
-        columns[i].style.height = 'auto';
-      }
+      setHeight('auto');
 
       // Loop through columns and find the tallest columns
       for (var i = 0; i < columns.length; i++) {
@@ -36,9 +40,7 @@
       }
 
       // Apply the max height to all columns
-      for (var i = 0; i < columns.length; i++) {
-        columns[i].style.height = height + 'px';
-      }
+      setHeight(height + 'px');
     };
 
     // Initially set the column heights
