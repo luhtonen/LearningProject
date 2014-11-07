@@ -164,6 +164,9 @@ body{
     .wrapper {
         width: 710px;
     }
+    .jumbotron {
+        width: 710px;
+    }
 }
 
 /* Query for mobiles */
@@ -181,5 +184,28 @@ body{
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+    }
+    .jumbotron {
+        width: 100%;
+        height: auto;
+        text-align: center;
+        padding: 20px 0;
+    }
+    .jumbotron img,
+    .jumbotron p,
+    .jumbotron h2,
+    .jumbotron .roundal,
+    .jumbotron .roundal span {
+        position: static;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: auto;
+    }
+    .jumbotron h2 {
+        font-size: 22px;
+        font-size: 1.375em;
+        padding: 10px 20px;
     }
 }
