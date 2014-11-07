@@ -167,6 +167,9 @@ body{
     .jumbotron {
         width: 710px;
     }
+    .product {
+        width: 223px;
+    }
 }
 
 /* Query for mobiles */
@@ -207,5 +210,17 @@ body{
         font-size: 22px;
         font-size: 1.375em;
         padding: 10px 20px;
+    }
+    .product {
+        width: 100%;
+        padding: 20px 0;
+        border-top: 1px solid #ccc;
+    }
+    .product:first-child {
+        border-top: 0;
+        padding-top: 0;
+    }
+    .product:last-child {
+        padding-bottom: 0;
     }
 }
