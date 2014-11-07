@@ -165,4 +165,13 @@ body{
 
 /* Query for mobiles */
 @media screen and (max-width: 767px) {
+    h1 {
+        font-size: 22px;
+        font-size: 1.571em;
+    }
+
+    h2 {
+        font-size: 18px;
+        font-size: 1.286em;
+    }
 }
