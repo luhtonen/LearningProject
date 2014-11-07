@@ -146,7 +146,6 @@ body{
    Helper classes
    ========================================================================== */
 
-
 .clearfix:before,
 .clearfix:after {
     content: " "; /* 1 */
@@ -155,4 +154,15 @@ body{
 
 .clearfix:after {
     clear: both;
+}
+
+/* ==========================================================================
+   Media queries
+   ========================================================================== */
+/* Query for tablets */
+@media screen and (max-width: 1000px) {
+}
+
+/* Query for mobiles */
+@media screen and (max-width: 767px) {
 }
