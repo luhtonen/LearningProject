@@ -4,20 +4,23 @@
 }
 
 h1 {
-    font-size: 1.4em;
-    text-align: center;
+  font-size: 1.4rem;
 }
 
 h2 {
-    font-size: 1.3em;
+  font-size: 1.3rem;
 }
 
 /*
  * Header
  */
 .global-header {
-  margin: 0 0 20px;
+  margin: 0 -20px;
   border-bottom: 1px solid #ccc;
+}
+
+.global-header h1 {
+  text-align: center;
 }
 
 /*
@@ -38,60 +41,60 @@ h2 {
  * Product
  */
 .product {
-    text-align: center;
-    padding: 20px 0;
-    border-bottom: 1px solid #ccc;
+  text-align: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #ccc;
 }
 
 .product:first-child {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .product .roundal {
-    width: 100px;
-    height: 75px;
-    margin: 0 auto;
-    background: #f4a156;
-    border-radius: 50px;
-    padding-top: 25px;
+  width: 100px;
+  height: 75px;
+  margin: 0 auto;
+  background: #f4a156;
+  border-radius: 50px;
+  padding-top: 25px;
 }
 
 .product .roundal span {
-    display: block;
-    font-size: 1.6rem;
+  display: block;
+  font-size: 1.6rem;
 }
 
 .product ul {
-    padding: 0;
+  padding: 0;
 }
 
 .product li {
-    list-style: none;
-    font-size: 0.8rem;
-    color: #333;
+  list-style: none;
+  font-size: 0.8rem;
+  color: #333;
 }
 
 .product a {
-    font-size: 0.9rem;
-    color: #000;
-    text-decoration: none;
-    display: inline-block;
-    background: #ccc;
-    padding: 5px 10px;
-    border-radius: 2px;
+  font-size: 0.9rem;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  background: #ccc;
+  padding: 5px 10px;
+  border-radius: 2px;
 }
 
 .product a:hover, .product a:focus, .product a:active {
-    background: #999;
-    color: #eee;
+  background: #999;
+  color: #eee;
 }
 
 .product *:first-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .product *:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 /*
@@ -99,8 +102,8 @@ h2 {
  */
 
 .global-footer p {
-    text-align: center;
-    font-size: 0.8rem;
+  text-align: center;
+  font-size: 0.8rem;
 }
 
 /* ==========================================================================
@@ -137,8 +140,8 @@ h2 {
     margin: 0 auto;
   }
 
-  .global-header h1 {
-    float: left;
+  h1 {
+    font-size: 2rem;
   }
 
   /*
@@ -184,6 +187,7 @@ h2 {
   }
 
   .product:first-child {
+    padding-top: 20px;
     padding-left: 0;
   }
 }
