@@ -155,3 +155,15 @@ body{
 .clearfix:after {
     clear: both;
 }
+
+/* Query for mobiles */
+@media screen and (min-width: 768px) {
+}
+
+/* Query for tablets */
+@media screen and (min-width: 1024px) {
+}
+
+/* Query for big screens */
+@media screen and (min-width: 1200px) {
+}
