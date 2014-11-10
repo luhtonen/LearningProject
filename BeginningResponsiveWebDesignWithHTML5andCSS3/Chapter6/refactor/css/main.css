@@ -3,6 +3,22 @@
     margin: 0 auto;
 }
 
+/*
+ * Header
+ */
+.global-header {
+    margin: 0 0 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+h1 {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
 .clearfix:before,
 .clearfix:after {
     content: " "; /* 1 */
@@ -32,14 +48,6 @@
     width: 940px;
     padding: 0 20px 20px;
     margin: 0 auto;
-  }
-
-  /*
-   * Header
-   */
-  .global-header {
-    margin: 0 0 20px;
-    border-bottom: 1px solid #ccc;
   }
 
   .global-header h1 {
@@ -157,18 +165,5 @@
   .global-footer p {
     text-align: center;
     font-size: 0.8rem;
-  }
-
-  /* ==========================================================================
-     Helper classes
-     ========================================================================== */
-  .clearfix:before,
-  .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
-  }
-
-  .clearfix:after {
-    clear: both;
   }
 }
