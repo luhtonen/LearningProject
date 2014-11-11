@@ -23,7 +23,7 @@ h2 {
 }
 
 /* small screen, for example tablets */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 767px) {
   h1 {
     font-size: 28px;
     font-size: 2rem;
