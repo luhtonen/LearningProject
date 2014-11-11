@@ -128,6 +128,13 @@ h2 {
   }
 }
 
+/* Query for large screens like TV */
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
+}
+
 /* Query for tablets */
 @media screen and (min-width: 1024px) {
 
