@@ -18,6 +18,10 @@ h2 {
   font-size: 1.286rem;
 }
 
+.wrapper {
+  margin: 0 20px;
+}
+
 /* small screen, for example tablets */
 @media screen and (min-width: 768px) {
   h1 {
