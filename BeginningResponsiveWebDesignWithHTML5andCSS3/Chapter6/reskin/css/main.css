@@ -22,6 +22,12 @@ h2 {
   margin: 0 20px;
 }
 
+.global-header {
+  border-bottom: 1px solid #ccc;
+  margin: 0 -20px;
+  padding: 0 20px;
+}
+
 /* small screen, for example tablets */
 @media screen and (min-width: 767px) {
   h1 {
