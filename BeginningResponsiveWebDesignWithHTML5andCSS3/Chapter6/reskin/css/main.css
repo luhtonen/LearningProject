@@ -40,8 +40,14 @@ h2 {
 
 /* medium screen, for example desktop computers */
 @media screen and (min-width: 1000px) {
+  .wrapper {
+    width: 980px;
+  }
 }
 
 /* large screen, for example TV */
 @media screen and (min-width: 1200px) {
+  .wrapper {
+    width: 1170px;
+  }
 }
