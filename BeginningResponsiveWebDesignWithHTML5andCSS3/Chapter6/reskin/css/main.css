@@ -3,3 +3,15 @@
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
+
+/* small screen, for example tablets */
+@media screen and (min-width: 768px) {
+}
+
+/* medium screen, for example desktop computers */
+@media screen and (min-width: 1000px) {
+}
+
+/* large screen, for example TV */
+@media screen and (min-width: 1200px) {
+}
