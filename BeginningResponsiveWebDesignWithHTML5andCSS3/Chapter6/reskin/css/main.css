@@ -3,29 +3,37 @@
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
 }
-
 html {
   font-size: 87.5%;
 }
-
 h1 {
   font-size: 22px;
   font-size: 1.571rem;
 }
-
 h2 {
   font-size: 18px;
   font-size: 1.286rem;
 }
-
 .wrapper {
   margin: 0 20px;
 }
-
 .global-header {
   border-bottom: 1px solid #ccc;
   margin: 0 -20px;
   padding: 0 20px;
+}
+.jumbotron {
+  background: #f4a156;
+  margin: 0 -20px;
+  padding: 20px;
+  text-align: center;
+}
+.jumbotron h2 {
+  margin-top: 0;
+}
+.jumbotron .roundal {
+  font-size: 18px;
+  font-size: 1.286rem;
 }
 
 /* small screen, for example tablets */
@@ -48,6 +56,33 @@ h2 {
   }
   .global-header h1 {
     text-align: left;
+  }
+  .jumbotron {
+    margin: 0;
+    height: 290px;
+    position: relative;
+  }
+  .jumbotron img {
+    position: absolute;
+    left: 50%;
+    margin-left: -270px;
+  }
+  .jumbotron h2 {
+    position: absolute;
+    left: 50%;
+    margin-left: 20px;
+    width: 250px;
+    font-size: 42px;
+    font-size: 3rem;
+    text-align: left;
+  }
+  .jumbotron .roundal {
+    position: absolute;
+    left: 50%;
+    margin-left: 20px;
+    bottom: 40px;
+    font-size: 28px;
+    font-size: 2rem;
   }
 }
 
