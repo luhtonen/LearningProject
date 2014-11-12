@@ -127,6 +127,10 @@ h2 {
     font-size: 28px;
     font-size: 2rem;
   }
+  .product {
+    float: left;
+    width: 33.333%;
+  }
 }
 
 /* medium screen, for example desktop computers */
