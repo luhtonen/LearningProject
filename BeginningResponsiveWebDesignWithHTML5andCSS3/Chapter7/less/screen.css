@@ -1,0 +1,9 @@
+.class_name {
+  background: #000;
+}
+.class_name p {
+  color: #fff;
+}
+.class_name p span {
+  color: #eee;
+}
