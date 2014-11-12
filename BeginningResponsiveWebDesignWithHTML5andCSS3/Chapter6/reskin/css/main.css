@@ -9,6 +9,7 @@ html {
 h1 {
   font-size: 22px;
   font-size: 1.571rem;
+  text-align: center;
 }
 h2 {
   font-size: 18px;
@@ -20,7 +21,6 @@ h2 {
 .global-header {
   border-bottom: 1px solid #ccc;
   margin: 0 -20px;
-  padding: 0 20px;
 }
 .jumbotron {
   background: #f4a156;
@@ -58,6 +58,7 @@ h2 {
 }
 .product li {
   list-style: none;
+  color: #333;
 }
 .product a {
   color: #000;
@@ -88,6 +89,7 @@ h2 {
   h1 {
     font-size: 28px;
     font-size: 2rem;
+    text-align: center;
   }
   h2 {
     font-size: 24px;
@@ -141,6 +143,7 @@ h2 {
 @media screen and (min-width: 1000px) {
   .wrapper {
     width: 980px;
+    margin: 0 auto;
   }
 }
 
@@ -148,5 +151,6 @@ h2 {
 @media screen and (min-width: 1200px) {
   .wrapper {
     width: 1170px;
+    margin: 0 auto;
   }
 }
