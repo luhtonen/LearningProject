@@ -1,8 +1,6 @@
 'use strict';
 
 module.exports = function (grunt) {
-  require('load-grunt-tasks')(grunt);
-
   grunt.initConfig({
     // Grunt configuration goes here
     pgk: grunt.file.readJSON('package.json'),
@@ -18,6 +16,7 @@ module.exports = function (grunt) {
       }
     }
   });
+  grunt.loadNpmTasks('grunt-contrib-compass');
 
   grunt.registerTask('default', ['compass:dev']);
 };
