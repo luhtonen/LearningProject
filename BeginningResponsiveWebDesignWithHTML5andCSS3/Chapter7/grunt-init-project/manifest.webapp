@@ -1,0 +1,21 @@
+{
+  "name": "Grunt Init Project",
+  "version": "0.0.0",
+  "description": "A human-readable description of the app.",
+  "launch_path": "/grunt-init-project/index.html",
+  "icons": {
+    "16": "/grunt-init-project/img/icon-16.png",
+    "32": "/grunt-init-project/img/icon-32.png",
+    "48": "/grunt-init-project/img/icon-48.png",
+    "64": "/grunt-init-project/img/icon-64.png",
+    "128": "/grunt-init-project/img/icon-128.png",
+    "256": "/grunt-init-project/img/icon-256.png"
+  },
+  "developer": {
+    "name": "Eduard Luhtonen",
+    "url": ""
+  },
+  "installs_allowed_from": ["*"],
+  "default_locale": "en",
+  "permissions": {}
+}
