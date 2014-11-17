@@ -11,3 +11,15 @@
 .block3 {
   order: 3;
 }
+
+@media screen and (min-width: 1000px) {
+  .block1 {
+    order: 3;
+  }
+  .block2 {
+    order: 2;
+  }
+  .block3 {
+    order: 1;
+  }
+}
