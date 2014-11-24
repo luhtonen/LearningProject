@@ -1,0 +1,253 @@
+
+scala> val yourPast: String = "Good Java Programmer"
+yourPast: String = Good Java Programmer
+
+scala> val yourPast = "Good Java Programmer"
+yourPast: String = Good Java Programmer
+
+scala> yourPast = "Good Java Programmer"
+<console>:8: error: reassignment to val
+       yourPast = "Good Java Programmer"
+                ^
+
+scala> var yourFuture = "Good Java Programmer"
+yourFuture: String = Good Java Programmer
+
+scala> yourFuture = "Great Scala Programmer"
+yourFuture: String = Great Scala Programmer
+
+scala> 3
+res0: Int = 3
+
+scala> 3 + 2
+res1: Int = 5
+
+scala> (3).+(2)
+res2: Int = 5
+
+scala> class Money(amount:Int)
+defined class Money
+
+scala> val notMuch = new Money(2)
+notMuch: Money = Money@20f098a0
+
+scala> notMuch.
+asInstanceOf   isInstanceOf   toString
+
+scala> class Money(val amount:Int)
+defined class Money
+
+scala> val notMuch = new Money(2)
+notMuch: Money = Money@1d895034
+
+scala> notMuch.
+amount   asInstanceOf   isInstanceOf   toString
+
+scala> notMuch.amount
+res3: Int = 2
+
+scala> class Money(var amount:Int)
+defined class Money
+
+scala> val notMuch = new Money(2)
+notMuch: Money = Money@2eef45b3
+
+scala> notMuch.
+amount   amount_=   asInstanceOf   isInstanceOf   toString
+
+scala> notMuch.amount=3
+notMuch.amount: Int = 3
+
+scala> case class Money(amount:Int=1, currency:String="CHF")
+defined class Money
+
+scala> val defaultAmount = new Money()
+defaultAmount: Money = Money(1,CHF)
+
+scala> var fifteenSwiss = new Money(15,"CHF")
+fifteenSwiss: Money = Money(15,CHF)
+
+scala> var fifteenSwiss = new Money(15)
+fifteenSwiss: Money = Money(15,CHF)
+
+scala> val someEuros = Money("EUR")
+<console>:9: error: type mismatch;
+ found   : String("EUR")
+ required: Int
+       val someEuros = Money("EUR")
+                             ^
+
+scala> val someEuros = Money(currency="EUR")
+someEuros: Money = Money(1,EUR)
+
+scala> val twentyEuros = new Money(amount=20,currency="EUR")
+twentyEuros: Money = Money(20,EUR)
+
+scala> val tenEuros = twentyEuros.copy(10)
+tenEuros: Money = Money(10,EUR)
+
+scala> val twentyDollars = twentyEuros.copy(currency="USD")
+twentyDollars: Money = Money(20,USD)
+
+scala> case class Money(val amount:Int=1, val currency:String="CHF") {
+     | def +(other:Money) : Money = Money(amount + other.amount)
+     | }
+defined class Money
+
+scala> Money(12) + Money(34)
+res4: Money = Money(46,CHF)
+
+scala> val numbers = List(1,2,5)
+numbers: List[Int] = List(1, 2, 5)
+
+scala> for (n <- numbers) println("Number " + n)
+Number 1
+Number 2
+Number 5
+
+scala> numbers.foreach { n:Int =>
+     | println("Number " + n)
+     | }
+Number 1
+Number 2
+Number 5
+
+scala> val numbers = List(1,2,3,4,5,6)
+numbers: List[Int] = List(1, 2, 3, 4, 5, 6)
+
+scala> val reversedList = numbers.reverse
+reversedList: List[Int] = List(6, 5, 4, 3, 2, 1)
+
+scala> val onlyAFew = numbers drop 2 take 3
+onlyAFew: List[Int] = List(3, 4, 5)
+
+scala> val numbers = 1 :: 2 :: 3 :: 4 :: 5 :: 6 :: Nil
+numbers: List[Int] = List(1, 2, 3, 4, 5, 6)
+
+scala> val simpleList = Nil.::(6)
+simpleList: List[Int] = List(6)
+
+scala> val twoElementsList = List(6).::(5)
+twoElementsList: List[Int] = List(5, 6)
+
+scala> val concatenatedList = simpleList ::: twoElementsList
+concatenatedList: List[Int] = List(6, 5, 6)
+
+scala> var things = List(0,1,true)
+things: List[AnyVal] = List(0, 1, true)
+
+scala> things(2)
+res5: AnyVal = true
+
+scala> var things = List(0,1,true,"false")
+things: List[Any] = List(0, 1, true, false)
+
+scala> val amounts = List(Money(10,"USD"),Money(2,"EUR"),Money(20,"GBP"),Money(75,"EUR"),Money(100,"USD"),Money(50,"USD"))
+amounts: List[Money] = List(Money(10,USD), Money(2,EUR), Money(20,GBP), Money(75,EUR), Money(100,USD), Money(50,USD))
+
+scala> val first  = amounts.head
+first: Money = Money(10,USD)
+
+scala> val amountsWithoutFirst = amounts.tail
+amountsWithoutFirst: List[Money] = List(Money(2,EUR), Money(20,GBP), Money(75,EUR), Money(100,USD), Money(50,USD))
+
+scala> val euros = amounts.filter (Money => Money.currency=="EUR")
+euros: List[Money] = List(Money(2,EUR), Money(75,EUR))
+
+scala> val euros = amounts.filter(x => x.currency == "EUR")
+euros: List[Money] = List(Money(2,EUR), Money(75,EUR))
+
+scala> val euros = amounts.filter(_.currency == "EUR")
+euros: List[Money] = List(Money(2,EUR), Money(75,EUR))
+
+scala> val allAmounts = amounts.partition(amt => amt.currency == "EUR")
+allAmounts: (List[Money], List[Money]) = (List(Money(2,EUR), Money(75,EUR)),List(Money(10,USD), Money(20,GBP), Money(100,USD), Money(50,USD)))
+
+scala> val euros = allAmounts._1
+euros: List[Money] = List(Money(2,EUR), Money(75,EUR))
+
+scala> val everythingButEuros = allAmounts._2
+everythingButEuros: List[Money] = List(Money(10,USD), Money(20,GBP), Money(100,USD), Money(50,USD))
+
+scala> val (euros, everythingButEuros) = amounts.partition(amt => amt.currency == "EUR")
+euros: List[Money] = List(Money(2,EUR), Money(75,EUR))
+everythingButEuros: List[Money] = List(Money(10,USD), Money(20,GBP), Money(100,USD), Money(50,USD))
+
+scala> euros
+res6: List[Money] = List(Money(2,EUR), Money(75,EUR))
+
+scala> val wallet = Map("USD" -> 10, "EUR" -> 2)
+wallet: scala.collection.immutable.Map[String,Int] = Map(USD -> 10, EUR -> 2)
+
+scala> val tenDollars = "USD" -> 10
+tenDollars: (String, Int) = (USD,10)
+
+scala> val tenDollars = ("USD", 10)
+tenDollars: (String, Int) = (USD,10)
+
+scala> val updatedWalled = wallet + ("GBP" -> 20)
+updatedWalled: scala.collection.immutable.Map[String,Int] = Map(USD -> 10, EUR -> 2, GBP -> 20)
+
+scala> val someEuros = wallet("EUR")
+someEuros: Int = 2
+
+scala> val somePounds = wallet("GBP")
+java.util.NoSuchElementException: key not found: GBP
+  at scala.collection.MapLike$class.default(MapLike.scala:228)
+  at scala.collection.AbstractMap.default(Map.scala:59)
+  at scala.collection.MapLike$class.apply(MapLike.scala:141)
+  at scala.collection.AbstractMap.apply(Map.scala:59)
+  ... 43 elided
+
+  scala> val mayBeSomeEuros = wallet.get("EUR")
+mayBeSomeEuros: Option[Int] = Some(2)
+
+scala> val mayBeSomePounds = wallet.get("GBP")
+mayBeSomePounds: Option[Int] = None
+
+scala> val status = mayBeSomeEuros match {
+     | case None => "Nothing of that currency"
+     | case Some(value) => "I have " + value + " Euros"
+     | }
+status: String = I have 2 Euros
+
+scala> List(1, 2, 3, 4).map(x => x + 1)
+res7: List[Int] = List(2, 3, 4, 5)
+
+scala> def increament = (x:Int) => x + 1
+increament: Int => Int
+
+scala> List(1, 2, 3, 4).map(increament)
+res8: List[Int] = List(2, 3, 4, 5)
+
+scala> List(1, 2, 3, 4) map increament
+res9: List[Int] = List(2, 3, 4, 5)
+
+scala> val printedAmounts = amounts map(m=> ""+ m.amount + " " + m.currency)
+printedAmounts: List[String] = List(10 USD, 2 EUR, 20 GBP, 75 EUR, 100 USD, 50 USD)
+
+scala> val many = 10000.2345
+many: Double = 10000.2345
+
+scala> val amount = s"$many euros"
+amount: String = 10000.2345 euros
+
+scala> val amount = f"$many%12.2f euros"
+amount: String = "    10000.23 euros"
+
+scala> val amount = s"${many*2} euros"
+amount: String = 20000.469 euros
+
+scala> val printedAmounts = amounts map(m=> s"${m.amount} ${m.currency}")
+printedAmounts: List[String] = List(10 USD, 2 EUR, 20 GBP, 75 EUR, 100 USD, 50 USD)
+
+scala> val sortedAmounts = amounts groupBy(_.currency)
+sortedAmounts: scala.collection.immutable.Map[String,List[Money]] = Map(EUR -> List(Money(2,EUR), Money(75,EUR)), GBP -> List(Money(20,GBP)), USD -> List(Money(10,USD), Money(100,USD), Money(50,USD)))
+
+scala> val sumOfNumbers = numbers.foldLeft(0) { (total,element) =>
+     | total + element
+     | }
+sumOfNumbers: Int = 21
+
+scala> val sumOfNumbers = numbers.sum
+sumOfNumbers: Int = 21
