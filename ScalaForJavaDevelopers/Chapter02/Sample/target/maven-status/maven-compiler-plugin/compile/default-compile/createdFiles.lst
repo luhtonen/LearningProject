@@ -1,0 +1,11 @@
+com/demo/sample/service/MicroMarketFacadeREST.class
+com/demo/sample/service/ApplicationConfig.class
+com/demo/sample/DiscountCode.class
+com/demo/sample/service/DiscountCodeFacadeREST.class
+com/demo/sample/Customer.class
+com/demo/sample/MicroMarket.class
+com/demo/sample/DiscountCode_.class
+com/demo/sample/service/AbstractFacade.class
+com/demo/sample/Customer_.class
+com/demo/sample/service/CustomerFacadeREST.class
+com/demo/sample/MicroMarket_.class
