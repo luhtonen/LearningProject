@@ -1,0 +1,234 @@
+scala> import java.util.Arrays
+import java.util.Arrays
+
+scala> val javaList = Arrays.asList(1,2,3,4)
+javaList: java.util.List[Int] = [1, 2, 3, 4]
+
+scala> import scala.collection.JavaConverters._
+import scala.collection.JavaConverters._
+
+scala> val scalaList = javaList.asScala
+scalaList: scala.collection.mutable.Buffer[Int] = Buffer(1, 2, 3, 4)
+
+scala> val javaListAgain = scalaList.asJava
+javaListAgain: java.util.List[Int] = [1, 2, 3, 4]
+
+scala> assert(javaList eq javaListAgain)
+
+scala> class Company (var name:String)
+defined class Company
+
+scala> val sun = new Company("Sun Microsystems")
+sun: Company = Company@41f083c7
+
+scala> sun.name
+res1: String = Sun Microsystems
+
+
+scala> sun.name_=("Oracle")
+
+scala> sun.name
+res3: String = Oracle
+
+scala> import scala.beans.BeanProperty
+import scala.beans.BeanProperty
+
+scala> class Company(@BeanProperty var name:String)
+defined class Company
+
+scala> val sun = new Company("Sun Microsystems")
+sun: Company = Company@1442769f
+
+scala> sun.getName()
+res4: String = Sun Microsystems
+
+scala> sun.setName("Oracle")
+
+scala> sun.name
+res6: String = Oracle
+
+scala> class Customer ( var customerId: Int, var zip: String) {
+     |     def getCustomerId() = customerId
+     |     def setCustomerId(cust: Int): Unit = {
+     |         customerId = cust
+     |     } 
+     | }
+defined class Customer
+
+
+scala> val customer = new Customer(1, "123 45")
+customer: Customer = Customer@1775879b
+
+scala> customer.zip
+res7: String = 123 45
+
+scala> val otherCustomer = new Customer("543 21")
+<console>:13: error: not enough arguments for constructor Customer: (customerId: Int, zip: String)Customer.
+Unspecified value parameter zip.
+       val otherCustomer = new Customer("543 21")
+                           ^
+
+scala> class Customer (var customerId: Int, var zip: String) {
+     |     def this(zip: String) = this(0,zip)
+     |     def getCustomerId() = customerId
+     |     def setCustomerId(cust: Int): Unit = {
+     |         customerId = cust
+     |     }
+     | }
+defined class Customer
+
+scala> val customer = new Customer("123 45")
+customer: Customer = Customer@53e424b5
+
+scala> class Customer(val name:String, val discountCode:String="N") {
+     |   def discounts() : List[Int] = List(5)
+     |   override def toString() = "Applied discounts: " +
+     |   discounts.mkString(" ", "%, ","% ")
+     | }
+defined class Customer
+
+scala> trait VIPCustomer extends Customer {
+     |   override def discounts = super.discounts ::: List(10)
+     | }
+defined trait VIPCustomer
+
+scala> trait GoldCustomer extends Customer {
+     |   override def discounts =
+     |     if (discountCode.equals("H"))
+     |       super.discounts ::: List(20)
+     |     else super.discounts ::: List(15)
+     | }
+defined trait GoldCustomer
+
+scala> object Main {
+     |   def main(args: Array[String]) {
+     |     val myDiscounts = new Customer("Thomas", "H") with VIPCustomer with GoldCustomer
+     |     println(myDiscounts)
+     |   }
+     | }
+defined object Main
+
+scala> Main.main(Array.empty)
+Applied discounts:  5%, 10%, 20% 
+
+scala> object Main {
+     |   def main(args: Array[String]) {
+     |     println("Hello Scala World!")
+     |   }
+     | }
+defined object Main
+
+scala> case class Customer(val name:String)
+defined class Customer
+
+scala> val thomas = Customer("Thomas")
+thomas: Customer = Customer(Thomas)
+
+scala> val thomas = new Customer("Thomas")
+thomas: Customer = Customer(Thomas)
+
+scala> def parse(numberAsString: String) =
+     |   try {
+     |     Integer.parseInt(numberAsString)
+     |   } catch {
+     |     case nfe: NumberFormatException =>
+     |       println("Wrong format for number " + numberAsString)
+     |     case e: Exception => println("Error when parsing number " + numberAsString)
+     |   }
+parse: (numberAsString: String)AnyVal
+
+scala> parse("2345")
+res9: AnyVal = 2345
+
+scala> parse("23ab")
+Wrong format for number 23ab
+res10: AnyVal = ()
+
+scala> def parse(numberAsString: String) =
+     |   try {
+     |     Integer.parseInt(numberAsString)
+     |   } catch {
+     |     case nfe: NumberFormatException =>
+     |       println("Wrong format for number " + numberAsString); -1
+     |     case _: Throwable => 
+     |       println("Error when parsing number " + numberAsString)
+     |       -1
+     |   }
+parse: (numberAsString: String)Int
+
+scala> val number = parse("23ab")
+Wrong format for number 23ab
+number: Int = -1
+
+scala> def parse(numberAsString: String) : Either[Failure, Int] =
+     |   try {
+     |     val result = Integer.parseInt(numberAsString)
+     |     Right(result)
+     |   } catch {
+     |     case _ : Throwable => Left(Failure("Error when parsing number"))
+     |   }
+parse: (numberAsString: String)Either[Failure,Int]
+
+scala> val number = parse("23ab")
+number: Either[Failure,Int] = Left(Failure(Error when parsing number))
+
+scala> val number = parse("2345")
+number: Either[Failure,Int] = Right(2345)
+
+scala> val amountBought = 5000
+amountBought: Int = 5000
+
+scala> val customerLevel = 
+     |   if (amountBought > 3000) "Gold" else "Silver"
+customerLevel: String = Gold
+
+scala> class Customer(
+     |   val firstName: String,
+     |   val lastName: String,
+     |   val age: Int,
+     |   val address: String,
+     |   val country: String, valhasAGoodRating: Boolean ){
+     |     
+     |     override def toString() =
+     |       s" $firstName $lastName"
+     |   }
+defined class Customer
+
+scala> object Constants {
+     |   val MyNeverChangingAge = 20
+     | }
+defined object Constants
+
+scala> val amounts = List(3,6,7,19) map ( x => x + 1)
+amounts: List[Int] = List(4, 7, 8, 20)
+
+scala> val amounts = List(3,6,7,10) map ( myCurrentAmount => 
+     |   myCurrentAmount + 1)
+amounts: List[Int] = List(4, 7, 8, 11)
+
+scala> val amounts = List(3,6,7,10) map { myCurrentAmount  =>
+     |   val result = myCurrentAmount + 1
+     |   println("Result: " + result)
+     |   result
+     | }
+Result: 4
+Result: 7
+Result: 8
+Result: 11
+amounts: List[Int] = List(4, 7, 8, 11)
+
+scala> val amounts = List(3,6,7,10) map( amt => amt + 1 )
+amounts: List[Int] = List(4, 7, 8, 11)
+
+scala> val amounts = List(3,6,7,10) map( _ + 1 )
+amounts: List[Int] = List(4, 7, 8, 11)
+
+scala> val sumOfAmounts = List(3,6,7,10).foldLeft(0)(_ + _)
+sumOfAmounts: Int = 26
+
+scala> val sumOfAmounts = List(3,6,7,10) reduce (_ + _)
+sumOfAmounts: Int = 26
+
+scala> val sumOfAmounts =
+     |   List(3,6,7,10) reduce ((total, element) => total + element)
+sumOfAmounts: Int = 26
