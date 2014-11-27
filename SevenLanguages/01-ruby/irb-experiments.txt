@@ -1,3 +1,5 @@
+Hello examples
+--------------
 2.1.3 :001 > puts 'hello, world'
 hello, world
  => nil 
@@ -12,6 +14,8 @@ hello, Ruby
 hello, myRuby
  => nil 
 
+Programming model
+-----------------
 2.1.3 :006 > 4
  => 4 
 2.1.3 :007 > 4.class
@@ -20,4 +24,86 @@ hello, myRuby
  => 8 
 2.1.3 :009 > 4.methods
  => [:to_s, :inspect, :-@, :+, :-, :*, :/, :div, :%, :modulo, :divmod, :fdiv, :**, :abs, :magnitude, :==, :===, :<=>, :>, :>=, :<, :<=, :~, :&, :|, :^, :[], :<<, :>>, :to_f, :size, :bit_length, :zero?, :odd?, :even?, :succ, :integer?, :upto, :downto, :times, :next, :pred, :chr, :ord, :to_i, :to_int, :floor, :ceil, :truncate, :round, :gcd, :lcm, :gcdlcm, :numerator, :denominator, :to_r, :rationalize, :singleton_method_added, :coerce, :i, :+@, :eql?, :remainder, :real?, :nonzero?, :step, :quo, :to_c, :real, :imaginary, :imag, :abs2, :arg, :angle, :phase, :rectangular, :rect, :polar, :conjugate, :conj, :between?, :nil?, :=~, :!~, :hash, :class, :singleton_class, :clone, :dup, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :freeze, :frozen?, :methods, :singleton_methods, :protected_methods, :private_methods, :public_methods, :instance_variables, :instance_variable_get, :instance_variable_set, :instance_variable_defined?, :remove_instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :send, :public_send, :respond_to?, :extend, :display, :method, :public_method, :singleton_method, :define_singleton_method, :object_id, :to_enum, :enum_for, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__, :__id__] 
+
+Decisions
+---------
+2.1.3 :010 > x = 4
+ => 4 
+2.1.3 :011 > x < 5
+ => true 
+2.1.3 :012 > x <= 4
+ => true 
+2.1.3 :013 > x > 4
+ => false 
+2.1.3 :014 > false.class
+ => FalseClass 
+2.1.3 :015 > true.class
+ => TrueClass
+2.1.3 :023 > puts 'This appears to be false.' unless x == 4
+ => nil 
+2.1.3 :024 > puts 'This appears to be true.' if x == 4
+This appears to be true.
+ => nil 
+2.1.3 :025 > if x == 4
+2.1.3 :026?>   puts 'This appears to be true.'
+2.1.3 :027?> end
+This appears to be true.
+ => nil 
+2.1.3 :031 > unless x == 4
+2.1.3 :032?>   puts 'This appears to be false.'
+2.1.3 :033?> else
+2.1.3 :034 >  puts 'This appears to be true.'
+2.1.3 :036?> end
+This appears to be true.
+ => nil 
+2.1.3 :037 > puts 'This appears to be true.' if not true
+ => nil 
+2.1.3 :038 > puts 'This appears to be true.' if !true
+ => nil 
+2.1.3 :039 > x = x + 1 while x < 10
+ => nil 
+2.1.3 :040 > x
+ => 10 
+2.1.3 :041 > x = x -1 until x == 1
+ => nil 
+2.1.3 :042 > x
+ => 1 
+2.1.3 :043 > while x < 10
+2.1.3 :044?>   x = x + 1
+2.1.3 :045?>   puts x
+2.1.3 :046?> end
+2
+3
+4
+5
+6
+7
+8
+9
+10
+ => nil
+2.1.3 :047 > puts 'This appears to be true.' if 1
+This appears to be true.
+ => nil 
+2.1.3 :048 > puts 'This appears to be true.' if 'random string'
+(irb):48: warning: string literal in condition
+This appears to be true.
+ => nil 
+2.1.3 :049 > puts 'This appears to be true.' if 0
+This appears to be true.
+ => nil 
+2.1.3 :050 > puts 'This appears to be true.' if true
+This appears to be true.
+ => nil 
+2.1.3 :051 > puts 'This appears to be true.' if false
+ => nil 
+2.1.3 :052 > puts 'This appears to be true.' if nil
+ => nil 
+2.1.3 :053 > true and false
+ => false 
+2.1.3 :054 > true or false
+ => true 
+2.1.3 :055 > false && false
+ => false 
+
 
