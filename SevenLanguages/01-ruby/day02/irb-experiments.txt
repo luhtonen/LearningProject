@@ -156,3 +156,32 @@ mangy moose
 ?> >> pass_block{puts 'Hello, block'}
 Hello, block
 => nil
+
+Defining Classes
+----------------
+?> >> 4.class
+=> Fixnum
+
+?> >> 4.class.superclass
+=> Integer
+
+?> >> 4.class.superclass.superclass
+=> Numeric
+
+?> >> 4.class.superclass.superclass.superclass
+=> Object
+>>
+?> >> 4.class.superclass.superclass.superclass.superclass
+=> BasicObject
+
+?> >> 4.class.superclass.superclass.superclass.superclass.superclass
+=> nil
+
+?> >> 4.class.class
+=> Class
+
+?> >> 4.class.class.superclass
+=> Module
+
+?> >> 4.class.class.superclass.superclass
+=> Object
