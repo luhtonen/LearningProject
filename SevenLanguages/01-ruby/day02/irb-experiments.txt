@@ -82,3 +82,29 @@ Hashes
 ?> >> stuff[:string]
 => "Hi, mom!"
 
+?> >> 'string'.object_id
+=> 70203623077880
+
+?> >> 'string'.object_id
+=> 70203623078360
+
+?> >> :string.object_id
+=> 156808
+
+?> >> :string.object_id
+=> 156808
+
+?> >> def tell_the_truth(options={})
+?> >>   if options[:profession] == :lawyer
+?> >>     'it could be believed that this is almost certainly not false.'
+?> >>   else
+?> >>     true
+?> >>   end
+?> >> end
+=> :tell_the_truth
+
+?> >> tell_the_truth
+=> true
+
+?> >> tell_the_truth :profession => :lawyer
+=> "it could be believed that this is almost certainly not false."
