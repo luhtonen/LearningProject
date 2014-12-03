@@ -30,3 +30,34 @@ Io> Vehicle type
 
 Io> Object type
 ==> Object
+
+Objects, prototypes and inheritance
+-----------------------------------
+Io> Car := Vehicle clone
+==>  Car_0x31a4b0:
+  type             = "Car"
+
+Io> Car slotNames
+==> list(type)
+Io> Car type
+==> Car
+Io> Car description
+==> Something to take you far away
+
+Io> ferrari := Car clone
+==>  Car_0x24b930:
+
+Io> ferrari slotNames
+==> list()
+Io> ferrari type
+==> Car
+Io> Ferrari := Car clone
+==>  Ferrari_0x38c870:
+  type             = "Ferrari"
+
+Io> Ferrari type
+==> Ferrari
+Io> Ferrari slotNames
+==> list(type)
+Io> ferrari slotNames
+==> list()
