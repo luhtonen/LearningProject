@@ -1,0 +1,32 @@
+Breaking the Ice
+----------------
+Io> "Hiho, Io!" print
+Hiho, Io!==> Hiho, Io!
+
+Io> Vehicle := Object clone
+==>  Vehicle_0x313640:
+  type             = "Vehicle"
+
+Io> Vehicle description := "Something to take you places"
+==> Something to take you places
+
+Io> Vehicle description = "Something to take you far away"
+==> Something to take you far away
+
+Io> Vehicle nonexistingSlot = "This won't work"
+
+  Exception: Slot nonexistingSlot not found. Must define slot using := operator before updating.
+  ---------
+  message 'updateSlot' in 'Command Line' on line 1
+
+Io> Vehicle description
+==> Something to take you far away
+
+Io> Vehicle slotNames
+==> list(type, description)
+
+Io> Vehicle type
+==> Vehicle
+
+Io> Object type
+==> Object
