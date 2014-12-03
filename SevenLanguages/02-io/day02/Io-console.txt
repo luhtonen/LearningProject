@@ -1,0 +1,79 @@
+Conditionals and Loops
+----------------------
+Io> loop("getting lazy..." println)
+getting lazy...
+getting lazy...
+...
+getting lazy...
+getting lazy...
+^C
+IOVM:
+	Received signal. Setting interrupt flag.
+
+  current coroutine
+  ---------
+  Coroutine callStack                  A4_Exception.io 244
+  Coroutine backTraceString            A4_Exception.io 274
+  Coroutine showStack                  System.io 62
+  System userInterruptHandler          [unlabeled] 0
+  Sequence print                       A2_Object.io 461
+  Sequence println                     Command Line 1
+
+Io> i := 1
+==> 1
+Io> while (i <= 11, i println; i = i + 1); "This one goes up to 11" println
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+This one goes up to 11
+==> This one goes up to 11
+
+Io> for (i, 1, 11, i println); "This one goes up to 11" println
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+This one goes up to 11
+==> This one goes up to 11
+
+Io> for (i, 1, 11, 2, i println); "This one goes up to 11" println
+1
+3
+5
+7
+9
+11
+This one goes up to 11
+==> This one goes up to 11
+
+Io> for (i, 1, 2, 1, i println, "extra argument")
+1
+2
+==> 2
+Io> for (i, 1, 2, i println, "extra argument")
+2
+==> extra argument
+
+Io> if (true, "It is true.", "It is false.")
+==> It is true.
+Io> if (false) then ("It is true") else ("It is false")
+==> nil
+Io> if (false) then ("It is true" println) else ("It is false" println)
+It is false
+==> nil
+
