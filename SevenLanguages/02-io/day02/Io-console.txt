@@ -149,3 +149,55 @@ Io> false xor true
 ==> true
 Io> false xor false
 ==> false
+
+Messages
+--------
+Io> postOffice := Object clone
+==>  Object_0x260800:
+
+Io> postOffice packageSender := method(call sender)
+==> method(
+    call sender
+)
+Io> mailer := Object clone
+==>  Object_0x28afe0:
+
+Io> mailer deliver := method(postOffice packageSender)
+==> method(
+    postOffice packageSender
+)
+Io> mailer deliver
+==>  Object_0x28afe0:
+  deliver          = method(...)
+
+
+Io> postOffice messageTarget := method(call target)
+==> method(
+    call target
+)
+Io> postOffice messageTarget
+==>  Object_0x260800:
+  messageTarget    = method(...)
+  packageSender    = method(...)
+
+Io> postOffice messageArgs := method(call message arguments)
+==> method(
+    call message arguments
+)
+Io> postOffice messageName := method(call message name)
+==> method(
+    call message name
+)
+Io> postOffice messageArgs("one",2,:three)
+==> list("one", 2, : three)
+Io> postOffice messageName
+==> messageName
+
+unless := method(
+... (call sender doMessage(call message argAt(0))) ifFalse (
+... call sender doMessage(call message argAt(1))) ifTrue (
+... call sender doMessage(call message argAt(2)))
+... )
+Io> unless (1 == 2, write("One is not two\n"), write("one is two\n"))
+One is not two
+==> false
