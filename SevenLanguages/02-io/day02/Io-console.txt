@@ -201,3 +201,17 @@ unless := method(
 Io> unless (1 == 2, write("One is not two\n"), write("one is two\n"))
 One is not two
 ==> false
+
+animals.io output
+-----------------
+$ io animals.io
+Slot of Duck
+---------------
+type
+walk
+speak
+
+Slot of Animal
+---------------
+type
+speak
