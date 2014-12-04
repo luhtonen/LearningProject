@@ -18,3 +18,19 @@ Lua
 JavaScript
 </li>
 </ul>
+
+corouting.io output
+-------------------
+$ io coroutine.io
+Fezzik, are there rocks ahead?
+If there are, we'll all be dead.
+No more rhymes now, I mean it.
+Anybody want a peanut?
+Scheduler: nothing left to resume so we are exiting
+  ---------
+  Coroutine callStack                  A4_Exception.io 244
+  Coroutine backTraceString            A4_Exception.io 274
+  Coroutine showStack                  A4_Exception.io 177
+  Coroutine pause                      Actor.io 150
+  Object actorProcessQueue             Actor.io 115
+
