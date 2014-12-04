@@ -3,3 +3,18 @@ phonebook.io output
 io phonebook.io
 list(Bob Smith, Mary Walsh)
 list(5195551212, 4162223434)
+
+builder.io output
+-----------------
+$ io builder.io
+<ul>
+<li>
+Io
+</li>
+<li>
+Lua
+</li>
+<li>
+JavaScript
+</li>
+</ul>
