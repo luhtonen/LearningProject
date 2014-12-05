@@ -34,3 +34,27 @@ Scheduler: nothing left to resume so we are exiting
   Coroutine pause                      Actor.io 150
   Object actorProcessQueue             Actor.io 115
 
+Actors
+------
+Io> slower := Object clone
+==>  Object_0x2e88e0:
+
+Io> faster := Object clone
+==>  Object_0x278d50:
+
+Io> slower start := method(wait(2); writeln("slower"))
+==> method(
+    wait(2); writeln("slower")
+)
+Io> faster start := method(wait(1); writeln("quickly"))
+==> method(
+    wait(1); writeln("quickly")
+)
+Io> slower start; faster start
+slower
+quickly
+==> nil
+Io> slower @@start; faster @@start; wait(3)
+quickly
+slower
+==> nil
