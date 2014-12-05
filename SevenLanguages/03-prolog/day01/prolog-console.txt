@@ -11,3 +11,19 @@ no
 | ?- likes(grommit, cheese).
 
 yes
+
+
+Basic Inferences and Variables
+------------------------------
+| ?- friend(wallace, wallace).
+
+no
+| ?- friend(grommit, wallace).
+
+yes
+| ?- friend(wallace, grommit).
+
+yes
+| ?- friend(wendolene, grommit).
+
+no
