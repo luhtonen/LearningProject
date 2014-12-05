@@ -1,0 +1,13 @@
+Basic Facts
+-----------
+| ?- ['friends.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/friends.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/friends.pl compiled, 5 lines read - 1085 bytes written, 7 ms
+
+(1 ms) yes
+| ?- likes(wallace, sheep).
+
+no
+| ?- likes(grommit, cheese).
+
+yes
