@@ -27,3 +27,38 @@ yes
 | ?- friend(wendolene, grommit).
 
 no
+
+
+Filling in the Blanks
+---------------------
+| ?- ['food.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/food.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/food.pl compiled, 12 lines read - 1654 bytes written, 6 ms
+
+(1 ms) yes
+| ?- food_type(What, meat).
+
+What = spam ? ;
+
+What = sausage ? ;
+
+no
+| ?- food_flavor(sausage, sweet).
+
+no
+| ?- flavor(sweet, What).
+
+What = dessert ? ;
+
+What = soda
+
+(1 ms) yes
+| ?- food_flavor(What, savory).
+
+What = velveeta ? ;
+
+What = spam ? ;
+
+What = sausage ? ;
+
+no
