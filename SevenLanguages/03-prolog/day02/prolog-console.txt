@@ -176,6 +176,8 @@ yes
 
 concat.pl output
 ----------------
+step 1
+------
 | ?- ['day02/concat.pl'].
 compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl for byte code...
 ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl compiled, 0 lines read - 413 bytes written, 9 ms
@@ -184,5 +186,18 @@ compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-pro
 | ?- concatenate([], [harry], What).
 
 What = [harry]
+
+yes
+
+step 2
+------
+| ?- ['day02/concat.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl compiled, 1 lines read - 600 bytes written, 7 ms
+
+yes
+| ?- concatenate([malfoy], [potter], What).
+
+What = [malfoy,potter]
 
 yes
