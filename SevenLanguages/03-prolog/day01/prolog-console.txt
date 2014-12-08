@@ -80,3 +80,35 @@ Tennessee = green ?
 
 yes
 
+Unification, part 1
+-------------------
+| ?- ['ohmy.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/ohmy.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/ohmy.pl compiled, 4 lines read - 881 bytes written, 6 ms
+
+(1 ms) yes
+| ?- dorothy(lion, tiger, bear).
+
+yes
+| ?- dorothy(One, Two, Three).
+
+One = lion
+Three = bear
+Two = tiger
+
+yes
+| ?- twin_cats(One, Two).
+
+One = lion
+Two = lion ? a
+
+One = lion
+Two = tiger
+
+One = tiger
+Two = lion
+
+One = tiger
+Two = tiger
+
+(1 ms) yes
