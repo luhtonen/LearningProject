@@ -201,3 +201,16 @@ yes
 What = [malfoy,potter]
 
 yes
+
+step 3
+------
+| ?- ['day02/concat.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl compiled, 4 lines read - 1259 bytes written, 8 ms
+
+(1 ms) yes
+| ?- concatenate([malfoy, granger], [potter], What).
+
+What = [malfoy,granger,potter] ?
+
+yes
