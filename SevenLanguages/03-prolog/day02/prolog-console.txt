@@ -115,3 +115,27 @@ yes
 Head = c
 
 yes
+
+Lists and Math
+--------------
+| ?- ['day02/list_math.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/list_math.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/list_math.pl:2: warning: singleton variables [Head] for count/2
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/list_math.pl compiled, 7 lines read - 1730 bytes written, 12 ms
+
+(1 ms) yes
+| ?- count(What, [1]).
+
+What = 1 ? ;
+
+no
+| ?- sum(What, [1, 2, 3]).
+
+What = 6 ? ;
+
+no
+| ?- average(What, [1, 2, 3]).
+
+What = 2.0 ? ;
+
+no
