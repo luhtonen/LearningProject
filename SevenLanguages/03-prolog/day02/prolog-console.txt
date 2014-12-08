@@ -173,3 +173,16 @@ One = [apples,oranges,bananas]
 Two = []
 
 yes
+
+concat.pl output
+----------------
+| ?- ['day02/concat.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl compiled, 0 lines read - 413 bytes written, 9 ms
+
+(1 ms) yes
+| ?- concatenate([], [harry], What).
+
+What = [harry]
+
+yes
