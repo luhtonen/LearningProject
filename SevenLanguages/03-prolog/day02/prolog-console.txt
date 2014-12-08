@@ -1,0 +1,31 @@
+Recursion
+---------
+| ?- ['day02/family.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/family.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/family.pl compiled, 7 lines read - 916 bytes written, 11 ms
+
+(1 ms) yes
+| ?- ancestor(john_boy_sr, john_boy_jr).
+
+true ?
+
+(1 ms) yes
+| ?- ancestor(zeb, john_boy_jr).
+
+true ?
+
+yes
+| ?- ancestor(zeb, Who).
+
+Who = john_boy_sr ? a
+
+Who = john_boy_jr
+
+no
+| ?- ancestor(Who, john_boy_jr).
+
+Who = john_boy_sr ? a
+
+Who = zeb
+
+no
