@@ -214,3 +214,16 @@ compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-pro
 What = [malfoy,granger,potter] ?
 
 yes
+
+final version
+-------------
+| ?- ['day02/concat.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day02/concat.pl compiled, 3 lines read - 647 bytes written, 7 ms
+
+yes
+| ?- concatenate([1, 2], [3], What).
+
+What = [1,2,3]
+
+yes
