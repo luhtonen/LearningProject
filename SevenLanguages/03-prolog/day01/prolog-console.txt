@@ -62,3 +62,21 @@ What = spam ? ;
 What = sausage ? ;
 
 no
+
+Map Coloring
+------------
+| ?- ['map.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/map.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day01/map.pl compiled, 12 lines read - 1852 bytes written, 13 ms
+
+(2 ms) yes
+| ?- coloring(Alabama, Mississippi, Georgia, Tennessee, Florida).
+
+Alabama = blue
+Florida = green
+Georgia = red
+Mississippi = red
+Tennessee = green ?
+
+yes
+
