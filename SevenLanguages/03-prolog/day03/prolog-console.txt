@@ -1,0 +1,17 @@
+Sudoku 4
+--------
+step 1
+------
+| ?- ['day03/sudoku4.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl compiled, 0 lines read - 397 bytes written, 11 ms
+
+(1 ms) yes
+| ?- sudoku([4,1,2,3,
+2,3,4,1,
+1,2,3,4,
+3,4,1,2], Solution).
+
+Solution = [4,1,2,3,2,3,4,1,1,2,3,4,3,4,1,2]
+
+yes
