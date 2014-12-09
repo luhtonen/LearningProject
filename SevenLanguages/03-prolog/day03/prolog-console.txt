@@ -15,3 +15,16 @@ compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-pro
 Solution = [4,1,2,3,2,3,4,1,1,2,3,4,3,4,1,2]
 
 yes
+
+problems
+--------
+| ?- sudoku([1,2,3],Solution).
+
+Solution = [1,2,3]
+
+yes
+| ?- sudoku([1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6],Solution).
+
+Solution = [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6]
+
+yes
