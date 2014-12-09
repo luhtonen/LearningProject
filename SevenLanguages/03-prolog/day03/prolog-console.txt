@@ -28,3 +28,18 @@ yes
 Solution = [1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6]
 
 yes
+
+step 2
+------
+| ?- ['day03/sudoku4.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl:1-7: warning: singleton variables [S11,S12,S13,S14,S21,S22,S23,S24,S31,S32,S33,S34,S41,S42,S43,S44] for sudoku/2
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl compiled, 6 lines read - 1179 bytes written, 7 ms
+
+(1 ms) yes
+| ?- sudoku([1,2,3],Solution).
+
+no
+| ?- sudoku([1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6],Solution).
+
+no
