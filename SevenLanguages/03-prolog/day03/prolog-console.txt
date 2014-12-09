@@ -43,3 +43,20 @@ no
 | ?- sudoku([1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6],Solution).
 
 no
+
+final version
+-------------
+| ?- ['day03/sudoku4.pl'].
+compiling ~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl for byte code...
+~/Documents/Development/Projects/LearningProject/SevenLanguages/03-prolog/day03/sudoku4.pl compiled, 30 lines read - 4880 bytes written, 8 ms
+
+(2 ms) yes
+| ?- sudoku([_,_,2,3,
+_,_,_,_,
+_,_,_,_,
+3,4,_,_],
+Solution).
+
+Solution = [4,1,2,3,2,3,4,1,1,2,3,4,3,4,1,2]
+
+yes
