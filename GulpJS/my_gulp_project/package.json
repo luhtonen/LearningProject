@@ -1,0 +1,14 @@
+{
+  "name": "my_gulp_project",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eduard Luhtonen <luhtonen@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.10"
+  }
+}
