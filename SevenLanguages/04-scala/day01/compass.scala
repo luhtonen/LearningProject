@@ -29,3 +29,15 @@ myCompass.turnRight
 myCompass.turnLeft
 myCompass.turnLeft
 myCompass.turnLeft
+
+/*
+Output
+------
+$ scala day01/compass.scala
+Initial bearing: 0
+Turning right. Now bearing east
+Turning right. Now bearing south
+Turning left. Now bearing east
+Turning left. Now bearing north
+Turning left. Now bearing west
+ */

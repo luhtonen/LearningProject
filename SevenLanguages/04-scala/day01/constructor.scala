@@ -10,3 +10,12 @@ class Person(first_name: String) {
 
 val bob = new Person("Bob")
 val bobTate = new Person("Bob", "Tate")
+
+/*
+Output
+------
+$ scala day01/constructor.scala
+Outer constructor
+Outer constructor
+Inner constructor
+ */
