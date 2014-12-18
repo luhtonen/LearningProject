@@ -9,4 +9,7 @@ object Application extends Controller {
     Ok("Hello world")
   }
 
+  def hello(name: String) = Action {
+    Ok("Hello " + name)
+  }
 }
