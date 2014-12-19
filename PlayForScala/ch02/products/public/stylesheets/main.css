@@ -6,7 +6,7 @@ body, p, label {
     font-size: 15px;
 }
 
-.label {
+.label .label-default {
     font-size: 13px;
     line-height: 16px;
 }
@@ -28,7 +28,7 @@ div.screenshot {
     padding-left: 20px;
 }
 
-.navbar .nav > li a {
+.navbar-nav > li a {
     color: #bbb;
 }
 
