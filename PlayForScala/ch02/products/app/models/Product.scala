@@ -17,4 +17,5 @@ object Product {
   )
 
   def findAll = products.toList.sortBy(_.ean)
+  def findByEan(ean: Long) = products.find(_.ean == ean)
 }
