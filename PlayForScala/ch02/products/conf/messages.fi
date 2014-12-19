@@ -1,5 +1,15 @@
 application.name = Tuoteluettelo
+
 ean = EAN
 name = Nimi
 description = Kuvaus
+
 products.details = Tuote: {0}
+products.form = Tuotetiedot
+products.new = (uusi)
+products.new.command = Uusi
+products.new.submit = Luo
+products.new.success = Onnistuneesti luoto tuote {0}.
+
+validation.errors = Ole hyvä ja korjaa virheitä lomakkeessa.
+validation.ean.duplicate = Tuota tällä EAN koodilla on jo olemassa
