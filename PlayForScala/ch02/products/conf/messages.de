@@ -1,1 +1,5 @@
 application.name = Produktkatalog
+ean = EAN
+name = Name
+description = Beschreibung
+products.details = Produkt: {0}

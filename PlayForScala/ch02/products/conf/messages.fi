@@ -1,1 +1,5 @@
 application.name = Tuoteluettelo
+ean = EAN
+name = Nimi
+description = Kuvaus
+products.details = Tuote: {0}
