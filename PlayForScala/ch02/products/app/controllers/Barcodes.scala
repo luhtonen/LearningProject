@@ -22,8 +22,8 @@ class Barcodes extends Controller {
   def ean13BarCode(ean: Long, mimeType: String): Array[Byte] = {
     import java.io.ByteArrayOutputStream
     import java.awt.image.BufferedImage
-    import org.krystalis.barcode4j.output.bitmap.BitmapCanvasProvider
-    import org.krystalis.barcode4j.impl.upcean.EAN13Bean
+    import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider
+    import org.krysalis.barcode4j.impl.upcean.EAN13Bean
 
     val output: ByteArrayOutputStream = new ByteArrayOutputStream
     val canvas: BitmapCanvasProvider = new BitmapCanvasProvider(output, mimeType, ImageResolution,
