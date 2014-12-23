@@ -2,7 +2,7 @@ package controllers
 
 import play.api.mvc.{Action, Controller}
 
-class Barcodes extends Controller {
+object Barcodes extends Controller {
 
   val ImageResolution = 144
 
