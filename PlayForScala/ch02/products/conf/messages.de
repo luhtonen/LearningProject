@@ -5,11 +5,11 @@ name = Name
 description = Beschreibung
 
 products.details = Produkt: {0}
-products.form = Product details
-products.new = (new)
-products.new.command = New
-products.new.submit = Add
-products.new.success = Successfully added product {0}.
+products.form = Angaben zum Produkt
+products.new = (neu)
+products.new.command = Neu
+products.new.submit = Hinzufügen
+products.new.success = Produkt {0} erfolgreich hinzugefügt.
 
-validation.errors = Please correct the errors in the form.
-validation.ean.duplicate = A product with this EAN code already exists
+validation.errors = Korrigieren Sie die Fehler in der Form.
+validation.ean.duplicate = Ein Produkt mit diesem EAN-Code ist bereits vorhanden.

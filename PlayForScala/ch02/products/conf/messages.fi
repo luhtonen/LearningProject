@@ -12,4 +12,4 @@ products.new.submit = Luo
 products.new.success = Onnistuneesti luoto tuote {0}.
 
 validation.errors = Ole hyvä ja korjaa virheitä lomakkeessa.
-validation.ean.duplicate = Tuota tällä EAN koodilla on jo olemassa
+validation.ean.duplicate = Tuote tällä EAN koodilla on jo olemassa
