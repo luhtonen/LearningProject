@@ -1,6 +1,6 @@
 package controllers
 
-import play.api.mvc.{Action, Controller}
+import play.api.mvc.{Flash, Action, Controller}
 import models.Product
 import play.api.data.Form
 import play.api.data.Forms.{mapping, longNumber, nonEmptyText}
@@ -43,8 +43,8 @@ object Products extends Controller {
   }
 
   def newProduct = Action { implicit request =>
-    val form = if (flash.get("error").isDefined)
-      productForm.bind(flash.data)
+    val form = if (request.flash.get("error").isDefined)
+      productForm.bind(request.flash.data)
     else
       productForm
 
