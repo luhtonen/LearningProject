@@ -12,27 +12,23 @@
     <body>
         <div class="screenshot">
             <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="navbar-inner">
-                    <div class="container">
-                        <a class="navbar-brand" href="@routes.Application.index()">
-                            @Messages("application.name")
-                        </a>
-                        <ul class="nav">
-                            <li class="nav-divider"></li>
-                            <li class="active">
-                                <a href="@routes.Products.list()">
-                                    @Messages("products.list.navigation")
-                                </a>
-                            </li>
-                            <li class="active">
-                                <a href="@routes.Products.newProduct()">
-                                    <i class="glyphicon-plus"></i>
-                                    @Messages("products.new.command")
-                                </a>
-                            </li>
-                            <li class="nav-divider"></li>
-                        </ul>
-                    </div>
+                <div class="container">
+                    <a class="navbar-brand" href="@routes.Application.index()">
+                        @Messages("application.name")
+                    </a>
+                    <ul class="nav navbar-nav">
+                        <li role="presentation" class="active">
+                            <a href="@routes.Products.list()">
+                                @Messages("products.list.navigation")
+                            </a>
+                        </li>
+                        <li role="presentation" class="active">
+                            <a href="@routes.Products.newProduct()">
+                                <i class="glyphicon-plus"></i>
+                                @Messages("products.new.command")
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
