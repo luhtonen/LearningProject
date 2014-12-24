@@ -1,4 +1,5 @@
 application.name = Catalogue des produits
+products.list.navigation = Produits
 
 ean = EAN
 name = Nom

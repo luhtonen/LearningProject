@@ -1,4 +1,5 @@
 application.name = Tuoteluettelo
+products.list.navigation = Tuotteet
 
 ean = EAN
 name = Nimi

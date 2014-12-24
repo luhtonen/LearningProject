@@ -1,4 +1,5 @@
 application.name = Каталог изделий
+products.list.navigation = Изделия
 
 ean = EAN
 name = Имя
