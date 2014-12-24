@@ -41,4 +41,13 @@ object Products extends Controller {
       }
     )
   }
+
+  def newProduct = Action { implicit request =>
+    val form = if (flash.get("error").isDefined)
+      productForm.bind(flash.data)
+    else
+      productForm
+
+    Ok(views.html.products.editProduct(form))
+  }
 }
