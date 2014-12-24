@@ -26,4 +26,18 @@ object Products extends Controller {
       Ok(views.html.products.details(product))
     }.getOrElse(NotFound)
   }
+
+  def save = Action { implicit request =>
+    val newProductForm = productForm.bindFromRequest()
+
+    newProductForm.fold(
+      hasErrors = { form =>
+        Redirect(routes.Products.newProduct())
+      },
+      success = { newProduct =>
+        Product.add(newProduct)
+        Redirect(routes.Products.show(newProduct.ean))
+      }
+    )
+  }
 }
