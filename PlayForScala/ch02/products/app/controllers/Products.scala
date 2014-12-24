@@ -32,11 +32,12 @@ object Products extends Controller {
 
     newProductForm.fold(
       hasErrors = { form =>
-        Redirect(routes.Products.newProduct())
+        Redirect(routes.Products.newProduct()).flashing(Flash(form.data) + ("error" -> Messages("validation.errors")))
       },
       success = { newProduct =>
         Product.add(newProduct)
-        Redirect(routes.Products.show(newProduct.ean))
+        val message = Messages("products.new.success", newProduct.name)
+        Redirect(routes.Products.show(newProduct.ean)).flashing("success" -> message)
       }
     )
   }
