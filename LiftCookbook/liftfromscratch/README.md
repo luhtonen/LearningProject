@@ -3,7 +3,7 @@
 This project shows you how to create a Lift SBT project from scratch, without downloading anything from the Lift website.
 
 ## Project structure
-- project root directory \
+- project root directory 
   | build.sbt
   - project/
     | plugins.sbt
