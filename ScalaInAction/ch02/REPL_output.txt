@@ -156,3 +156,11 @@ myList: List[String] = List(This, is, immutable)
 
 scala> val afterDelete = newList.filterNot(_ == 3)
 afterDelete: List[Int] = List(1, 2)
+
+if/else
+-------
+scala> val useDefault = false
+useDefault: Boolean = false
+
+scala> val configFile = if (useDefault) "custom.txt" else "default.txt"
+configFile: String = default.txt
