@@ -128,3 +128,9 @@ scala> array.foreach(println)
 This
 is
 mutable
+
+$ scala myfirstScript.scala my first script
+my
+first
+script
+
