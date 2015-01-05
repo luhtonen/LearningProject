@@ -1,0 +1,130 @@
+REPL with Scala interpreter
+---------------------------
+scala> val myList = new java.util.ArrayList[String]()
+myList: java.util.ArrayList[String] = []
+
+XML literals
+------------
+scala> val book = <book>
+     | <title>Scala in Action</title>
+     | <author>Nilanjan</author>
+     | </book>
+book: scala.xml.Elem =
+<book>
+<title>Scala in Action</title>
+<author>Nilanjan</author>
+</book>
+
+scala> val message = "I didn't know xml could be so much fun"
+message: String = I didn't know xml could be so much fun
+
+scala> val code = "1"
+code: String = 1
+
+scala> val alert = <alert>
+     | <message priority={code}>{message}</message>
+     | <date>{new java.util.Date()}</date>
+     | </alert>
+alert: scala.xml.Elem =
+<alert>
+<message priority="1">I didn't know xml could be so much fun</message>
+<date>Sat Jan 03 15:32:25 CET 2015</date>
+</alert>
+
+Defining variables
+------------------
+scala> var aa: Int = _
+aa: Int = 0
+
+scala> var test: Float = _
+test: Float = 0.0
+
+scala> var test: Boolean = _
+test: Boolean = false
+
+scala> var test: Char = _
+test: Char = ?
+
+scala> var test: Long = _
+test: Long = 0
+
+scala> var a = 1
+a: Int = 1
+
+scala> lazy val b = a + 1
+b: Int = <lazy>
+
+scala> a = 5
+a: Int = 5
+
+scala> b
+res0: Int = 6
+
+scala> val first :: rest = List(1, 2, 3)
+first: Int = 1
+rest: List[Int] = List(2, 3)
+
+Defining functions
+------------------
+scala> def myFistFunction(): String = { "exciting times ahead" }
+myFistFunction: ()String
+
+scala> def myFistFunction() = { "exciting times ahead" }
+myFistFunction: ()String
+
+scala> myFistFunction()
+res1: String = exciting times ahead
+
+scala> def myFistFunction = "exciting times ahead"
+myFistFunction: String
+
+scala> myFistFunction
+res2: String = exciting times ahead
+
+scala> def max(a: Int, b: Int) = if(a > b) a else b
+max: (a: Int, b: Int)Int
+
+scala> max(5, 4)
+res3: Int = 5
+
+scala> max(5, 7)
+res4: Int = 7
+
+scala> def toList[A](value:A) = List(value)
+toList: [A](value: A)List[A]
+
+scala> toList(1)
+res5: List[Int] = List(1)
+
+scala> toList("Scala rocks")
+res6: List[String] = List(Scala rocks)
+
+Function literals
+-----------------
+scala> val evenNumbers = List(2, 4, 6, 8, 10)
+evenNumbers: List[Int] = List(2, 4, 6, 8, 10)
+
+scala> evenNumbers.foldLeft(0) { (a, b) => a + b }
+res7: Int = 30
+
+scala> evenNumbers.foldLeft(0) { _ + _ }
+res8: Int = 30
+
+Arrays 
+------
+scala> val array = new Array[String](3)
+array: Array[String] = Array(null, null, null)
+
+scala> array(0) = "This"
+
+scala> array(1) = "is"
+
+scala> array(2) = "mutable"
+
+scala> array
+res3: Array[String] = Array(This, is, mutable)
+
+scala> array.foreach(println)
+This
+is
+mutable
