@@ -134,3 +134,25 @@ my
 first
 script
 
+Lists
+-----
+scala> val myList = List("This", "is", "immutable")
+myList: List[String] = List(This, is, immutable)
+
+scala> val oldList = List(1, 2)
+oldList: List[Int] = List(1, 2)
+
+scala> val newList = 3 :: oldList
+newList: List[Int] = List(3, 1, 2)
+
+scala> oldList
+res0: List[Int] = List(1, 2)
+
+scala> val newList = oldList :+ 3
+newList: List[Int] = List(1, 2, 3)
+
+scala> val myList = "This" :: "is" :: "immutable" :: Nil
+myList: List[String] = List(This, is, immutable)
+
+scala> val afterDelete = newList.filterNot(_ == 3)
+afterDelete: List[Int] = List(1, 2)
