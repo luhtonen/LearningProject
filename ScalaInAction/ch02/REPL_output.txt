@@ -164,3 +164,70 @@ useDefault: Boolean = false
 
 scala> val configFile = if (useDefault) "custom.txt" else "default.txt"
 configFile: String = default.txt
+
+For-comprehensions
+------------------
+scala> var files = new java.io.File(".").listFiles
+files: Array[java.io.File] = Array(./myfirstScript.scala, ./REPL_output.txt)
+
+scala> for (file <- files) {
+     |   val filename = file.getName
+     |   if (filename.endsWith(".scala")) println(file)
+     | }
+./myfirstScript.scala
+
+scala> for(
+     |   file <- files;
+     |   fileName = file.getName;
+     |   if(fileName.endsWith(".scala"))
+     | ) println (file)
+./myfirstScript.scala
+
+scala> val aList = List(1, 2, 3)
+aList: List[Int] = List(1, 2, 3)
+
+scala> val bList = List(4, 5, 6)
+bList: List[Int] = List(4, 5, 6)
+
+scala> for { a <- aList; b <- bList } println(a + b)
+5
+6
+7
+6
+7
+8
+7
+8
+9
+
+scala> for { a <- aList; b <- bList } yield a + b
+res5: List[Int] = List(5, 6, 7, 6, 7, 8, 7, 8, 9)
+
+scala> val result = for { a <- aList; b <- bList } yield a + b
+result: List[Int] = List(5, 6, 7, 6, 7, 8, 7, 8, 9)
+
+scala> for (r <- result) println(r)
+5
+6
+7
+6
+7
+8
+7
+8
+9
+
+scala> val xmlNode = <result>{result.mkString(",")}</result>
+xmlNode: scala.xml.Elem = <result>5,6,7,6,7,8,7,8,9</result>
+
+scala> for { a <- aList; b <- bList } yield { println(a + b) }
+5
+6
+7
+6
+7
+8
+7
+8
+9
+res7: List[Unit] = List((), (), (), (), (), (), (), (), ())
