@@ -231,3 +231,8 @@ scala> for { a <- aList; b <- bList } yield { println(a + b) }
 8
 9
 res7: List[Unit] = List((), (), (), (), (), (), (), (), ())
+
+Pattern matching
+----------------
+$ scala Ordinal.scala 9
+9th
