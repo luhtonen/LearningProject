@@ -256,3 +256,23 @@ This is Array
 
 scala> printType(new java.util.Date())
 This is date
+
+scala> List(1, 2, 3, 4) match {
+     |   case f :: s :: rest => List(f, s)
+     |   case _ => Nil
+     | }
+res13: List[Int] = List(1, 2)
+
+scala> :load printType.scala
+Loading printType.scala...
+printType: (obj: AnyRef)Unit
+rangeMatcher: (num: Int)Unit
+
+scala> rangeMatcher(9)
+with in 0 to 10
+
+scala> rangeMatcher(95)
+with in 11 to 100
+
+scala> rangeMatcher(495)
+beyond 100
