@@ -236,3 +236,23 @@ Pattern matching
 ----------------
 $ scala Ordinal.scala 9
 9th
+
+scala> 2 match { case 1 => "One" }
+scala.MatchError: 2 (of class java.lang.Integer)
+  ... 33 elided
+
+scala> :load printType.scala
+Loading printType.scala...
+printType: (obj: AnyRef)Unit
+
+scala> printType("Hello")
+This is string
+
+scala> printType(List(1,2,3))
+This is List
+
+scala> printType(new Array[String](2))
+This is Array
+
+scala> printType(new java.util.Date())
+This is date
