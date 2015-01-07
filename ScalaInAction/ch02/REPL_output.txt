@@ -301,3 +301,16 @@ $ scala Ordinal2.scala 4352
 4352nd
 $ scala Ordinal2.scala 4357
 4357th
+
+Exception handling
+------------------
+scala> :load printType.scala
+Loading printType.scala...
+printType: (obj: AnyRef)Unit
+rangeMatcher: (num: Int)Unit
+rangeMatcher1: (num: Int)Unit
+
+scala> try {
+     |   rangeMatcher1(1000)
+     | } catch { case e: IllegalArgumentException => e.getMessage }
+res17: Any = Only values between 0 and 100 are allowed
