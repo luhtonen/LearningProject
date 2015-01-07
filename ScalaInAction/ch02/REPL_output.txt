@@ -276,3 +276,28 @@ with in 11 to 100
 
 scala> rangeMatcher(495)
 beyond 100
+
+$ scala Ordinal2.scala 1
+1st
+$ scala Ordinal2.scala 2
+2nd
+$ scala Ordinal2.scala 3
+3rd
+$ scala Ordinal2.scala 9
+9th
+$ scala Ordinal2.scala 10
+10th
+$ scala Ordinal2.scala 12
+12th
+$ scala Ordinal2.scala 15
+15th
+$ scala Ordinal2.scala 20
+20th
+$ scala Ordinal2.scala 52
+52nd
+$ scala Ordinal2.scala 352
+352nd
+$ scala Ordinal2.scala 4352
+4352nd
+$ scala Ordinal2.scala 4357
+4357th
