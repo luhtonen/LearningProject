@@ -1,0 +1,18 @@
+package edu.rest.server;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+
+/**
+ * Created by Eduard Luhtonen on 07/01/15.
+ * Spring application to run Spring services.
+ */
+@ComponentScan
+@EnableAutoConfiguration
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class);
+    }
+}
