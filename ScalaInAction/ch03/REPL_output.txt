@@ -1,2 +1,50 @@
 Classes and constructors
 ------------------------
+scala> class MongoClient(val host:String, val port:Int)
+defined class MongoClient
+
+scala> val client = new MongoClient("127.0.0.1", 123)
+client: MongoClient = MongoClient@6d9c638
+
+scala> client.host
+res0: String = 127.0.0.1
+
+scala> client.port
+res1: Int = 123
+
+scala> class AddressBean(
+     | var address1:String,
+     | var address2:String,
+     | var city:String,
+     | var zipCode:Int
+     | )
+defined class AddressBean
+
+scala> var localAddress = new AddressBean("Homestreet 5", "", "Hometown", 506)
+localAddress: AddressBean = AddressBean@47fd17e3
+
+scala> class MongoClient(host:String, port:Int)
+defined class MongoClient
+
+scala> var client = new MongoClient("localhost", 123)
+client: MongoClient = MongoClient@17f6480
+
+scala> client.host
+<console>:10: error: value host is not a member of MongoClient
+              client.host
+                     ^
+
+Parameter validation in constructor
+-----------------------------------
+scala> :load MyScript.scala
+Loading MyScript.scala...
+defined class MyScript
+
+scala> val s = new MyScript("127.0.0.1")
+host = localhost
+s: MyScript = MyScript@de3a06f
+
+scala> val s = new MyScript(null)
+java.lang.IllegalArgumentException: requirement failed: Have to provide host name
+  at scala.Predef$.require(Predef.scala:219)
+  ... 34 elided
