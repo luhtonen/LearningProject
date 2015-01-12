@@ -1,6 +1,6 @@
-package com.elu.mongo
+package org.elu.mongo
 
-import com.mongodb.Mongo
+import com.mongodb._
 
 class MongoClient(val host: String, val port: Int) {
     require(host != null, "You have to provide a host name")
