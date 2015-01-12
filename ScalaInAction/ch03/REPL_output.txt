@@ -48,3 +48,30 @@ scala> val s = new MyScript(null)
 java.lang.IllegalArgumentException: requirement failed: Have to provide host name
   at scala.Predef$.require(Predef.scala:219)
   ... 34 elided
+
+Imports
+-------
+scala> val randomValue = { import scala.util.Random
+     |   new Random().nextInt
+     | }
+randomValue: Int = 1880137428
+
+scala> val randomValue = { import util.Random
+     |   new Random().nextInt
+     | }
+randomValue: Int = -2116957213
+
+scala> import java.lang.System._
+import java.lang.System._
+
+scala> nanoTime
+res0: Long = 502454242315333
+
+scala> import java.lang._
+import java.lang._
+
+scala> import System._
+import System._
+
+scala> nanoTime
+res1: Long = 502541301285450
