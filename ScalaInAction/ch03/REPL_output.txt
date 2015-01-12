@@ -75,3 +75,18 @@ import System._
 
 scala> nanoTime
 res1: Long = 502541301285450
+
+Objects and companion objects
+-----------------------------
+scala> :load RichConsole.scala
+Loading RichConsole.scala...
+defined object RichConsole
+
+scala> RichConsole.p("rich console")
+rich console
+
+scala> import RichConsole._
+import RichConsole._
+
+scala> p("rich console")
+rich console
