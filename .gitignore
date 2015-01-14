@@ -24,3 +24,5 @@ MasteringGrunt/Chapter4/app/index.html
 MasteringGrunt/Chapter4/app/scripts/app/main.js
 MasteringGrunt/Chapter4/app/styles/main.css
 target
+*.log
+*.db
