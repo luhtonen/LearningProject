@@ -27,3 +27,4 @@ target
 *.log
 *.db
 scala/reactive-maps/project/project/typesafe.sbt
+ScalaForJavaDevelopers/Chapter02/Sample/target/*
