@@ -26,3 +26,4 @@ MasteringGrunt/Chapter4/app/styles/main.css
 target
 *.log
 *.db
+scala/reactive-maps/project/project/typesafe.sbt
