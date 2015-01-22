@@ -15,3 +15,5 @@ libraryDependencies ++= Seq(
 
 libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
 
+libraryDependencies += "net.databinder.dispatch" %% "dispatch-core" % "0.11.0"
+

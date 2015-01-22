@@ -1,0 +1,29 @@
+Working with HTTP
+-----------------
+scala> import dispatch._, Defaults._
+import dispatch._
+import Defaults._
+
+scala> val request = url("http://freegeoip.net/xml/www.google.com")
+request: dispatch.Req = Req(<function1>)
+
+scala> val result = Http(request OK as.String)
+result: dispatch.Future[String] = scala.concurrent.impl.Promise$DefaultPromise@30a776b9
+
+scala> val resultAsString = result()
+resultAsString: String =
+"<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <IP>64.233.185.105</IP>
+    <CountryCode>US</CountryCode>
+    <CountryName>United States</CountryName>
+    <RegionCode>CA</RegionCode>
+    <RegionName>California</RegionName>
+    <City>Mountain View</City>
+    <ZipCode>94043</ZipCode>
+    <TimeZone>America/Los_Angeles</TimeZone>
+    <Latitude>37.419</Latitude>
+    <Longitude>-122.058</Longitude>
+    <MetroCode>807</MetroCode>
+</Response>
+"
