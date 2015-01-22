@@ -27,3 +27,29 @@ resultAsString: String =
     <MetroCode>807</MetroCode>
 </Response>
 "
+
+Scala's for comprehension
+-------------------------
+scala> for {
+     |   elem <- List(1, 2, 3, 4, 5)
+     | } yield "T" + elem
+res0: List[String] = List(T1, T2, T3, T4, T5)
+
+scala> for {
+     |   word <- List("Hello", "Scala")
+     |   char <- word
+     | } yield char.isLower
+res0: List[Boolean] = List(false, true, true, true, true, false, true, true, true, true)
+
+scala> for {
+     |   word <- List("Hello", "Scala")
+     |   char <- word if char.isUpper
+     | } yield char
+res1: List[Char] = List(H, S)
+
+scala> for {
+     |   word <- List("Hello", "Scala")
+     |   char <- word
+     |   lowerChar = char.toLower
+     | } yield lowerChar
+res2: List[Char] = List(h, e, l, l, o, s, c, a, l, a)
