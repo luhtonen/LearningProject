@@ -18,6 +18,8 @@ libraryDependencies ++= Seq(
 	"org.seleniumhq.selenium"	%		"selenium-java" 	%	"2.33.0"		%	"test",
 	"org.testng"							%		"testng"					%	"5.14.9"		%	"test",
 	"com.typesafe.akka"				%%	"akka-testkit"		%	"2.2.3"			%	"test",
+	"org.scalamock" 					%%  "scalamock-scalatest-support" % "3.2" % "test",
+	"junit" 									% 	"junit" 					% "4.12"	 		% "test",
 	"com.typesafe.akka"				%%	"akka-actor"			%	"2.2.3",
 	"com.typesafe.akka" 			%%	"akka-dataflow"		% "2.2.3",
 	"net.databinder.dispatch" %%	"dispatch-core"		% "0.11.0",
