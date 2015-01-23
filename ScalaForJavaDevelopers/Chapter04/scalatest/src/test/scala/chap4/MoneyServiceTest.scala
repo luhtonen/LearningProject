@@ -14,7 +14,7 @@ class MoneyServiceTest extends FlatSpec with Matchers {
     val amount = 200
     val from = "EUR"
     val result = moneyService.sendMoneyToSweden(amount, from)
-    result.toInt should (be > (1700) and be <= (1800))
+    result.toInt should (be > (1700) and be <= (1900))
   }
 
   "Sending money to Sweden via England" should "convert into GBP then SEK" in {
@@ -22,6 +22,6 @@ class MoneyServiceTest extends FlatSpec with Matchers {
     val amount = 200
     val from = "EUR"
     val result = moneyService.sendMoneyToSwedenViaEngland(amount, from)
-    result.toInt should (be > (1700) and be <= (1800))
+    result.toInt should (be > (1700) and be <= (1900))
   }
 }
