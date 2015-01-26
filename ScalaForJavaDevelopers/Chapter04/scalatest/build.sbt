@@ -8,6 +8,8 @@ autoCompilerPlugins := true
 
 resolvers += "spray repo" at "http://repo.spray.io"
 
+resolvers += Resolver.sonatypeRepo("releases")
+
 resolvers += Resolver.sonatypeRepo("snapshots")
 
 unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
@@ -20,6 +22,7 @@ libraryDependencies ++= Seq(
 	"com.typesafe.akka"				%%	"akka-testkit"		%	"2.2.3"			%	"test",
 	"org.scalamock" 					%%  "scalamock-scalatest-support" % "3.2" % "test",
 	"junit" 									% 	"junit" 					% "4.12"	 		% "test",
+	"org.scalacheck" 					%% 	"scalacheck" 			% "1.12.1" 		% "test",
 	"com.typesafe.akka"				%%	"akka-actor"			%	"2.2.3",
 	"com.typesafe.akka" 			%%	"akka-dataflow"		% "2.2.3",
 	"net.databinder.dispatch" %%	"dispatch-core"		% "0.11.0",
@@ -34,7 +37,7 @@ libraryDependencies ++= Seq(
 
 
 //-oD to show test duration
-testOptions in Test += Tests.Argument("-oD")
+//testOptions in Test += Tests.Argument("-oD")
 
 //run tests in parallel?
 parallelExecution in Test := false
