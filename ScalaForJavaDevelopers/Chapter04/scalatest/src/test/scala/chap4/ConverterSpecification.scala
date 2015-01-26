@@ -9,7 +9,7 @@ import Prop.forAll
  * Created by luhtonen on 26/01/15.
  */
 object ConverterSpecification extends Properties("Converter") with Converter {
-  val currencies = Gen.oneOf("EUR", "GBP", "SEK", "JPY")
+  val currencies = Gen.oneOf("EUR", "GBP", "SEK", "JPY", "DUMMY")
 
   lazy val conversions: Gen[(BigDecimal,String,String)] = for {
     amt <- arbitrary[Int] suchThat {_ >= 0}
