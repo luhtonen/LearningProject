@@ -4,7 +4,7 @@ import play.api.mvc.{Action, Controller}
 import play.api.data._
 import play.api.data.Forms._
 
-object Application extends Controller {
+object Application extends Controller with Secured {
   /**
    * Describes the hello form.
    */
@@ -22,7 +22,7 @@ object Application extends Controller {
    * Home page
    * @return Action for home page
    */
-  def index = Action {
+  def index = withAuth { username => implicit request =>
     Ok(views.html.index(helloForm))
   }
 
