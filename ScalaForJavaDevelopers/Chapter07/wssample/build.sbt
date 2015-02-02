@@ -25,7 +25,7 @@ lazy val root = (project in file(".")).
   settings(
     sourceGenerators in Compile += (scalaxb in Compile).taskValue,
     dispatchVersion in (Compile, scalaxb) := dispatchV,
-    async in (Compile, scalaxb)           := true,
+    async in (Compile, scalaxb)           := false,
     packageName in (Compile, scalaxb)     := "org.elu"
   )
 
