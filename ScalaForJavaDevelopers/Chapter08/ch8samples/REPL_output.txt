@@ -1,0 +1,48 @@
+The Async library – SIP-22-Async
+--------------------------------
+scala> import play.api.libs.json._
+import play.api.libs.json._
+
+scala> import play.api.Play.current
+import play.api.Play.current
+
+scala> import play.api.libs.functional.syntax._
+import play.api.libs.functional.syntax._
+
+scala> import scala.util.{Success, Failure}
+import scala.util.{Success, Failure}
+
+scala> import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.Implicits.global
+
+scala> import play.api.libs.ws._
+import play.api.libs.ws._
+
+scala> val application = new play.core.StaticApplication(new java.io.File("pwd")).application
+[info] play - Application started (Prod)
+application: play.api.DefaultApplication = play.api.DefaultApplication@6eb35c24
+
+scala> play.api.Play.start(application)
+[info] play - Application started (Prod)
+
+scala> val locationURL = "http://freegeoip.net/xml/www.helsinki.fi"
+locationURL: String = http://freegeoip.net/xml/www.helsinki.fi
+
+scala> val futureLocation = WS.url(locationURL).get().map { response =>
+     |   (response.xml \ "City").text
+     | }
+futureLocation: scala.concurrent.Future[String] = scala.concurrent.impl.Promise$DefaultPromise@50e1bca
+
+scala> val location = futureLocation.value
+location: Option[scala.util.Try[String]] = None
+
+scala> val location = futureLocation.value
+location: Option[scala.util.Try[String]] = Some(Success(Helsinki))
+
+scala> val weatherURL = "http://api.openweathermap.org/data/2.5/weather?q="
+weatherURL: String = http://api.openweathermap.org/data/2.5/weather?q=
+
+scala> val futureWeather = WS.url(weatherURL).get().map { response =>
+     |   response.json
+     | }
+futureWeather: scala.concurrent.Future[play.api.libs.json.JsValue] = scala.concurrent.impl.Promise$DefaultPromise@490a8143
