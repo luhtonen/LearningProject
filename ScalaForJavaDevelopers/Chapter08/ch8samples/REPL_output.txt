@@ -72,3 +72,21 @@ futureWeather2: scala.concurrent.Future[String] = scala.concurrent.impl.Promise$
 scala> Success({"coord":{"lon":24.94,"lat":60.17},"sys":{"type":3,"id":121596,"message":0.0202,"country":"FI","sunrise":1423031214,"sunset":1423060886},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"cmc stations","main":{"temp":270.45,"humidity":98,"pressure":1013.26,"temp_min":270.45,"temp_max":270.45},"wind":{"speed":0.9,"gust":1.3,"deg":22},"snow":{"3h":0.25},"clouds":{"all":92},"dt":1423033188,"id":658225,"name":"Helsinki","cod":200}
 )
 
+Combining services without await
+--------------------------------
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val futureLocation = WS.url(locationURL).get().map(resp => (resp.xml \ "City").text)
+val futureWeather2 = async { 
+  await(WS.url(weatherURL + futureLocation).get()).body
+}
+futureWeather2.onComplete(println)
+
+// Exiting paste mode, now interpreting.
+
+futureLocation: scala.concurrent.Future[String] = scala.concurrent.impl.Promise$DefaultPromise@29549afc
+futureWeather2: scala.concurrent.Future[String] = scala.concurrent.impl.Promise$DefaultPromise@74358963
+
+scala> Success({"message":"Error: Not found city","cod":"404"}
+)
