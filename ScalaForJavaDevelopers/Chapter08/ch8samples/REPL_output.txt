@@ -42,7 +42,10 @@ location: Option[scala.util.Try[String]] = Some(Success(Helsinki))
 scala> val weatherURL = "http://api.openweathermap.org/data/2.5/weather?q="
 weatherURL: String = http://api.openweathermap.org/data/2.5/weather?q=
 
-scala> val futureWeather = WS.url(weatherURL).get().map { response =>
+scala> val futureWeather = WS.url(weatherURL+"Paris").get().map { response =>
      |   response.json
      | }
-futureWeather: scala.concurrent.Future[play.api.libs.json.JsValue] = scala.concurrent.impl.Promise$DefaultPromise@490a8143
+futureWeather: scala.concurrent.Future[play.api.libs.json.JsValue] = scala.concurrent.impl.Promise$DefaultPromise@4ab63fe1
+
+scala> val weather = futureWeather.value
+weather: Option[scala.util.Try[play.api.libs.json.JsValue]] = Some(Success({"coord":{"lon":2.35,"lat":48.85},"sys":{"message":0.0934,"country":"FR","sunrise":1423034154,"sunset":1423068789},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"cmc stations","main":{"temp":271.409,"temp_min":271.409,"temp_max":271.409,"pressure":1012.4,"sea_level":1025.23,"grnd_level":1012.4,"humidity":93},"wind":{"speed":3.76,"deg":29.5096},"clouds":{"all":76},"dt":1423030673,"id":2988507,"name":"Paris","cod":200}))
