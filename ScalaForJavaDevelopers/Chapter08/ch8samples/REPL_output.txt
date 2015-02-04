@@ -49,3 +49,26 @@ futureWeather: scala.concurrent.Future[play.api.libs.json.JsValue] = scala.concu
 
 scala> val weather = futureWeather.value
 weather: Option[scala.util.Try[play.api.libs.json.JsValue]] = Some(Success({"coord":{"lon":2.35,"lat":48.85},"sys":{"message":0.0934,"country":"FR","sunrise":1423034154,"sunset":1423068789},"weather":[{"id":803,"main":"Clouds","description":"broken clouds","icon":"04n"}],"base":"cmc stations","main":{"temp":271.409,"temp_min":271.409,"temp_max":271.409,"pressure":1012.4,"sea_level":1025.23,"grnd_level":1012.4,"humidity":93},"wind":{"speed":3.76,"deg":29.5096},"clouds":{"all":76},"dt":1423030673,"id":2988507,"name":"Paris","cod":200}))
+
+Combining web services
+----------------------
+scala> import scala.async.Async.{async, await}
+import scala.async.Async.{async, await}
+
+scala> :paste
+// Entering paste mode (ctrl-D to finish)
+
+val futureLocation = WS.url(locationURL).get().map(resp => (resp.xml \ "City").text)
+val futureWeather2 = async { 
+  await(WS.url(weatherURL+await(futureLocation)).get()).body
+}
+futureWeather2.onComplete(println)
+
+// Exiting paste mode, now interpreting.
+
+futureLocation: scala.concurrent.Future[String] = scala.concurrent.impl.Promise$DefaultPromise@62ed3a1a
+futureWeather2: scala.concurrent.Future[String] = scala.concurrent.impl.Promise$DefaultPromise@5c0901f4
+
+scala> Success({"coord":{"lon":24.94,"lat":60.17},"sys":{"type":3,"id":121596,"message":0.0202,"country":"FI","sunrise":1423031214,"sunset":1423060886},"weather":[{"id":804,"main":"Clouds","description":"overcast clouds","icon":"04d"}],"base":"cmc stations","main":{"temp":270.45,"humidity":98,"pressure":1013.26,"temp_min":270.45,"temp_max":270.45},"wind":{"speed":0.9,"gust":1.3,"deg":22},"snow":{"3h":0.25},"clouds":{"all":92},"dt":1423033188,"id":658225,"name":"Helsinki","cod":200}
+)
+
