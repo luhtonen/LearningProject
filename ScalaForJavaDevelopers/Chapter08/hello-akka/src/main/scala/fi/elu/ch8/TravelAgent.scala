@@ -1,8 +1,8 @@
 package fi.elu.ch8
 
-import akka.actor.{Actor, ActorRef}
+import akka.actor.SupervisorStrategy.{Stop, Restart}
+import akka.actor.{ActorLogging, OneForOneStrategy, Actor, ActorRef}
 import akka.event.LoggingReceive
-import fi.elu.ch8
 
 /**
  * Created by luhtonen on 06/02/15.
@@ -12,8 +12,20 @@ object TravelAgent {
   case object Done
   case object Failed
 }
-class TravelAgent extends Actor {
+class TravelAgent extends Actor with ActorLogging {
   import TravelAgent._
+
+  override val supervisorStrategy = OneForOneStrategy(loggingEnabled = false) {
+    case _: Flight.FlightBookingException =>
+      log.warning("Flight Service Failed. Restarting")
+      Restart
+    case _: Hotel.HotelBookingException =>
+      log.warning("Hotel Service Failed. Restarting")
+      Restart
+    case e =>
+      log.error("Unexpected failure", e.getMessage)
+      Stop
+  }
 
   def receive = LoggingReceive {
     case BookTrip(flightAgent, hotelAgent, persons) =>
