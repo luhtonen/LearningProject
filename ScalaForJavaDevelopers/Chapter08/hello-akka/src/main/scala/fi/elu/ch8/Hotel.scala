@@ -11,7 +11,7 @@ object Hotel {
     require(number > 0)
   }
   case object Done
-  case object Failure
+  case object Failed
 }
 class Hotel extends Actor {
   import Hotel._
@@ -20,6 +20,6 @@ class Hotel extends Actor {
     case BookRoom(nb) if nb <= roomsLeft =>
       roomsLeft -= nb
       sender ! Done
-    case _ => sender ! Failure
+    case _ => sender ! Failed
   }
 }

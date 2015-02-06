@@ -11,7 +11,7 @@ object Flight {
     require(number > 0)
   }
   case object Done
-  case object Failure
+  case object Failed
 }
 class Flight extends Actor {
   import Flight._
@@ -20,6 +20,6 @@ class Flight extends Actor {
     case BookSeat(nb) if nb <= seatsLeft =>
       seatsLeft -= nb
       sender ! Done
-    case _ => sender ! Failure
+    case _ => sender ! Failed
   }
 }
