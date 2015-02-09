@@ -68,3 +68,23 @@ scala> val dateGenerator: Enumerator[String] = Enumerator.generateM(
      |     Some("current time %s".format((new java.util.Date()))),
      |     500))
 dateGenerator: play.api.libs.iteratee.Enumerator[String] = play.api.libs.iteratee.Enumerator$$anon$13@4a0b13e7
+
+Enumerator's run and apply methods
+----------------------------------
+scala> val result = enumerator.run(iteratee)
+result: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@3aed96f9
+
+scala> val result2 = enumerator(iteratee)
+result2: scala.concurrent.Future[play.api.libs.iteratee.Iteratee[Int,Int]] = scala.concurrent.impl.Promise$DefaultPromise@e5d2cdb
+
+Iteratee with chunks
+--------------------
+scala> val chunksIteratee = Iteratee.getChunks[Int]
+chunksIteratee: play.api.libs.iteratee.Iteratee[Int,List[Int]] = Cont(<function1>)
+
+scala> val list = enumerator.run(chunksIteratee)
+list: scala.concurrent.Future[List[Int]] = scala.concurrent.impl.Promise$DefaultPromise@27b35f2b
+
+scala> list onComplete println
+
+scala> Success(List(1, 4, 7, 8, 10, 20))
