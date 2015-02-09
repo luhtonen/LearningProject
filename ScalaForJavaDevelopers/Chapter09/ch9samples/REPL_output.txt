@@ -1,0 +1,70 @@
+Iteratees in Play
+=================
+Java style
+----------
+scala> val numbers = List(1, 4, 7, 8, 10, 20)
+numbers: List[Int] = List(1, 4, 7, 8, 10, 20)
+
+scala> var total = 0
+total: Int = 0
+
+scala> var iterator = numbers.iterator
+iterator: Iterator[Int] = non-empty iterator
+
+scala> while (iterator.hasNext) {
+     |   total += iterator.next
+     | }
+
+scala> total
+res1: Int = 50
+
+Scala style using foldLeft
+--------------------------
+scala> List(1, 4, 7, 8, 10, 20).foldLeft(0) { (total, elem) =>
+     |   total + elem }
+res2: Int = 50
+
+Using Play's Enumerator/Iteratee
+--------------------------------
+scala> import play.api.libs.iteratee._
+import play.api.libs.iteratee._
+
+scala> import play.api.libs.concurrent.Execution.Implicits._
+import play.api.libs.concurrent.Execution.Implicits._
+
+scala> val enumerator = Enumerator(1, 4, 7, 8, 10, 20)
+enumerator: play.api.libs.iteratee.Enumerator[Int] = play.api.libs.iteratee.Enumerator$$anon$19@2e48fd76
+
+scala> val iteratee = Iteratee.fold(0) { (total, elem:Int) => total + elem }
+iteratee: play.api.libs.iteratee.Iteratee[Int,Int] = Cont(<function1>)
+
+scala> val result = enumerator.run(iteratee)
+result: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@723cdea3
+
+scala> result onComplete println
+
+scala> Success(50)
+
+Enumerators for different types
+-------------------------------
+scala> val stringEnumerator = Enumerator("one", "two", "four")
+stringEnumerator: play.api.libs.iteratee.Enumerator[String] = play.api.libs.iteratee.Enumerator$$anon$19@6efc0628
+
+scala> val doubleEnumerator = Enumerator(1.03, 2.34, 4)
+doubleEnumerator: play.api.libs.iteratee.Enumerator[Double] = play.api.libs.iteratee.Enumerator$$anon$19@2749b4d6
+
+Enumerator from file
+--------------------
+scala> import java.io.File
+import java.io.File
+
+scala> val fileEnumerator: Enumerator[Array[Byte]] = Enumerator.fromFile(new File("./samplefile.txt"))
+fileEnumerator: play.api.libs.iteratee.Enumerator[Array[Byte]] = play.api.libs.iteratee.Enumerator$$anon$4@600fa56d
+
+Some useful methods of Enumerator
+---------------------------------
+scala> val dateGenerator: Enumerator[String] = Enumerator.generateM(
+     |   play.api.libs.concurrent.Promise.timeout(
+     |     Some("current time %s".format((new java.util.Date()))),
+     |     500))
+dateGenerator: play.api.libs.iteratee.Enumerator[String] = play.api.libs.iteratee.Enumerator$$anon$13@4a0b13e7
