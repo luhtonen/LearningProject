@@ -88,3 +88,22 @@ list: scala.concurrent.Future[List[Int]] = scala.concurrent.impl.Promise$Default
 scala> list onComplete println
 
 scala> Success(List(1, 4, 7, 8, 10, 20))
+
+More sophisticated Iteratee
+---------------------------
+scala> def wordsWithE: Iteratee[String,List[String]] = {
+     |   def step(total:List[String])(input:Input[String]): Iteratee[String,List[String]] = input match {
+     |     case Input.EOF | Input.Empty => Done(total,Input.EOF)
+     |     case Input.El(elem) =>
+     |       if(elem.contains("E")) Cont[String,List[String]](i => step(elem::total)(i))
+     |       else Cont[String, List[String]](i=> step(total)(i))
+     |   }
+     |   Cont[String,List[String]](i=> step(List[String]())(i))
+     | }
+wordsWithE: play.api.libs.iteratee.Iteratee[String,List[String]]
+
+scala> val output = Enumerator("ONE", "TWO", "THREE") run wordsWithE
+output: scala.concurrent.Future[List[String]] = scala.concurrent.impl.Promise$DefaultPromise@64cefb1c
+
+scala> output onComplete println
+Success(List(THREE, ONE))
