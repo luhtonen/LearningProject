@@ -107,3 +107,24 @@ output: scala.concurrent.Future[List[String]] = scala.concurrent.impl.Promise$De
 
 scala> output onComplete println
 Success(List(THREE, ONE))
+
+Enumerator with Enumeratee
+--------------------------
+scala> val summingIteratee = Iteratee.fold(0) { (total, elem:Int) => total + elem }
+summingIteratee: play.api.libs.iteratee.Iteratee[Int,Int] = Cont(<function1>)
+
+scala> val summa = Enumerator("2","5","7") through Enumeratee.map(x => x.toInt) run summingIteratee
+summa: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@d311760
+
+scala> summa onComplete println
+Success(14)
+
+scala> val enumerator = Enumerator("ONE", "Two", "Three")
+enumerator: play.api.libs.iteratee.Enumerator[String] = play.api.libs.iteratee.Enumerator$$anon$19@9f1745c
+
+scala> enumerator run wordsWithE onComplete println
+Success(List(ONE))
+
+scala> enumerator through Enumeratee.map(x => x.toUpperCase) run wordsWithE onComplete println
+
+scala> Success(List(THREE, ONE))
