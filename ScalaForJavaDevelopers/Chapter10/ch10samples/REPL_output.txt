@@ -1,0 +1,63 @@
+Connecting to MongoDB with Casbah
+---------------------------------
+scala> import com.mongodb.casbah.Imports._
+import com.mongodb.casbah.Imports._
+
+scala> val mongoClient = MongoClient("localhost", 27017)
+mongoClient: com.mongodb.casbah.MongoClient = com.mongodb.casbah.MongoClient@1b78af3d
+
+scala> val db = mongoClient("test")
+db: com.mongodb.casbah.MongoDB = test
+
+scala> val col1 = db("test")
+col1: com.mongodb.casbah.MongoCollection = test
+
+scala> db.collectionNames
+res0: scala.collection.mutable.Set[String] = Set()
+
+scala> val sales = MongoDBObject("title" -> "sales", "amount" -> 50)
+sales: com.mongodb.casbah.commons.Imports.DBObject = { "title" : "sales" , "amount" : 50}
+
+scala> val finland = MongoDBObject("country" -> "Finland")
+finland: com.mongodb.casbah.commons.Imports.DBObject = { "country" : "Finland"}
+
+scala> col1.insert(sales)
+res1: com.mongodb.casbah.TypeImports.WriteResult = { "serverUsed" : "localhost:27017" , "ok" : 1 , "n" : 0}
+
+scala> col1.insert(finland)
+res2: com.mongodb.casbah.TypeImports.WriteResult = { "serverUsed" : "localhost:27017" , "ok" : 1 , "n" : 0}
+
+scala> col1.count()
+res3: Int = 2
+
+scala> val documents = col1.find() foreach println
+{ "_id" : { "$oid" : "54dc53b577c86c91e99df5f7"} , "title" : "sales" , "amount" : 50}
+{ "_id" : { "$oid" : "54dc53c077c86c91e99df5f8"} , "country" : "Finland"}
+documents: Unit = ()
+
+scala> val searchedCountry = MongoDBObject("country" -> "Finland")
+searchedCountry: com.mongodb.casbah.commons.Imports.DBObject = { "country" : "Finland"}
+
+scala> val result = col1.findOne(searchedCountry)
+result: Option[col1.T] = Some({ "_id" : { "$oid" : "54dc53c077c86c91e99df5f8"} , "country" : "Finland"})
+
+scala> val emptyResult = col1.findOne(MongoDBObject("country" -> "France"))
+emptyResult: Option[col1.T] = None
+
+scala> val result = col1.remove(searchedCountry)
+result: com.mongodb.casbah.TypeImports.WriteResult = { "serverUsed" : "localhost:27017" , "ok" : 1 , "n" : 1}
+
+scala> val countryNoMore = col1.findOne(searchedCountry)
+countryNoMore: Option[col1.T] = None
+
+scala> sales
+res4: com.mongodb.casbah.commons.Imports.DBObject = { "title" : "sales" , "amount" : 50 , "_id" : { "$oid" : "54dc53b577c86c91e99df5f7"}}
+
+scala> val newSales = MongoDBObject("title" -> "sales", "amount" -> 100)
+newSales: com.mongodb.casbah.commons.Imports.DBObject = { "title" : "sales" , "amount" : 100}
+
+scala> val result = col1.update(sales, newSales)
+result: com.mongodb.casbah.TypeImports.WriteResult = { "serverUsed" : "localhost:27017" , "ok" : 1 , "n" : 1 , "updatedExisting" : true}
+
+scala> col1.find foreach println
+{ "_id" : { "$oid" : "54dc53b577c86c91e99df5f7"} , "title" : "sales" , "amount" : 100}
