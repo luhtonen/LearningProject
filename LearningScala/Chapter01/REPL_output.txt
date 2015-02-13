@@ -1,0 +1,10 @@
+Introduction to Scala
+---------------------
+scala> println("Hello, World!")
+Hello, World!
+
+scala> 5 * 7
+res1: Int = 35
+
+scala> 2 * res1
+res3: Int = 70
