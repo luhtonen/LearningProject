@@ -1,0 +1,71 @@
+Literals, Values, Variables, and Types
+--------------------------------------
+scala> val x: Int = 5
+x: Int = 5
+
+scala> x
+res0: Int = 5
+
+scala> x * 2
+res1: Int = 10
+
+scala> x / 5
+res2: Int = 1
+
+scala> res0 * res1
+res3: Int = 50
+
+scala> var a: Double = 2.72
+a: Double = 2.72
+
+scala> a = 355.0 / 113.0
+a: Double = 3.1415929203539825
+
+scala> a = 5
+a: Double = 5.0
+
+scala> val x: Int = 20
+x: Int = 20
+
+scala> val greeting: String = "Hello, World"
+greeting: String = Hello, World
+
+scala> val atSymbol: Char = '@'
+atSymbol: Char = @
+
+scala> val x = 20
+x: Int = 20
+
+scala> val greeting = "Hello, World"
+greeting: String = Hello, World
+
+scala> val atSymbol = '@'
+atSymbol: Char = @
+
+scala> val x: Int = "Hello"
+<console>:7: error: type mismatch;
+ found   : String("Hello")
+ required: Int
+       val x: Int = "Hello"
+                    ^
+scala> var x = 5
+x: Int = 5
+
+scala> x = x * 4
+x: Int = 20
+
+scala> var x = 5
+x: Int = 5
+
+scala> x = "what's up?"
+<console>:8: error: type mismatch;
+ found   : String("what\'s up?")
+ required: Int
+       x = "what's up?"
+           ^
+
+scala> var y = 1.5
+y: Double = 1.5
+
+scala> y = 42
+y: Double = 42.0
