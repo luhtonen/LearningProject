@@ -93,3 +93,42 @@ scala> val a.b = 25
 
 scala> val `a.b` = 25
 a.b: Int = 25
+
+Types
+-----
+scala> val b: Byte = 10
+b: Byte = 10
+
+scala> val s: Short = b
+s: Short = 10
+
+scala> val d: Double = s
+d: Double = 10.0
+
+scala> val l: Long = 20
+l: Long = 20
+
+scala> val i: Int = l
+<console>:8: error: type mismatch;
+ found   : Long
+ required: Int
+       val i: Int = l
+                    ^
+
+scala> val l: Long = 20
+l: Long = 20
+
+scala> val i: Int = l.toInt
+i: Int = 20
+
+scala> val anInt = 5
+anInt: Int = 5
+
+scala> val yellowRbg = 0xffff00
+yellowRbg: Int = 16776960
+
+scala> val id = 100l
+id: Long = 100
+
+scala> val pi = 3.1416
+pi: Double = 3.1416
