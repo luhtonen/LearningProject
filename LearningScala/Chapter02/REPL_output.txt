@@ -69,3 +69,27 @@ y: Double = 1.5
 
 scala> y = 42
 y: Double = 42.0
+
+Names
+-----
+scala> val π = 3.14159
+π: Double = 3.14159
+
+scala> val $ = "USD currency symbol"
+$: String = USD currency symbol
+
+scala> val o_O = "Hmm"
+o_O: String = Hmm
+
+scala> val 50cent = "$0.50"
+<console>:1: error: Invalid literal number
+       val 50cent = "$0.50"
+           ^
+
+scala> val a.b = 25
+<console>:8: error: value b is not a member of Double
+       val a.b = 25
+             ^
+
+scala> val `a.b` = 25
+a.b: Int = 25
