@@ -1,0 +1,25 @@
+{
+  "name": "TypeScriptTutorial",
+  "version": "0.0.1",
+  "homepage": "https://github.com/luhtonen/LearningProject",
+  "authors": [
+    "Eduard Luhtonen <luhtonen@gmail.com>"
+  ],
+  "description": "Simple TypeScript tutorial",
+  "main": "greeter.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}
