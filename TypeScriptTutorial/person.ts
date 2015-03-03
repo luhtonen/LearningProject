@@ -7,9 +7,9 @@ interface Person {
 }
 
 function greeter(person: Person) {
-  return "Hello, " + person.firstname + " " + person.lastname;
+  return 'Hello, ' + person.firstname + ' ' + person.lastname;
 }
 
-var user = {firstname: "Edu", lastname: "Finn"};
+var user = {firstname: 'Edu', lastname: 'Finn'};
 
-document.body.innerHTML = greeter(user);
+document.getElementById('person').innerHTML = greeter(user);

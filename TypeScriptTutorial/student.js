@@ -6,12 +6,12 @@ var Student = (function () {
         this.firstname = firstname;
         this.middleintial = middleintial;
         this.lastname = lastname;
-        this.fullname = firstname + " " + middleintial + " " + lastname;
+        this.fullname = firstname + ' ' + middleintial + ' ' + lastname;
     }
     return Student;
 })();
 function greeter(person) {
-    return "Hello, " + person.firstname + " " + person.lastname;
+    return 'Hello, ' + person.firstname + ' ' + person.lastname;
 }
-var user = new Student("Edu", "E", "Finn");
-document.body.innerHTML = greeter(user);
+var user = new Student('Edu', 'E', 'Finn');
+document.getElementById('student').innerHTML = greeter(user);

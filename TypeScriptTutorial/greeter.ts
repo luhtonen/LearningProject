@@ -2,9 +2,9 @@
  * Created by luhtonen on 18/02/15.
  */
 function greeter(person) {
-  return "Hello, " + person;
+  return 'Hello, ' + person;
 }
 
-var user = "Jane User";
+var user = 'Edu Finn';
 
-document.body.innerHTML = greeter(user);
+document.getElementById('greeter').innerHTML = greeter(user);
